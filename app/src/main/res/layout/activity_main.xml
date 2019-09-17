@@ -10,7 +10,7 @@
 
 
     <LinearLayout
-        android:id="@+id/main_level_layout"
+        android:id="@+id/room_level_layout"
         android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="24dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/main_level_iv"
+            android:id="@+id/room_level_iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.5"
-            android:fontFamily="@font/헤움아빠와크레파스A"
+            android:fontFamily="@font/hyeuma"
             android:gravity="center"
             android:text="1"
             android:textSize="15dp"
@@ -40,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="레벨"
-            android:fontFamily="@font/헤움아빠와크레파스A"
+            android:fontFamily="@font/hyeuma"
             android:textSize="15dp"
             android:gravity="center"
             android:textColor="#FFFFFF"/>
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <LinearLayout
-        android:id="@+id/main_coin_layout"
+        android:id="@+id/room_coin_layout"
         android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginTop="24dp"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/main_coin_iv"
+            android:id="@+id/room_coin_iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -82,7 +82,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.5"
-            android:fontFamily="@font/헤움아빠와크레파스A"
+            android:fontFamily="@font/hyeuma"
             android:gravity="center"
             android:text="1"
             android:textColor="#FFFFFF" />
@@ -92,26 +92,26 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="코인"
-            android:fontFamily="@font/헤움아빠와크레파스A"
+            android:fontFamily="@font/hyeuma"
             android:textSize="15dp"
             android:gravity="center"
             android:textColor="#FFFFFF"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/main_exp_layout"
+        android:id="@+id/room_exp_layout"
         android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="10dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/main_coin_layout"
-        app:layout_constraintStart_toEndOf="@+id/main_level_layout"
+        app:layout_constraintEnd_toStartOf="@+id/room_coin_layout"
+        app:layout_constraintStart_toEndOf="@+id/room_level_layout"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/main_exp_iv"
+            android:id="@+id/room_exp_iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -121,7 +121,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.5"
-            android:fontFamily="@font/헤움아빠와크레파스A"
+            android:fontFamily="@font/hyeuma"
             android:gravity="center"
             android:text="1"
             android:textColor="#FFFFFF" />
@@ -130,7 +130,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="EXP"
-            android:fontFamily="@font/헤움아빠와크레파스A"
+            android:fontFamily="@font/hyeuma"
             android:textSize="15dp"
             android:gravity="center"
             android:textColor="#FFFFFF"/>
@@ -141,11 +141,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_level_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71"
         app:srcCompat="@drawable/student_card" />
 
     <TextView
@@ -158,7 +157,7 @@
         android:layout_marginBottom="64dp"
         android:width="122dp"
         android:height="41dp"
-        android:fontFamily="@font/헤움아빠와크레파스A"
+        android:fontFamily="@font/hyeuma"
         android:gravity="center"
         android:text="전교 석차"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -186,7 +185,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/헤움아빠와크레파스A"
+        android:fontFamily="@font/hyeuma"
         android:text="방 만들기"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF"
@@ -202,7 +201,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="@font/헤움아빠와크레파스A"
+        android:fontFamily="@font/hyeuma"
         android:text="방 들어가기"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF"
@@ -230,7 +229,7 @@
         android:layout_marginStart="24dp"
         android:src="@drawable/underline3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_level_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/room_level_layout" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -239,7 +238,7 @@
         android:src="@drawable/underline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_exp_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/room_exp_layout" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -248,7 +247,7 @@
         android:layout_marginEnd="24dp"
         android:src="@drawable/underline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_coin_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/room_coin_layout" />
 
     <ImageView
         android:id="@+id/imageView4"
