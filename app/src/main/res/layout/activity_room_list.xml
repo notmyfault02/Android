@@ -126,7 +126,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/level_underline_iv"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -135,7 +135,7 @@
         app:layout_constraintTop_toBottomOf="@+id/room_level_layout" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/exp_underline_iv"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:src="@drawable/underline3"
@@ -144,7 +144,7 @@
         app:layout_constraintTop_toBottomOf="@+id/room_exp_layout" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/coin_underline_iv"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"

@@ -186,6 +186,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/hyeuma"
+        android:onClick="onJoinClick"
         android:text="방 만들기"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF"
@@ -223,7 +224,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/level_underline_iv"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -232,7 +233,7 @@
         app:layout_constraintTop_toBottomOf="@+id/room_level_layout" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/exp_underline_iv"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:src="@drawable/underline3"
@@ -241,7 +242,7 @@
         app:layout_constraintTop_toBottomOf="@+id/room_exp_layout" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/coin_underline_iv"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -250,28 +251,28 @@
         app:layout_constraintTop_toBottomOf="@+id/room_coin_layout" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/make_room_underline_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:src="@drawable/underlineLong"
+        android:src="@drawable/underlinelong"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/main_card_view"
         app:layout_constraintTop_toBottomOf="@+id/make_room_tv" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/join_room_underline_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:src="@drawable/underlineLong"
+        android:src="@drawable/underlinelong"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toEndOf="@+id/main_card_view"
         app:layout_constraintTop_toBottomOf="@+id/join_room_tv" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/ranking_underline_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
