@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".RoomPWActivity"></activity>
+        <activity android:name=".RoomPWActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog">
+        </activity>
         <activity android:name=".MakingRoomActivity" />
         <activity android:name=".RoomListActivity" />
 

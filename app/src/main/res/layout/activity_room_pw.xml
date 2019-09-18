@@ -7,6 +7,13 @@
     tools:context=".RoomPWActivity">
 
     <ImageView
+        android:id="@+id/name_underline_iv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/underline3"
+        app:layout_constraintBottom_toBottomOf="@+id/pw_background_iv" />
+
+    <ImageView
         android:id="@+id/background_iv"
         android:layout_width="match_parent"
 
@@ -60,9 +67,9 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
+        android:layout_width="196dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/underlinelong"
+        android:src="@drawable/underline"
         app:layout_constraintBottom_toBottomOf="@+id/pw_background_iv"
         app:layout_constraintEnd_toEndOf="@+id/pw_background_iv"
         app:layout_constraintStart_toStartOf="@+id/pw_background_iv"
@@ -112,15 +119,6 @@
         app:layout_constraintStart_toStartOf="@+id/pw_background_iv"
         app:layout_constraintTop_toTopOf="@+id/pw_background_iv"
         app:layout_constraintVertical_bias="0.8125" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="346dp" />
 
 
 </android.support.constraint.ConstraintLayout>
