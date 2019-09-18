@@ -22,9 +22,10 @@
         android:src="@drawable/modal_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5234375" />
+        app:layout_constraintVertical_bias="0.524" />
 
     <TextView
         android:id="@+id/make_room_tv"
@@ -313,6 +314,36 @@
         app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
         app:layout_constraintVertical_bias="0.858" />
 
+    <EditText
+        android:id="@+id/room_name_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="Room Name"
+        android:fontFamily="@font/hufathers"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/name_underline_iv"
+        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+        app:layout_constraintHorizontal_bias="0.75"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:text="password"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/hufathers"
+        android:lineSpacingExtra="1sp"
+        app:layout_constraintBottom_toTopOf="@+id/pw_underline_iv"
+        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv" />
 
 
 </android.support.constraint.ConstraintLayout>
