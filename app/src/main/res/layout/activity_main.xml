@@ -204,6 +204,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/hyeuma"
         android:text="방 들어가기"
+        android:onClick="goRoomList"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF"
         android:textSize="36sp"

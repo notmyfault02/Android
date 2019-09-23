@@ -88,7 +88,7 @@
         android:fontFamily="@font/hufathers"
         android:text="Search"
         android:gravity="center_horizontal"
-        android:background="null"
+        android:background="@null"
         app:layout_constraintBottom_toTopOf="@+id/search_underline_iv"
         app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
         app:layout_constraintStart_toStartOf="@+id/search_background_iv" />

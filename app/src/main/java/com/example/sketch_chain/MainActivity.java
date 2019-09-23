@@ -15,7 +15,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onJoinClick(View view)
     {
-        Intent intent = new Intent(getApplicationContext(),RoomListActivity.class);
+        Intent intent = new Intent(getApplicationContext(),MakingRoomActivity.class);
+        startActivity(intent);
+    }
+
+    public void goRoomList(View view) {
+        Intent intent = new Intent(getApplicationContext(), RoomListActivity.class);
         startActivity(intent);
     }
 }

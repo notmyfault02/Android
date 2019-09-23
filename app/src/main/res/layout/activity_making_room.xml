@@ -4,16 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MakingRoomActivity">
-
-    <ImageView
-        android:id="@+id/background_iv"
-        android:layout_width="match_parent"
-
-        android:layout_height="match_parent"
-        android:background="#65000000"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="182dp" />
+    tools:context=".MakingRoomActivity"
+    android:background="@null">
 
     <ImageView
         android:id="@+id/make_room_background_iv"
@@ -25,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintVertical_bias="0.533" />
 
     <TextView
         android:id="@+id/make_room_tv"
@@ -305,6 +297,8 @@
         android:gravity="center_horizontal"
         android:lineSpacingExtra="0sp"
         android:text="취소"
+        android:textColorHighlight="#f5d901"
+        android:onClick="cancel"
         android:textColor="#ffffff"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
@@ -319,29 +313,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="6"
+        android:fontFamily="@font/hufathers"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:text="Room Name"
-        android:fontFamily="@font/hufathers"
         android:textColor="#ffffff"
-        android:background="null"
+        android:background="@null"
         app:layout_constraintBottom_toTopOf="@+id/name_underline_iv"
         app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.75"/>
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="6"
+        android:fontFamily="@font/hufathers"
         android:gravity="center"
         android:inputType="textPassword"
-        android:text="password"
-        android:textSize="20sp"
-        android:textColor="#ffffff"
-        android:fontFamily="@font/hufathers"
         android:lineSpacingExtra="1sp"
-        android:background="null"
+        android:background="@null"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/pw_underline_iv"
         app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
         app:layout_constraintHorizontal_bias="0.75"
