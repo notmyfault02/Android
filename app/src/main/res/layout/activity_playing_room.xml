@@ -86,77 +86,21 @@
             android:textSize="32sp" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/current_rank"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0911"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.14228" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/current_rank2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".22587"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.14228" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:gravity="center_horizontal"
-        android:text="현재 순위"
-        android:textColor="#ff8989"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="76dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:text="게임 시작 전입니다"
-        android:textColor="#ff8989"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintVertical_bias="0.40645"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView2"
         android:layout_width="350dp"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
+        tools:listitem="@layout/item_chat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.88918" />
 
+
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/input_chat_et"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -183,6 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
 
     <TextView
+        android:id="@+id/send_button_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/hufathers"
@@ -192,9 +137,115 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView2"
-        app:layout_constraintHorizontal_bias="0.91521"/>
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+
+    <fragment
+        android:id="@+id/room_action_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_underline2_tv"
+        tools:layout="@layout/fragment_play" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView2"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:singleLine="true"
+                android:text="자바쌤신요셉"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLength="4"
+                android:paddingHorizontal="10dp"
+                android:singleLine="true"
+                android:text="닉네임"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLength="4"
+                android:paddingHorizontal="10dp"
+                android:singleLine="true"
+                android:text="김지혁"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLength="4"
+                android:paddingHorizontal="10dp"
+                android:singleLine="true"
+                android:text="황신우"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLength="4"
+                android:singleLine="true"
+                android:text="산학쌤최지영"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

@@ -11,7 +11,7 @@
         android:id="@+id/room_num_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="10dp"
         android:fontFamily="@font/hufather120"
         android:lineSpacingExtra="1sp"
         android:text="123"
