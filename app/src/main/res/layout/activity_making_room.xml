@@ -300,7 +300,7 @@
         android:lineSpacingExtra="0sp"
         android:onClick="cancel"
         android:text="취소"
-        android:textColor="#ffffff"
+        android:textColor="@color/btn_text_onpress"
         android:textColorHighlight="#f5d901"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"

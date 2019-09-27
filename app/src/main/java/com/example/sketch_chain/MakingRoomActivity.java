@@ -25,12 +25,6 @@ public class MakingRoomActivity extends AppCompatActivity {
         confirmIv = findViewById(R.id.confirm_background_iv);
         confirmTv = findViewById(R.id.confirm_button_tv);
 
-        if(roomName.getText().toString() == null) {
-            confirmIv.setClickable(false);
-        } else {
-            confirmIv.setClickable(true);
-        }
-
         confirmIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
