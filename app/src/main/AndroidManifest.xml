@@ -15,7 +15,7 @@
         <activity
             android:name=".RoomPWActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
-        <activity android:name=".MakingRoomActivity" />
+        <activity android:name=".MakingRoomActivity" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
         <activity android:name=".RoomListActivity" />
 
         <meta-data
