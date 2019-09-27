@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WaitingRoomActivity"
+    tools:context=".PlayingRoomActivity"
     android:background="@drawable/background">
 
     <ImageView
@@ -106,7 +106,7 @@
         android:background="@null"
         android:fontFamily="@font/hufathers"
         android:lineSpacingExtra="1sp"
-        android:text="채팅 혹은 정답을 입력해주세요."
+        android:hint="채팅 혹은 정답을 입력해주세요."
         android:textColor="#80ffffff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -141,8 +141,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
 
-    <fragment
-        android:id="@+id/room_action_fragment"
+    <FrameLayout
+        android:id="@+id/room_action_framelayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"

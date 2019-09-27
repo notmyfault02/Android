@@ -23,6 +23,7 @@
             android:value="@string/facebook_app_id" />
 
         <activity android:name=".LoginActivity" />
+        <activity android:name=".PlayingRoomActivity"/>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashActivity"
