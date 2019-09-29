@@ -38,28 +38,28 @@ public class LoginActivity extends AppCompatActivity {
         customButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loginButton.setReadPermissions("email", "public_profile");
+                checkLoginStatus();
+
+                loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Log.d("login", "cancel");
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Log.d("login", error.toString());
+                    }
+                });
             }
         });
 
-        loginButton.setReadPermissions("email", "public_profile");
-        checkLoginStatus();
-
-        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-
-            }
-
-            @Override
-            public void onCancel() {
-                Log.d("login", "cancel");
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.d("login", error.toString());
-            }
-        });
     }
 
     @Override
