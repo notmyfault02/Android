@@ -15,6 +15,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -118,8 +119,29 @@ public class LoginActivity extends AppCompatActivity {
         request.executeAsync();
     }
 
+    private void loadFriends(AccessToken token) {
+        Log.d("loginfriend", "working");
+        GraphRequest request = new GraphRequest(
+                token, "/{friend-list-id}",
+                null, HttpMethod.GET,
+                new GraphRequest.Callback() {
+            @Override
+            public void onCompleted(GraphResponse response) {
+                Log.d("loginfriend", "okay");
+                response.getJSONObject();
+                Log.d("loginfriend", response.toString());
+            }
+
+            void onFailure() {
+                Log.d("loginfriend", "fail");
+            }
+        });
+    }
+
     private void checkLoginStatus() {
-        if(AccessToken.getCurrentAccessToken()!=null)
+        if(AccessToken.getCurrentAccessToken()!=null) {
             loadUserProfile(AccessToken.getCurrentAccessToken());
+            loadFriends(AccessToken.getCurrentAccessToken());
+        }
     }
 }
