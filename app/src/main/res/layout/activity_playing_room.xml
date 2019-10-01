@@ -162,6 +162,7 @@
         app:layout_constraintStart_toStartOf="@+id/recyclerView2">
 
         <LinearLayout
+            android:id="@+id/player_list_l"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal">
