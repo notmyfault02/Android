@@ -143,10 +143,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71"
+        app:layout_constraintTop_toBottomOf="@+id/level_underline_iv"
         app:srcCompat="@drawable/student_card" />
 
     <TextView
@@ -191,7 +191,7 @@
         android:onClick="onJoinClick"
         android:text="방 만들기"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/btn_text_onpress"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
@@ -208,7 +208,7 @@
         android:text="방 들어가기"
         android:onClick="goRoomList"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/btn_text_onpress"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/main_card_view"
@@ -284,6 +284,34 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/main_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="TextView"
+        android:fontFamily="@font/thecircleb"
+        android:textColor="#707070"
+        app:layout_constraintBottom_toBottomOf="@+id/main_card_view"
+        app:layout_constraintEnd_toEndOf="@+id/main_card_view"
+        app:layout_constraintStart_toStartOf="@+id/main_card_view"
+        app:layout_constraintTop_toBottomOf="@+id/main_profile_iv" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="학생증"
+        android:textColor="#707070"
+        android:fontFamily="@font/thecircleb"
+        app:layout_constraintBottom_toTopOf="@+id/main_profile_iv"
+        app:layout_constraintEnd_toEndOf="@+id/main_card_view"
+        app:layout_constraintStart_toStartOf="@+id/main_card_view"
+        app:layout_constraintTop_toTopOf="@+id/main_card_view" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -15,7 +15,7 @@
         <activity
             android:name=".RoomPWActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
-        <activity android:name=".MakingRoomActivity" />
+        <activity android:name=".MakingRoomActivity" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
         <activity android:name=".RoomListActivity" />
 
         <meta-data
@@ -23,7 +23,9 @@
             android:value="@string/facebook_app_id" />
 
         <activity android:name=".LoginActivity" />
+        <activity android:name=".PlayingRoomActivity"/>
         <activity android:name=".MainActivity" />
+        <activity android:name=".SearchRoomActivity"/>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
