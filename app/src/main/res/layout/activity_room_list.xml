@@ -217,7 +217,7 @@
         android:id="@+id/roomlist_search_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/search"
+        android:src="@drawable/btn_search_onpress"
         android:onClick="goSearch"
         app:layout_constraintBottom_toTopOf="@+id/roomlist_rv"
         app:layout_constraintEnd_toEndOf="parent"
