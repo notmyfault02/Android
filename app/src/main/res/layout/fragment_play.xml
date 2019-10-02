@@ -54,7 +54,7 @@
             android:lineSpacingExtra="1sp"
             android:text="'"
             android:textSize="20sp"
-            android:textColor="#fffff"/>
+            android:textColor="#ffffff"/>
 
         <TextView
             android:id="@+id/play_explain_point_tv"
@@ -75,7 +75,7 @@
             android:lineSpacingExtra="1sp"
             android:text="'"
             android:textSize="20sp"
-            android:textColor="#fffff"/>
+            android:textColor="#ffffff"/>
 
         <TextView
             android:id="@+id/play_explain_normal_tv"

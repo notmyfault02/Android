@@ -11,23 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".WaitingRoomActivity"></activity>
+        <activity android:name=".ui.WaitingRoomActivity"></activity>
         <activity
-            android:name=".RoomPWActivity"
+            android:name=".ui.RoomPWActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
-        <activity android:name=".MakingRoomActivity" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
-        <activity android:name=".RoomListActivity" />
+        <activity android:name=".ui.MakingRoomActivity" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
+        <activity android:name=".ui.RoomListActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".PlayingRoomActivity"/>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SearchRoomActivity"/>
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.gameplay.PlayingRoomActivity"/>
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.SearchRoomActivity"/>
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

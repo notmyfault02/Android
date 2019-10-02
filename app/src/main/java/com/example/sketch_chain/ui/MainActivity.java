@@ -1,4 +1,4 @@
-package com.example.sketch_chain;
+package com.example.sketch_chain.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.sketch_chain.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onJoinClick(View view)
     {
-        Intent intent = new Intent(getApplicationContext(),MakingRoomActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MakingRoomActivity.class);
         startActivity(intent);
     }
 

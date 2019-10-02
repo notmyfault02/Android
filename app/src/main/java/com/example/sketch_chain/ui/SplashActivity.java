@@ -1,8 +1,10 @@
-package com.example.sketch_chain;
+package com.example.sketch_chain.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.sketch_chain.R;
 
 public class SplashActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.sketch_chain;
+package com.example.sketch_chain.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.sketch_chain.R;
+import com.example.sketch_chain.ui.gameplay.PlayingRoomActivity;
 
 public class MakingRoomActivity extends AppCompatActivity {
 
