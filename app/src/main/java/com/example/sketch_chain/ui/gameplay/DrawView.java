@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class DrawView extends View{
@@ -23,13 +24,6 @@ public class DrawView extends View{
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        for (Pos p : data) {
-            canvas.drawCircle(p.getX(), p.getY(), r, paint);
-        }
-    }
-
-    @Override
     public boolean onTouchEvent(MotionEvent event) {
         x = event.getX();
         y = event.getY();
@@ -39,6 +33,16 @@ public class DrawView extends View{
 
         invalidate();
         return true;
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+
+        Iterator<Pos> iter = data.iterator();
+        while (iter.hasNext()) {
+            Pos p = iter.next();
+            canvas.drawCircle(p.getX(), p.getY(), r, paint);
+        }
     }
 }
 
