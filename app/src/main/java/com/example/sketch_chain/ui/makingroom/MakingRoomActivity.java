@@ -1,4 +1,4 @@
-package com.example.sketch_chain.ui;
+package com.example.sketch_chain.ui.makingroom;
 
 import android.content.Intent;
 import android.os.Bundle;

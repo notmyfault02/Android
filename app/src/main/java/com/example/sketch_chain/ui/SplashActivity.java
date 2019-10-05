@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.sketch_chain.R;
+import com.example.sketch_chain.ui.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

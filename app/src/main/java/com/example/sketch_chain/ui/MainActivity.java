@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.sketch_chain.R;
+import com.example.sketch_chain.ui.makingroom.MakingRoomActivity;
+import com.example.sketch_chain.ui.roomlist.RoomListActivity;
 
 public class MainActivity extends AppCompatActivity {
 
