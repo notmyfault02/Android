@@ -13,10 +13,10 @@
         android:src="@drawable/modal_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/make_room_tv"
@@ -158,50 +158,6 @@
         app:layout_constraintVertical_bias="0.605" />
 
     <TextView
-        android:id="@+id/round_choice1_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:text="1"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.605" />
-
-    <TextView
-        android:id="@+id/round_choice2_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:text="3"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toStartOf="@+id/round_choice3_tv"
-        app:layout_constraintStart_toEndOf="@+id/round_choice1_tv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.605" />
-
-    <TextView
-        android:id="@+id/round_choice3_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:text="5"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.765"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.605" />
-
-    <TextView
         android:id="@+id/time_limit_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -217,49 +173,104 @@
         app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
         app:layout_constraintVertical_bias="0.713" />
 
-    <TextView
-        android:id="@+id/time_choice1_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:text="60"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.713" />
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/time_limit_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/round_cnt_tv"
+        app:layout_constraintTop_toTopOf="@+id/pw_explain2_tv">
 
-    <TextView
-        android:id="@+id/time_choice2_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:text="90"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toStartOf="@+id/time_choice3_tv"
-        app:layout_constraintStart_toEndOf="@+id/time_choice1_tv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.713" />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="null"
+            android:fontFamily="@font/hufathers"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
 
-    <TextView
-        android:id="@+id/time_choice3_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:text="120"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.815"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.713" />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="null"
+            android:fontFamily="@font/hufathers"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="null"
+            android:fontFamily="@font/hufathers"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
+
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/making_confirm_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/time_limit_tv"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="null"
+            android:fontFamily="@font/hufathers"
+            android:gravity="center"
+            android:text="60"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="null"
+            android:fontFamily="@font/hufathers"
+            android:gravity="center"
+            android:text="90"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="null"
+            android:fontFamily="@font/hufathers"
+            android:gravity="center"
+            android:text="120"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
+
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/making_confirm_btn"
