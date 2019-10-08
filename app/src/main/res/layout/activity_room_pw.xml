@@ -71,7 +71,7 @@
         app:layout_constraintVertical_bias="0.604" />
 
     <ImageView
-        android:id="@+id/confirm_background_iv"
+        android:id="@+id/search_confirm_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/button_background"
@@ -92,10 +92,10 @@
         android:text="확인"
         android:textColor="#1d2d21"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/confirm_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/confirm_background_iv"
-        app:layout_constraintStart_toStartOf="@+id/confirm_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/confirm_background_iv" />
+        app:layout_constraintBottom_toBottomOf="@+id/search_confirm_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_confirm_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_confirm_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_confirm_iv" />
 
     <TextView
         android:id="@+id/cancel_tv"

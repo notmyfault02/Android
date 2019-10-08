@@ -103,11 +103,16 @@
         app:layout_constraintTop_toTopOf="@+id/search_background_iv"
         app:layout_constraintVertical_bias="0.60465" />
 
-    <ImageView
-        android:id="@+id/confirm_background_iv"
+    <Button
+        android:id="@+id/search_confirm_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/button_background"
+        android:text="검색"
+        android:textColor="#1d2d21"
+        android:textSize="24sp"
+        android:fontFamily="@font/hufathers"
+        android:enabled="false"
+        android:background="@drawable/btn_clickable_making_room"
         app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
         app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
         app:layout_constraintHorizontal_bias="0.277"
@@ -115,19 +120,6 @@
         app:layout_constraintTop_toTopOf="@+id/search_background_iv"
         app:layout_constraintVertical_bias="0.84049" />
 
-    <TextView
-        android:id="@+id/confirm_button_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:gravity="center_horizontal"
-        android:text="검색"
-        android:textColor="#1d2d21"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/confirm_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/confirm_background_iv"
-        app:layout_constraintStart_toStartOf="@+id/confirm_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/confirm_background_iv" />
 
     <TextView
         android:id="@+id/cancel_button_tv"
@@ -136,13 +128,14 @@
         android:fontFamily="@font/hufathers"
         android:gravity="center_horizontal"
         android:text="취소"
-        android:textColor="#ffffff"
+        android:textColor="@color/btn_text_onpress"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/confirm_button_tv"
+        android:onClick="cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/search_confirm_btn"
         app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
         app:layout_constraintHorizontal_bias="0.67941"
         app:layout_constraintStart_toStartOf="@+id/search_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/confirm_button_tv" />
+        app:layout_constraintTop_toTopOf="@+id/search_confirm_btn" />
 
 
 </android.support.constraint.ConstraintLayout>

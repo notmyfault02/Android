@@ -261,34 +261,22 @@
         app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
         app:layout_constraintVertical_bias="0.713" />
 
-    <ImageView
-        android:id="@+id/confirm_background_iv"
+    <Button
+        android:id="@+id/making_confirm_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_clickable_making_room"
-        android:clickable="false"
+        android:enabled="true"
+        android:text="확인"
+        android:textColor="#1d2d21"
+        android:textSize="24sp"
+        android:fontFamily="@font/hufathers"
         app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
         app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
         app:layout_constraintHorizontal_bias="0.278"
         app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
         app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
         app:layout_constraintVertical_bias="0.875" />
-
-    <TextView
-        android:id="@+id/confirm_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="0sp"
-        android:text="확인"
-        android:clickable="false"
-        android:textColor="#1d2d21"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/confirm_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/confirm_background_iv"
-        app:layout_constraintStart_toStartOf="@+id/confirm_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/confirm_background_iv" />
 
     <TextView
         android:id="@+id/cancel_tv"
