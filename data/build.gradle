@@ -5,6 +5,7 @@ dependencies {
 
     implementation rootProject.retrofit
     implementation rootProject.converter
+    implementation rootProject.rxjava
 }
 
 sourceCompatibility = "8"
