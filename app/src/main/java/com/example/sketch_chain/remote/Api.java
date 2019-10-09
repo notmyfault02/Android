@@ -8,7 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 
-interface Api {
+public interface Api {
     @GET("/getRanking")
     Call<List<User>> getRanking(@Header("x-access-token") String token);
 }
