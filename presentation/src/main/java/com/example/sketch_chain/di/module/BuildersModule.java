@@ -1,4 +1,4 @@
-package com.example.sketch_chain.di;
+package com.example.sketch_chain.di.module;
 
 import dagger.Module;
 

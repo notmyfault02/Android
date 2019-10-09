@@ -1,8 +1,8 @@
-package com.example.sketch_chain.di;
+package com.example.sketch_chain.di.module;
 
 import android.content.Context;
 
-import com.example.sketch_chain.SCApplication;
+import com.example.sketch_chain.di.app.SCApplication;
 
 import dagger.Module;
 import dagger.Provides;

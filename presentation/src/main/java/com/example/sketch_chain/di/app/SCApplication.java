@@ -1,4 +1,4 @@
-package com.example.sketch_chain;
+package com.example.sketch_chain.di.app;
 
 import android.app.Activity;
 
