@@ -1,0 +1,11 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation rootProject.ext.rxjava
+    implementation rootProject.ext.rxAndroid
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
