@@ -1,6 +1,6 @@
 package com.example.sketch_chain.di;
 
-import com.example.sketch_chain.remote.Api;
+import com.notmyfault02.data.remote.Api;
 
 import javax.inject.Singleton;
 

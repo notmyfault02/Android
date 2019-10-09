@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.sketch_chain.R;
-import com.example.sketch_chain.ui.makingroom.MakingRoomActivity;
-import com.example.sketch_chain.ui.roomlist.RoomListActivity;
+import com.example.sketch_chain.ui.makeRoom.MakeRoomActivity;
+import com.example.sketch_chain.ui.showRoom.ShowRoomActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onJoinClick(View view)
     {
-        Intent intent = new Intent(getApplicationContext(), MakingRoomActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
         startActivity(intent);
     }
 
     public void goRoomList(View view) {
-        Intent intent = new Intent(getApplicationContext(), RoomListActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ShowRoomActivity.class);
         startActivity(intent);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.sketch_chain.ui.makingroom;
+package com.example.sketch_chain.ui.makeRoom;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.EditText;
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.ui.gameplay.PlayingRoomActivity;
 
-public class MakingRoomActivity extends AppCompatActivity {
+public class MakeRoomActivity extends AppCompatActivity {
 
     private EditText roomName;
     private Button makingBtn;
@@ -20,7 +20,7 @@ public class MakingRoomActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_making_room);
+        setContentView(R.layout.activity_make_room);
 
         roomName = findViewById(R.id.room_name_et);
         makingBtn = findViewById(R.id.making_confirm_btn);

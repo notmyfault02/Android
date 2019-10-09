@@ -1,4 +1,4 @@
-package com.example.sketch_chain.entities;
+package com.example.sketch_chain.entity;
 
 import java.util.List;
 

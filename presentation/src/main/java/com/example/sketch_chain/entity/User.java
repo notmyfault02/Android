@@ -1,4 +1,4 @@
-package com.example.sketch_chain.entities;
+package com.example.sketch_chain.entity;
 
 public class User {
     String name;

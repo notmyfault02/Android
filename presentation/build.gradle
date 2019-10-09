@@ -24,6 +24,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':data')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -47,4 +49,7 @@ dependencies {
     implementation 'com.google.dagger:dagger-android:2.23.1'
     implementation 'com.google.dagger:dagger-android-support:2.23.1'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.23.1'
+
+    implementation rootProject.ext.rxjava
+    implementation rootProject.ext.rxAndroid
 }
