@@ -1,0 +1,11 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation rootProject.retrofit
+    implementation rootProject.converter
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
