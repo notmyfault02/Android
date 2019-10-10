@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.sketch_chain.R;
-import com.example.sketch_chain.ui.MainActivity;
+import com.example.sketch_chain.ui.main.MainActivity;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;

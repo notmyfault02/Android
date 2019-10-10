@@ -24,7 +24,7 @@
 
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.gameplay.PlayingRoomActivity"/>
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.showRoom.SearchRoomActivity"/>
         <activity
             android:name=".ui.SplashActivity"
