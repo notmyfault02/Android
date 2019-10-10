@@ -1,6 +1,7 @@
 package com.example.sketch_chain.di.component;
 
 import com.example.sketch_chain.di.app.SCApplication;
+import com.example.sketch_chain.di.module.ActivityModule;
 import com.example.sketch_chain.di.module.AppModule;
 import com.example.sketch_chain.di.module.BuildersModule;
 import com.example.sketch_chain.di.module.NetworkModule;
@@ -16,7 +17,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AndroidSupportInjectionModule.class,
         AppModule.class,
         BuildersModule.class,
-        NetworkModule.class
+        NetworkModule.class,
+        ActivityModule.class
 })
 
 public interface AppComponent {
