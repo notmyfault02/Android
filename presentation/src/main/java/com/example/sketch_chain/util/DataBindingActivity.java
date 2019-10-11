@@ -12,15 +12,7 @@ import dagger.android.support.DaggerAppCompatActivity;
 public abstract class DataBindingActivity<T extends ViewDataBinding> extends DaggerAppCompatActivity {
     T binding;
 
-    int layoutId;
-
-    public int getLayoutId() {
-        return layoutId;
-    }
-
-    public void setLayoutId(int layoutId) {
-        this.layoutId = layoutId;
-    }
+    public abstract int getLayoutId();
 
     private LifecycleOwner lifecycleOwner;
 
@@ -28,7 +20,7 @@ public abstract class DataBindingActivity<T extends ViewDataBinding> extends Dag
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, layoutId);
+        binding = DataBindingUtil.setContentView(this, getLayoutId());
         binding.setLifecycleOwner(this);
     }
 }

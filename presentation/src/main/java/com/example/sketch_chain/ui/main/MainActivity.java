@@ -21,12 +21,6 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
     TextView nameTv;
 
     @Override
-    public void setLayoutId(int layoutId) {
-        layoutId = R.layout.activity_main;
-        super.setLayoutId(layoutId);
-    }
-
-    @Override
     public int getLayoutId() {
         return R.layout.activity_main;
     }
