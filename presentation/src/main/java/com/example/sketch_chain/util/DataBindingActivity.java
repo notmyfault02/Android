@@ -10,7 +10,7 @@ import dagger.android.AndroidInjection;
 import dagger.android.support.DaggerAppCompatActivity;
 
 public abstract class DataBindingActivity<T extends ViewDataBinding> extends DaggerAppCompatActivity {
-    T binding;
+    public T binding;
 
     public abstract int getLayoutId();
 

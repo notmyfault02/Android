@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="vm"
+            name="viewModel"
             type="com.example.sketch_chain.ui.main.MainViewModel" />
     </data>
 
@@ -181,6 +181,7 @@
             android:id="@+id/main_profile_iv"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            image="@{viewModel.profile}"
             app:layout_constraintBottom_toBottomOf="@+id/main_card_view"
             app:layout_constraintEnd_toEndOf="@+id/main_card_view"
             app:layout_constraintStart_toStartOf="@+id/main_card_view"
@@ -298,7 +299,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:text="TextView"
+            android:text="@{viewModel.userName}"
             android:fontFamily="@font/thecircleb"
             android:textColor="#707070"
             app:layout_constraintBottom_toBottomOf="@+id/main_card_view"
