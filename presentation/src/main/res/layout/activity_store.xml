@@ -126,7 +126,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/store_return_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/btn_return_onpress"
@@ -138,6 +138,7 @@
         app:layout_constraintVertical_bias="0.13636" />
 
     <TextView
+        android:id="@+id/store_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/hufathers"
@@ -151,8 +152,184 @@
         app:layout_constraintVertical_bias="0.13636" />
 
     <ImageView
+        android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/underline_vertical"/>
+        android:src="@drawable/underline_long2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/store_name_tv" />
+
+    <LinearLayout
+        android:id="@+id/item1_layout"
+        android:layout_width="317dp"
+        android:layout_height="133dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2998">
+
+        <ImageView
+            android:id="@+id/item1_icon_iv"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginRight="5dp"
+            android:background="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.10434"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.30392" />
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="133dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item1_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hufathers"
+                android:text="정답 알기 찬스"
+                android:textColor="#25f2e4"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/item1_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hufathers"
+                android:text="500코인"
+                android:textColor="#f5d901"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/item1_explain_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hufathers"
+                android:text="한 게임당 한 번씩 상대방이 낸 문제의 정답을 알 수 있다."
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item2_layout"
+        android:layout_width="317dp"
+        android:layout_height="133dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item1_layout"
+        android:layout_marginTop="17dp">
+
+        <ImageView
+            android:id="@+id/item2_icon_iv"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginRight="5dp"
+            android:background="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.10434"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.30392" />
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="133dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item2_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hufathers"
+                android:text="시간 단축"
+                android:textColor="#25f2e4"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/item2_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hufathers"
+                android:text="1000코인"
+                android:textColor="#f5d901"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/item2_explain_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hufathers"
+                android:text="자신이 문제를낼 때 상대방이 정답을 입력할 수 있는 시간을 단축한다"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item3_layout"
+        android:layout_width="317dp"
+        android:layout_height="133dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item2_layout"
+        android:layout_marginTop="17dp">
+
+        <ImageView
+            android:id="@+id/item3_icon_iv"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginRight="5dp"
+            android:background="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.10434"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.30392" />
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="133dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item3_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hufathers"
+                android:text="턴 넘기기"
+                android:textColor="#25f2e4"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/item3_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hufathers"
+                android:text="1500코인"
+                android:textColor="#f5d901"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/item3_explain_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hufathers"
+                android:text="차례를 다음 사람에게 넘긴다."
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
