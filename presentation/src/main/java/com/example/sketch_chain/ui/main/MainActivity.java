@@ -27,7 +27,6 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
         binding.setViewModel(mainVm);
         mainVm.profile.setValue(getIntent().getStringExtra("image_url"));
         mainVm.userName.setValue(getIntent().getStringExtra("name"));
-
     }
 
     public void onJoinClick(View view)

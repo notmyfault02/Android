@@ -1,6 +1,5 @@
 package com.example.sketch_chain.util;
 
-import android.arch.lifecycle.LifecycleOwner;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -13,8 +12,6 @@ public abstract class DataBindingActivity<T extends ViewDataBinding> extends Dag
     public T binding;
 
     public abstract int getLayoutId();
-
-    private LifecycleOwner lifecycleOwner;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

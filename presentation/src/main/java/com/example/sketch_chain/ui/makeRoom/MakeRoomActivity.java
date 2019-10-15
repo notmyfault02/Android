@@ -48,8 +48,6 @@ public class MakeRoomActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
     }
 
     public void cancel(View view) {

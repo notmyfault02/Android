@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ui.Store.StoreActivity"></activity>
+        <activity android:name=".ui.store.StoreActivity"></activity>
         <activity android:name=".ui.gameplay.WaitingRoomActivity" />
         <activity
             android:name=".ui.showRoom.RoomPWActivity"
