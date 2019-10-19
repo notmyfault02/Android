@@ -6,9 +6,8 @@ import java.util.List;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 
 public interface Api {
     @GET("/getRanking")
-    Flowable<List<UserData>> getRanking(@Header("x-access-token") String token);
+    Flowable<List<UserData>> getRanking();
 }
