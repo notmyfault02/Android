@@ -154,8 +154,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_underline2_tv"
-        tools:layout="fragment"/>
+        app:layout_constraintTop_toBottomOf="@+id/name_underline2_tv"/>
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
