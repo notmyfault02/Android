@@ -194,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hufathers"
-                android:text="정답 알기 찬스"
+                android:text="초성 찬스"
                 android:textColor="#25f2e4"
                 android:textSize="24sp" />
 
@@ -212,7 +212,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hufathers"
-                android:text="한 게임당 한 번씩 상대방이 낸 문제의 정답을 알 수 있다."
+                android:text="상대방이 낸 문제의 정답의 초성을 알 수 있다."
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
         </LinearLayout>
