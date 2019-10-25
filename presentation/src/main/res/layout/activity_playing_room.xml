@@ -147,7 +147,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView5" />
 
     <fragment
-        android:id="@+id/room_action_framelayout"
+        android:name="com.example.sketch_chain.ui.GmReadyFragment"
         android:layout_width="409dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"

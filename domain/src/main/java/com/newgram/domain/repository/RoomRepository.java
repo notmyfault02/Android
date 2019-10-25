@@ -13,5 +13,4 @@ public interface RoomRepository {
     Flowable<RoomEntity> inGame();
 
     Flowable<Response> makeRoom();
-
 }

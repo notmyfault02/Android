@@ -76,8 +76,8 @@ public class PlayingRoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_playing_room);
 
         final MyView m = new MyView(this);
-        frameLayout = findViewById(R.id.room_action_framelayout);
-        frameLayout.addView(m);
+//        frameLayout = findViewById(R.id.);
+//        frameLayout.addView(m);
 
         TextView roomName = findViewById(R.id.room_name_tv);
         roomName.setText(getIntent().getStringExtra("roomName"));
