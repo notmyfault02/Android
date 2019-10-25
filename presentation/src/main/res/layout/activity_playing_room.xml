@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.gameplay.PlayingRoomActivity"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/out_room_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/out_room"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0405" />
+
+    <ImageView
+        android:id="@+id/name_underline1_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/underlinelong"
+        app:layout_constraintBottom_toTopOf="@+id/room_name_tv"
+        app:layout_constraintEnd_toEndOf="@+id/room_name_tv"
+        app:layout_constraintStart_toStartOf="@+id/room_name_tv" />
+
+    <TextView
+        android:id="@+id/room_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center"
+        android:lineSpacingExtra="1sp"
+        android:text="방 제목"
+        android:textColor="#ffffff"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04113" />
+
+    <ImageView
+        android:id="@+id/name_underline2_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/underlinelong"
+        app:layout_constraintEnd_toEndOf="@+id/room_name_tv"
+        app:layout_constraintStart_toStartOf="@+id/room_name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/room_name_tv" />
+
+    <LinearLayout
+        android:layout_width="44dp"
+        android:layout_height="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0432"
+        app:layout_constraintHorizontal_bias="0.899">
+
+        <TextView
+            android:id="@+id/real_peeple_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/hufathers"
+            android:text="8"
+            android:textColor="#f5d901"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/max_people_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:fontFamily="@font/hufathers"
+            android:text="/8"
+            android:textColor="#ffffff"
+            android:textSize="32sp" />
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/input_chat_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/item_chat" />
+
+
+    <EditText
+        android:id="@+id/input_chat_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@null"
+        android:fontFamily="@font/hufathers"
+        android:hint="채팅 혹은 정답을 입력해주세요."
+        android:lineSpacingExtra="1sp"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/underline_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/send_button_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/hufathers"
+        android:lineSpacingExtra="1sp"
+        android:text="전송"
+
+        android:textColor="#f5d901"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5" />
+
+    <FrameLayout
+        android:name="com.example.sketch_chain.ui.GmReadyFragment"
+        android:layout_width="409dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_underline2_tv"
+        tools:layout="@layout/fragment_normal_waiting"/>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView2"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView2">
+
+        <LinearLayout
+            android:id="@+id/player_list_l"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:singleLine="true"
+                android:text="자바쌤신요셉"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLength="4"
+                android:paddingHorizontal="10dp"
+                android:singleLine="true"
+                android:text="닉네임"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLength="4"
+                android:paddingHorizontal="10dp"
+                android:singleLine="true"
+                android:text="김지혁"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLength="4"
+                android:paddingHorizontal="10dp"
+                android:singleLine="true"
+                android:text="황신우"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/nickname_container"
+                android:ellipsize="end"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center_horizontal"
+                android:maxLength="4"
+                android:singleLine="true"
+                android:text="산학쌤최지영"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.showRoom.RoomPWActivity">
+
+
+    <ImageView
+        android:id="@+id/background_iv"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:background="#65000000"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageView
+        android:id="@+id/search_background_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pw_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/room_name_tv"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="1sp"
+        android:text="'181 안치홍과 양현종'"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_background_iv"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <TextView
+        android:id="@+id/pw_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="0sp"
+        android:text="방에 들어가시려면 비밀번호를 입력해야 합니다."
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_background_iv"
+        app:layout_constraintVertical_bias="0.326" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/underline"
+        app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_background_iv"
+        app:layout_constraintVertical_bias="0.604" />
+
+    <ImageView
+        android:id="@+id/search_confirm_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/button_background"
+        app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintHorizontal_bias="0.278"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_background_iv"
+        app:layout_constraintVertical_bias="0.84" />
+
+    <TextView
+        android:id="@+id/confirm_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="0sp"
+        android:text="확인"
+        android:textColor="#1d2d21"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/search_confirm_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_confirm_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_confirm_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_confirm_iv" />
+
+    <TextView
+        android:id="@+id/cancel_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="0sp"
+        android:text="취소"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintHorizontal_bias="0.679"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_background_iv"
+        app:layout_constraintVertical_bias="0.8125" />
+
+    <EditText
+        android:id="@+id/input_pw_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:inputType="textPassword"
+        android:textSize="28sp"
+        android:textColor="#ffffff"
+        android:lineSpacingExtra="1sp"
+        android:gravity="center_horizontal"
+        android:background="@null"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv" />
+
+
+</android.support.constraint.ConstraintLayout>

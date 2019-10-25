@@ -1,0 +1,327 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.sketch_chain.ui.main.MainViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/mainrank"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".ui.main.MainActivity">
+
+
+        <LinearLayout
+            android:id="@+id/room_level_layout"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/room_level_iv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/level" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:fontFamily="@font/hyeuma"
+                android:gravity="right|center_vertical"
+                android:text="1"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="레벨"
+                android:fontFamily="@font/hyeuma"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/lanking_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:listitem="@layout/item_ranking"
+            />
+
+        <LinearLayout
+            android:id="@+id/room_coin_layout"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/room_coin_iv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/coin" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:fontFamily="@font/hyeuma"
+                android:gravity="right|center_vertical"
+                android:text="1"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="코인"
+                android:fontFamily="@font/hyeuma"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/room_exp_layout"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/room_coin_layout"
+            app:layout_constraintStart_toEndOf="@+id/room_level_layout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/room_exp_iv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/exp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:fontFamily="@font/hyeuma"
+                android:gravity="right|center_vertical"
+                android:text="1"
+                android:textColor="#FFFFFF" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="EXP"
+                android:fontFamily="@font/hyeuma"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/main_card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/level_underline_iv"
+            app:srcCompat="@drawable/student_card" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="64dp"
+            android:width="122dp"
+            android:height="41dp"
+            android:fontFamily="@font/hyeuma"
+            android:gravity="center"
+            android:text="전교 석차"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/main_profile_iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            image="@{viewModel.profile}"
+            app:layout_constraintBottom_toBottomOf="@+id/main_card_view"
+            app:layout_constraintEnd_toEndOf="@+id/main_card_view"
+            app:layout_constraintStart_toStartOf="@+id/main_card_view"
+            app:layout_constraintTop_toTopOf="@+id/main_card_view"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
+
+        <TextView
+            android:id="@+id/make_room_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/hyeuma"
+            android:onClick="onJoinClick"
+            android:text="방 만들기"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/btn_text_onpress"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_card_view" />
+
+        <TextView
+            android:id="@+id/join_room_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/hyeuma"
+            android:text="방 들어가기"
+            android:onClick="goRoomList"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/btn_text_onpress"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="95dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_card_view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/level_underline_iv"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/underline3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/room_level_layout" />
+
+        <ImageView
+            android:id="@+id/exp_underline_iv"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/underline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/room_exp_layout" />
+
+        <ImageView
+            android:id="@+id/coin_underline_iv"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/underline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/room_coin_layout" />
+
+        <ImageView
+            android:id="@+id/make_room_underline_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/underlinelong"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/make_room_tv" />
+
+        <ImageView
+            android:id="@+id/join_room_underline_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/underlinelong"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.464"
+            app:layout_constraintStart_toEndOf="@+id/main_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/join_room_tv" />
+
+        <ImageView
+            android:id="@+id/ranking_underline_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:src="@drawable/underline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/main_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@{viewModel.userName}"
+            android:fontFamily="@font/thecircleb"
+            android:textColor="#707070"
+            app:layout_constraintBottom_toBottomOf="@+id/main_card_view"
+            app:layout_constraintEnd_toEndOf="@+id/main_card_view"
+            app:layout_constraintStart_toStartOf="@+id/main_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/main_profile_iv" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="학생증"
+            android:textColor="#707070"
+            android:fontFamily="@font/thecircleb"
+            app:layout_constraintBottom_toTopOf="@+id/main_profile_iv"
+            app:layout_constraintEnd_toEndOf="@+id/main_card_view"
+            app:layout_constraintStart_toStartOf="@+id/main_card_view"
+            app:layout_constraintTop_toTopOf="@+id/main_card_view" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

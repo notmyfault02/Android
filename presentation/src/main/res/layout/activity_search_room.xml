@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.showRoom.SearchRoomActivity">
+
+    <ImageView
+        android:id="@+id/background_iv"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:background="#65000000"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageView
+        android:id="@+id/search_background_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pw_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/search_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="1sp"
+        android:text="방 검색하기"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_background_iv"
+        app:layout_constraintVertical_bias="0.143" />
+
+    <ImageView
+        android:id="@+id/title_underline_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/underline3"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toBottomOf="@+id/search_title_tv" />
+
+    <TextView
+        android:id="@+id/search_explain_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="0sp"
+        android:text="방 제목을 입력해 주세요"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toBottomOf="@+id/title_underline_iv" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/search"
+        app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_background_iv"
+        app:layout_constraintVertical_bias="0.515" />
+
+
+    <EditText
+        android:id="@+id/search_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:ems="6"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/search_underline_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv" />
+
+    <ImageView
+        android:id="@+id/search_underline_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/underlinelong"
+        app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_background_iv"
+        app:layout_constraintVertical_bias="0.60465" />
+
+    <Button
+        android:id="@+id/search_confirm_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="검색"
+        android:textColor="#1d2d21"
+        android:textSize="24sp"
+        android:fontFamily="@font/hufathers"
+        android:enabled="false"
+        android:background="@drawable/btn_clickable_making_room"
+        app:layout_constraintBottom_toBottomOf="@+id/search_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_background_iv"
+        app:layout_constraintVertical_bias="0.84049" />
+
+
+    <TextView
+        android:id="@+id/cancel_button_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:text="취소"
+        android:textColor="@color/btn_text_onpress"
+        android:textSize="24sp"
+        android:onClick="cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/search_confirm_btn"
+        app:layout_constraintEnd_toEndOf="@+id/search_background_iv"
+        app:layout_constraintHorizontal_bias="0.67941"
+        app:layout_constraintStart_toStartOf="@+id/search_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/search_confirm_btn" />
+
+
+</android.support.constraint.ConstraintLayout>
