@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sketch_chain.R;
@@ -16,6 +17,8 @@ import com.example.sketch_chain.R;
 import java.util.ArrayList;
 
 public class PlayingRoomActivity extends AppCompatActivity {
+
+    private ImageView outBtn;
 
     class Point {
         float x;
@@ -78,6 +81,14 @@ public class PlayingRoomActivity extends AppCompatActivity {
         final MyView m = new MyView(this);
 //        frameLayout = findViewById(R.id.);
 //        frameLayout.addView(m);
+        outBtn = findViewById(R.id.out_room_iv);
+
+        outBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         TextView roomName = findViewById(R.id.room_name_tv);
         roomName.setText(getIntent().getStringExtra("roomName"));
