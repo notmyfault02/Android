@@ -188,6 +188,7 @@
         app:layout_constraintTop_toTopOf="@+id/pw_explain2_tv">
 
         <RadioButton
+            android:background="@drawable/radio_makeroom_onselect"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -201,6 +202,7 @@
         <RadioButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="@drawable/radio_makeroom_onselect"
             android:layout_weight="1"
             android:button="@null"
             android:fontFamily="@font/hufathers"
@@ -210,6 +212,7 @@
             android:textSize="24dp" />
 
         <RadioButton
+            android:background="@drawable/radio_makeroom_onselect"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -237,6 +240,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
         <RadioButton
+            android:background="@drawable/radio_makeroom_onselect"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -248,6 +252,7 @@
             android:textSize="24dp" />
 
         <RadioButton
+            android:background="@drawable/radio_makeroom_onselect"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -259,6 +264,7 @@
             android:textSize="24dp" />
 
         <RadioButton
+            android:background="@drawable/radio_makeroom_onselect"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
