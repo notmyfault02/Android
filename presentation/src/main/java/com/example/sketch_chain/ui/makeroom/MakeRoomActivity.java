@@ -1,4 +1,4 @@
-package com.example.sketch_chain.ui.makeRoom;
+package com.example.sketch_chain.ui.makeroom;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +38,7 @@ public class MakeRoomActivity extends AppCompatActivity {
         roomName.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BACK)) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) || (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BACK)) {
                     if (TextUtils.isEmpty(roomName.getText().toString())) {
                         makingBtn.setEnabled(false);
                     } else {
