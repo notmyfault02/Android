@@ -2,9 +2,9 @@ package com.example.sketch_chain.di.module;
 
 import com.example.sketch_chain.di.scope.ActivityScope;
 import com.example.sketch_chain.ui.main.MainActivity;
-import com.example.sketch_chain.ui.makeRoom.MakeRoomActivity;
-import com.example.sketch_chain.ui.showRoom.SearchRoomActivity;
-import com.example.sketch_chain.ui.showRoom.ShowRoomActivity;
+import com.example.sketch_chain.ui.makeroom.MakeRoomActivity;
+import com.example.sketch_chain.ui.SearchRoomActivity;
+import com.example.sketch_chain.ui.showroom.ShowRoomActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

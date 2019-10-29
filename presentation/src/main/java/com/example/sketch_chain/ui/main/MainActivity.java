@@ -7,8 +7,8 @@ import android.view.View;
 
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.databinding.ActivityMainBinding;
-import com.example.sketch_chain.ui.makeRoom.MakeRoomActivity;
-import com.example.sketch_chain.ui.showRoom.ShowRoomActivity;
+import com.example.sketch_chain.ui.makeroom.MakeRoomActivity;
+import com.example.sketch_chain.ui.showroom.ShowRoomActivity;
 import com.example.sketch_chain.util.DataBindingActivity;
 
 public class MainActivity extends DataBindingActivity<ActivityMainBinding> {

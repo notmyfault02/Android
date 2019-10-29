@@ -15,12 +15,12 @@
         <activity android:name=".ui.store.StoreActivity"></activity>
         <activity android:name=".ui.gameplay.WaitingRoomActivity" />
         <activity
-            android:name=".ui.showRoom.RoomPWActivity"
+            android:name=".ui.showroom.RoomPWActivity"
             android:theme="@style/CustomDialog" />
         <activity
-            android:name=".ui.makeRoom.MakeRoomActivity"
+            android:name=".ui.makeroom.MakeRoomActivity"
             android:theme="@style/CustomDialog" />
-        <activity android:name=".ui.showRoom.ShowRoomActivity" />
+        <activity android:name=".ui.showroom.ShowRoomActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -30,7 +30,7 @@
         <activity android:name=".ui.gameplay.PlayingRoomActivity" />
         <activity android:name=".ui.main.MainActivity" />
         <activity
-            android:name=".ui.showRoom.SearchRoomActivity"
+            android:name=".ui.SearchRoomActivity"
             android:theme="@style/CustomDialog"/>
         <activity
             android:name=".ui.SplashActivity"

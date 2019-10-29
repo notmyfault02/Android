@@ -1,4 +1,4 @@
-package com.example.sketch_chain.ui.showRoom;
+package com.example.sketch_chain.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

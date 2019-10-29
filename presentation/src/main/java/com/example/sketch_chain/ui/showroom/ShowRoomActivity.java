@@ -1,4 +1,4 @@
-package com.example.sketch_chain.ui.showRoom;
+package com.example.sketch_chain.ui.showroom;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.sketch_chain.R;
+import com.example.sketch_chain.ui.SearchRoomActivity;
 
 public class ShowRoomActivity extends AppCompatActivity {
 
