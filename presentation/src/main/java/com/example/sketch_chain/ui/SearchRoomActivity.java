@@ -1,5 +1,6 @@
 package com.example.sketch_chain.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.sketch_chain.R;
+import com.example.sketch_chain.ui.showroom.ShowRoomActivity;
 
 public class SearchRoomActivity extends AppCompatActivity {
     private Button searchBtn;
@@ -20,9 +22,13 @@ public class SearchRoomActivity extends AppCompatActivity {
 
         searchEt = findViewById(R.id.search_et);
         searchBtn = findViewById(R.id.search_confirm_btn);
-        searchEt.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+        searchBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ShowRoomActivity.class);
+            startActivity(intent);
+            finish();
+        });
+        searchEt.setOnKeyListener((v, keyCode, event) ->  {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) || (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BACK)) {
                     if (searchEt.getText().toString().replace(" ", "").equals("")) {
                         searchBtn.setEnabled(false);
@@ -31,7 +37,6 @@ public class SearchRoomActivity extends AppCompatActivity {
                     }
                 }
                 return false;
-            }
         });
 
     }

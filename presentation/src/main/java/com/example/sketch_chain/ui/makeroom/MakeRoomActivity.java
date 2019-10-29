@@ -26,18 +26,13 @@ public class MakeRoomActivity extends AppCompatActivity {
         makingBtn = findViewById(R.id.making_confirm_btn);
 
 
-        makingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        makingBtn.setOnClickListener(v -> {
                 Intent intent = new Intent(getApplicationContext(), PlayingRoomActivity.class);
                 intent.putExtra("roomName", roomName.getText().toString());
                 startActivity(intent);
-            }
         });
 
-        roomName.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+        roomName.setOnKeyListener((v, keyCode, event)  -> {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) || (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BACK)) {
                     if (TextUtils.isEmpty(roomName.getText().toString())) {
                         makingBtn.setEnabled(false);
@@ -46,7 +41,6 @@ public class MakeRoomActivity extends AppCompatActivity {
                     }
                 }
                 return false;
-            }
         });
     }
 
