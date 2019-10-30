@@ -11,8 +11,9 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module
 public abstract class ActivityModule {
-    @ActivityScope
-    @ContributesAndroidInjector
+
+    @ContributesAndroidInjector(modules =
+        MainModule.class)
     abstract MainActivity mainActivity();
 
     @ActivityScope
@@ -26,4 +27,5 @@ public abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector
     abstract MakeRoomActivity makeRoomActivity();
+
 }

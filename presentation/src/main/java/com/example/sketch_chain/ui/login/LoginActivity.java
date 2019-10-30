@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra("name", "");
                 intent.putExtra("image_url", "");
                 startActivity(intent);
+                finish();
             }
             else {
                 loadUserProfile(currentAccessToken);
@@ -108,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("name", name);
                     intent.putExtra("image_url", image_url);
                     startActivity(intent);
+                    finish();
 
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -8,8 +8,8 @@ import com.example.sketch_chain.di.module.NetworkModule;
 
 import javax.inject.Singleton;
 
-import dagger.BindsInstance;
 import dagger.Component;
+import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
 @Singleton
@@ -21,13 +21,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         ActivityModule.class
 })
 
-public interface AppComponent {
-    @Component.Builder
-    interface Builder {
-        @BindsInstance
-        Builder application(SCApplication application);
-        AppComponent build();
-    }
+public interface AppComponent extends AndroidInjector<SCApplication> {
 
-    void inject(SCApplication app);
+    @Component.Builder
+    abstract class Builder extends AndroidInjector.Builder<SCApplication>{}
 }
