@@ -21,19 +21,15 @@ public interface Api {
     Flowable<List<UserData>> getRanking();
 
     @POST("/room")
-    Flowable<Response<RoomData>>
-    makeRoom(@Body RoomData body);
+    Flowable<Response<RoomData>> makeRoom(@Body RoomData body);
 
     @GET("/room/search")
-    Flowable<RoomData>
-    searchRoom(@Query("title") String roomName);
+    Flowable<RoomData> searchRoom(@Query("title") String roomName);
 
     @GET("/room/join")
-    Flowable<RoomData>
-    joinRoom(@Query("roomId") int roomId);
+    Flowable<RoomData> joinRoom(@Query("roomId") int roomId);
 
     @POST("/user/item")
-    Flowable<Response<String>>
-    buyItem(@Query("type") List<Integer> item);
+    Flowable<Response<String>> buyItem(@Query("type") List<Integer> item);
 
 }

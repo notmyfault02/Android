@@ -12,5 +12,7 @@ public interface RoomRepository {
 
     Flowable<RoomEntity> inGame();
 
-    Flowable<Response> makeRoom();
+    Flowable<Response<Object>> makeRoom(RoomEntity data);
+
+    Flowable<RoomEntity> getSearchRoom(String query);
 }
