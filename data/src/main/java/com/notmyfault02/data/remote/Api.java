@@ -1,6 +1,5 @@
 package com.notmyfault02.data.remote;
 
-import com.newgram.domain.entity.UserEntity;
 import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.entity.UserData;
 
@@ -15,13 +14,13 @@ import retrofit2.http.Query;
 
 public interface Api {
     @GET("/user/info")
-    Flowable<UserEntity> getUser();
+    Flowable<UserData> getUser();
 
     @GET("/user/rank")
     Flowable<List<UserData>> getRanking();
 
     @POST("/room")
-    Flowable<Response<RoomData>> makeRoom(@Body RoomData body);
+    Flowable<Response<Object>> makeRoom(@Body RoomData body);
 
     @GET("/room/search")
     Flowable<RoomData> searchRoom(@Query("title") String roomName);
