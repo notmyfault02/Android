@@ -29,8 +29,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    def daggerVer = 2.12
-
     implementation project(':domain')
     implementation project(':data')
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -49,13 +47,6 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-login:4.37.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
-
-    implementation "com.google.dagger:dagger:$daggerVer"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVer"
-
-    implementation "com.google.dagger:dagger-android:$daggerVer"
-    implementation "com.google.dagger:dagger-android-support:$daggerVer"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVer"
 
     implementation rootProject.ext.rxjava
     implementation rootProject.ext.rxAndroid
