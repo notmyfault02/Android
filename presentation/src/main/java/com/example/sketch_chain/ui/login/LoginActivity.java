@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
 import com.example.sketch_chain.R;
@@ -38,9 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         LoginButton loginButton = findViewById(R.id.main_login_btn);
         Button customButton = findViewById(R.id.main_custom_btn);
 
-        customButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        customButton.setOnClickListener((v) -> {
                 loginButton.setReadPermissions("email", "public_profile");
                 checkLoginStatus();
 
@@ -61,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
+        );
 
     }
 
