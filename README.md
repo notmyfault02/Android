@@ -15,6 +15,5 @@
 * Java
 * Clean Architecture
 * MVVM
-* Dagger
 * RxJava2
 * Databinding
