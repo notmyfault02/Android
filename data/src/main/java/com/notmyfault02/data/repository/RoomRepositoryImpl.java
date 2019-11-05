@@ -15,7 +15,6 @@ import retrofit2.Response;
 public class RoomRepositoryImpl implements RoomRepository {
 
     private RoomDataSource dataSource;
-    private RoomEntityMapper mapper = new RoomEntityMapper();
 
     @Override
     public Flowable<List<RoomEntity>> getRoomList() {

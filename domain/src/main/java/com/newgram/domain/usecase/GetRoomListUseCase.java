@@ -19,7 +19,7 @@ public class GetRoomListUseCase extends UseCase<Object ,List<RoomEntity>> {
         return roomRepository.getRoomList();
     }
 
-    private Flowable<List<RoomEntity>> getRoomList() {
+    public Flowable<List<RoomEntity>> getRoomList() {
         return createSingle(new Object());
     }
 }
