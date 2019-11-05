@@ -31,4 +31,7 @@ public interface Api {
     @POST("/user/item")
     Flowable<Response<String>> buyItem(@Query("type") List<Integer> item);
 
+    @GET("/room")
+    Flowable<List<RoomData>> getRoomList();
+
 }

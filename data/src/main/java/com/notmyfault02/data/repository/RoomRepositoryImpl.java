@@ -2,9 +2,11 @@ package com.notmyfault02.data.repository;
 
 import com.newgram.domain.entity.RoomEntity;
 import com.newgram.domain.repository.RoomRepository;
+import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.mapper.RoomEntityMapper;
 import com.notmyfault02.data.source.RoomDataSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -17,7 +19,15 @@ public class RoomRepositoryImpl implements RoomRepository {
 
     @Override
     public Flowable<List<RoomEntity>> getRoomList() {
-        return null;
+
+        return dataSource.getRoomList().map(roomData -> {
+            List<RoomEntity> roomDataList = new ArrayList<>();
+            for(RoomData data: roomData) {
+                roomDataList.add(RoomEntityMapper.mapToEntity(data));
+            }
+            return roomDataList;
+            }
+        );
     }
 
     @Override

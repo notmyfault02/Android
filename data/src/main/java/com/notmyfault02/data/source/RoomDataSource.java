@@ -3,6 +3,8 @@ package com.notmyfault02.data.source;
 import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.remote.Api;
 
+import java.util.List;
+
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -17,5 +19,9 @@ public class RoomDataSource {
 
     public Flowable<RoomData> getSearchRoom(String query) {
         return api.searchRoom(query).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Flowable<List<RoomData>> getRoomList() {
+        return api.getRoomList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }
