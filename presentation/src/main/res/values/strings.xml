@@ -3,6 +3,9 @@
     <string name="facebook_app_id">2369805413265331</string>
     <string name="fb_login_protocol_scheme">fb2369805413265331</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gm_ready">버튼을 누르면\n게임이 시작됩니다.</string>
+    <string name="gm_waiting">모든 플레이어가\n준비상태가 되어야 합니다.</string>
+    <string name="normal_ready">버튼을 누르면\n준비 상태가 해제 됩니다.</string>
+    <string name="normal_waiting">버튼을 누르면\n준비 상태가 됩니다.</string>
 </resources>

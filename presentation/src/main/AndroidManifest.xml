@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".di.app.SCApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Sketch Chain"
@@ -33,7 +32,7 @@
             android:name=".ui.SearchRoomActivity"
             android:theme="@style/CustomDialog"/>
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

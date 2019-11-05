@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.sketch_chain.R;
-import com.example.sketch_chain.ui.gameplay.PlayingRoomActivity;
+import com.example.sketch_chain.ui.gameplay.WaitingRoomActivity;
 
 public class MakeRoomActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class MakeRoomActivity extends AppCompatActivity {
 
 
         makingBtn.setOnClickListener(v -> {
-                Intent intent = new Intent(getApplicationContext(), PlayingRoomActivity.class);
+                Intent intent = new Intent(getApplicationContext(), WaitingRoomActivity.class);
                 intent.putExtra("roomName", roomName.getText().toString());
                 startActivity(intent);
         });

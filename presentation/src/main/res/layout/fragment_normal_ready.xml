@@ -7,13 +7,13 @@
     tools:context=".ui.NormalReadyFragment">
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/gm_ready_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/hufathers"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="1sp"
-        android:text="버튼을 누르면\n준비 상태가 해제 됩니다."
+        android:text="@string/normal_ready"
         android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,20 +22,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.30714"/>
 
-    <TextView
+    <Button
         android:id="@+id/normal_release_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/activation_button_background"
+        android:enabled="false"
         android:fontFamily="@font/hufathers"
-        android:gravity="center_horizontal"
         android:lineSpacingExtra="0sp"
         android:text="해제"
         android:textColor="#1d2d21"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/gm_ready_tv" />
 
 </android.support.constraint.ConstraintLayout>
