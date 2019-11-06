@@ -2,14 +2,20 @@ package com.example.sketch_chain.ui.store;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.example.sketch_chain.R;
+import com.example.sketch_chain.databinding.ActivityStoreBinding;
+import com.example.sketch_chain.util.DataBindingActivity;
 
-public class StoreActivity extends AppCompatActivity {
+public class StoreActivity extends DataBindingActivity<ActivityStoreBinding> {
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_store;
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store);
     }
 }

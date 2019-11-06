@@ -1,4 +1,7 @@
 package com.example.sketch_chain.ui.store;
 
-public class StoreViewModel {
+import android.arch.lifecycle.ViewModel;
+
+public class StoreViewModel extends ViewModel {
+
 }

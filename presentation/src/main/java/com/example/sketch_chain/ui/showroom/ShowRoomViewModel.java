@@ -7,5 +7,7 @@ import com.newgram.domain.usecase.GetRoomListUseCase;
 public class ShowRoomViewModel extends ViewModel {
     private GetRoomListUseCase getRoomListUseCase;
 
-    
+    public void setGetRoomListUseCase(GetRoomListUseCase getRoomListUseCase) {
+        this.getRoomListUseCase = getRoomListUseCase;
+    }
 }
