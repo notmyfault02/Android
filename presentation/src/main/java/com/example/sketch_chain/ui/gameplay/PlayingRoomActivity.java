@@ -78,8 +78,8 @@ public class PlayingRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing_room);
 
-        final MyView m = new MyView(this);
-        frameLayout = findViewById(R.id.play_draw_frame);
+        final MyView m = new MyView(getApplicationContext());
+        frameLayout = findViewById(R.id.playing_draw_layout);
         frameLayout.addView(m);
         outBtn = findViewById(R.id.out_room_iv);
 

@@ -26,4 +26,5 @@ public class WaitingRoomActivity extends AppCompatActivity {
         transaction.replace(R.id.wating_who_frame, gmReadyFragment);
         transaction.commit();
     }
+
 }

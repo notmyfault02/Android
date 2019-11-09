@@ -23,11 +23,10 @@
         app:layout_constraintVertical_bias="0.30714"/>
 
     <Button
-        android:id="@+id/gm_start_tv"
+        android:id="@+id/gm_start_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:enabled="false"
         android:background="@drawable/btn_ready_onpress"
         android:fontFamily="@font/hufathers"
         android:text="시작"

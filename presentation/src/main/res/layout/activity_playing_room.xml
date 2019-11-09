@@ -147,6 +147,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView5" />
 
     <FrameLayout
+        android:id="@+id/playing_draw_layout"
         android:name="com.example.sketch_chain.ui.GmReadyFragment"
         android:layout_width="409dp"
         android:layout_height="0dp"
