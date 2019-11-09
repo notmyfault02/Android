@@ -7,7 +7,6 @@ import com.notmyfault02.data.mapper.RoomEntityMapper;
 import com.notmyfault02.data.source.RoomDataSource;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.Flowable;
 import retrofit2.Response;
@@ -17,10 +16,10 @@ public class RoomRepositoryImpl implements RoomRepository {
     private RoomDataSource dataSource;
 
     @Override
-    public Flowable<List<RoomEntity>> getRoomList() {
+    public Flowable<ArrayList<RoomEntity>> getRoomList() {
 
         return dataSource.getRoomList().map(roomData -> {
-            List<RoomEntity> roomDataList = new ArrayList<>();
+            ArrayList<RoomEntity> roomDataList = new ArrayList<RoomEntity>();
             for(RoomData data: roomData) {
                 roomDataList.add(RoomEntityMapper.mapToEntity(data));
             }

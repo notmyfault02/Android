@@ -2,13 +2,13 @@ package com.newgram.domain.repository;
 
 import com.newgram.domain.entity.RoomEntity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import io.reactivex.Flowable;
 import retrofit2.Response;
 
 public interface RoomRepository {
-    Flowable<List<RoomEntity>> getRoomList();
+    Flowable<ArrayList<RoomEntity>> getRoomList();
 
     Flowable<RoomEntity> inGame();
 

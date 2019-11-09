@@ -5,10 +5,6 @@ import com.notmyfault02.data.entity.RoomData;
 
 public class RoomEntityMapper {
 
-    public RoomEntityMapper() {
-
-    }
-
     public static RoomEntity mapToEntity(RoomData data) {
         RoomEntity entity = new RoomEntity();
         entity.setRoomId(data.getRoomId());

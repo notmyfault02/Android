@@ -1,10 +1,11 @@
 package com.example.sketch_chain.util;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 public abstract class DataBindingActivity<T extends ViewDataBinding> extends AppCompatActivity{
     public T binding;
