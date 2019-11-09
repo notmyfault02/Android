@@ -2,7 +2,7 @@ package com.example.sketch_chain.ui.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.ui.login.LoginActivity;

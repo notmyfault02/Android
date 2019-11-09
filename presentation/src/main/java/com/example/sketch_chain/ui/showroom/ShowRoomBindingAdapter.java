@@ -1,8 +1,8 @@
 package com.example.sketch_chain.ui.showroom;
 
-import android.arch.lifecycle.LiveData;
-import android.databinding.BindingAdapter;
-import android.support.v7.widget.RecyclerView;
+import androidx.lifecycle.LiveData;
+import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sketch_chain.adapter.ShowRoomAdapter;
 import com.example.sketch_chain.entity.Room;

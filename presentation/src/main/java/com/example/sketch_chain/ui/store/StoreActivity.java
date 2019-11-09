@@ -1,7 +1,7 @@
 package com.example.sketch_chain.ui.store;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.databinding.ActivityStoreBinding;
