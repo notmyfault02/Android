@@ -4,7 +4,7 @@ package com.example.sketch_chain.di.module;
 //public class UseCaseModule {
 //
 //    @Provides
-//    GetRoomListUseCase provideGetRoomListUseCase(RoomRepository roomRepository) {
+//    GetRoomListUseCase provideGetRoomListUseCase(RoomRepositoryImpl roomRepository) {
 //        return new GetRoomListUseCase(roomRepository);
 //    }
 //}

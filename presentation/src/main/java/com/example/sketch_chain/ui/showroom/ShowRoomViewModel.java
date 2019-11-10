@@ -10,7 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.sketch_chain.entity.Room;
 import com.example.sketch_chain.mapper.RoomMapper;
 import com.notmyfault02.data.entity.RoomData;
-import com.notmyfault02.data.source.RoomDataSource;
+import com.notmyfault02.data.repository.RoomRepository;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class ShowRoomViewModel extends AndroidViewModel {
 
     ArrayList<Room> raw = new ArrayList<>();
 
-    private RoomDataSource dataSource;
+    private RoomRepository roomRepository = new RoomRepository();
 
     public MutableLiveData<ArrayList<Room>> getItems() {
         return items;
@@ -30,12 +30,9 @@ public class ShowRoomViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public void setDataSource(RoomDataSource dataSource) {
-        this.dataSource = dataSource;
-    }
 
     void getRoomList() {
-        dataSource.getRoomList().subscribe( s -> {
+        roomRepository.getRoomList().subscribe( s -> {
             for(RoomData roomEntity: s) {
                 raw.add(RoomMapper.mapFrom(roomEntity));
             }
