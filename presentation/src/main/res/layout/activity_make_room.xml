@@ -1,349 +1,359 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".ui.makeroom.MakeRoomActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/make_room_background_iv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/modal_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+    <data>
+        <variable
+            name="vm"
+            type="com.example.sketch_chain.ui.makeroom.MakeRoomViewModel" />
 
-    <TextView
-        android:id="@+id/make_room_tv"
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="1sp"
-        android:text="방 만들기"
-        android:textColor="#ffffff"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.123943661971" />
+        tools:context=".ui.makeroom.MakeRoomActivity">
 
-    <ImageView
-        android:id="@+id/makeroom_underline_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/underline"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toBottomOf="@+id/make_room_tv" />
-
-    <TextView
-        android:id="@+id/room_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:lineSpacingExtra="0sp"
-        android:text="방 제목"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.305" />
-
-    <ImageView
-        android:id="@+id/name_underline_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/underline3"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.357" />
-
-
-    <TextView
-        android:id="@+id/name_explain_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:gravity="end"
-        android:lineSpacingExtra="0sp"
-        android:text="8자까지 입력 가능합니다."
-        android:textColor="#f5d901"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/name_underline_iv"
-        app:layout_constraintTop_toBottomOf="@+id/name_underline_iv" />
-
-    <TextView
-        android:id="@+id/room_pw_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:lineSpacingExtra="0sp"
-        android:text="비밀번호"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.4361" />
-
-    <TextView
-        android:id="@+id/pw_explain1_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:fontFamily="@font/hufathers"
-        android:gravity="end"
-        android:lineSpacingExtra="0sp"
-        android:text="비밀번호를 입력하지 않으시면 공개방이 됩니다."
-        android:textColor="#f5d901"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/pw_underline_iv"
-        app:layout_constraintTop_toBottomOf="@+id/pw_underline_iv" />
-
-    <TextView
-        android:id="@+id/pw_explain2_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:fontFamily="@font/hufathers"
-        android:gravity="end"
-        android:lineSpacingExtra="0sp"
-        android:text="숫자 6자 이하로 입력해 주세요."
-        android:textColor="#f5d901"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/pw_explain1_tv"
-        app:layout_constraintTop_toBottomOf="@+id/pw_explain1_tv" />
-
-    <ImageView
-        android:id="@+id/pw_underline_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/underline3"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.49139" />
-
-    <TextView
-        android:id="@+id/round_cnt_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:lineSpacingExtra="0sp"
-        android:text="라운드 수"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.605" />
-
-    <TextView
-        android:id="@+id/time_limit_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:lineSpacingExtra="0sp"
-        android:text="제한 시간"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.713" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/time_limit_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/round_cnt_tv"
-        app:layout_constraintTop_toTopOf="@+id/pw_explain2_tv">
-
-        <RadioButton
-            android:background="@drawable/radio_makeroom_onselect"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/make_room_background_iv"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
+            android:src="@drawable/modal_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/make_room_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hufathers"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="1sp"
+            android:text="방 만들기"
+            android:textColor="#ffffff"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
+            app:layout_constraintVertical_bias="0.123943661971" />
+
+        <ImageView
+            android:id="@+id/makeroom_underline_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/underline"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toBottomOf="@+id/make_room_tv" />
+
+        <TextView
+            android:id="@+id/room_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hufathers"
+            android:lineSpacingExtra="0sp"
+            android:text="방 제목"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.17"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
+            app:layout_constraintVertical_bias="0.305" />
+
+        <ImageView
+            android:id="@+id/name_underline_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/underline3"
+            app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
+            app:layout_constraintVertical_bias="0.357" />
+
+
+        <TextView
+            android:id="@+id/name_explain_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hufathers"
+            android:gravity="end"
+            android:lineSpacingExtra="0sp"
+            android:text="8자까지 입력 가능합니다."
+            android:textColor="#f5d901"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/name_underline_iv"
+            app:layout_constraintTop_toBottomOf="@+id/name_underline_iv" />
+
+        <TextView
+            android:id="@+id/room_pw_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hufathers"
+            android:lineSpacingExtra="0sp"
+            android:text="비밀번호"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.17"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
+            app:layout_constraintVertical_bias="0.4361" />
+
+        <TextView
+            android:id="@+id/pw_explain1_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/hufathers"
+            android:gravity="end"
+            android:lineSpacingExtra="0sp"
+            android:text="비밀번호를 입력하지 않으시면 공개방이 됩니다."
+            android:textColor="#f5d901"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/pw_underline_iv"
+            app:layout_constraintTop_toBottomOf="@+id/pw_underline_iv" />
+
+        <TextView
+            android:id="@+id/pw_explain2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/hufathers"
+            android:gravity="end"
+            android:lineSpacingExtra="0sp"
+            android:text="숫자 6자 이하로 입력해 주세요."
+            android:textColor="#f5d901"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/pw_explain1_tv"
+            app:layout_constraintTop_toBottomOf="@+id/pw_explain1_tv" />
+
+        <ImageView
+            android:id="@+id/pw_underline_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/underline3"
+            app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
+            app:layout_constraintVertical_bias="0.49139" />
+
+        <TextView
+            android:id="@+id/round_cnt_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hufathers"
+            android:lineSpacingExtra="0sp"
+            android:text="라운드 수"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.17"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
+            app:layout_constraintVertical_bias="0.605" />
+
+        <TextView
+            android:id="@+id/time_limit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hufathers"
+            android:lineSpacingExtra="0sp"
+            android:text="제한 시간"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.17"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
+            app:layout_constraintVertical_bias="0.713" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/time_limit_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/round_cnt_tv"
+            app:layout_constraintTop_toTopOf="@+id/pw_explain2_tv">
+
+            <RadioButton
+                android:background="@drawable/radio_makeroom_onselect"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#FFFFFF"
+                android:textSize="24dp" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/radio_makeroom_onselect"
+                android:layout_weight="1"
+                android:button="@null"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="#FFFFFF"
+                android:textSize="24dp" />
+
+            <RadioButton
+                android:background="@drawable/radio_makeroom_onselect"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center"
+                android:text="5"
+                android:textColor="#FFFFFF"
+                android:textSize="24dp" />
+
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/making_confirm_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/time_limit_tv"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+            <RadioButton
+                android:background="@drawable/radio_makeroom_onselect"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center"
+                android:text="60"
+                android:textColor="#FFFFFF"
+                android:textSize="24dp" />
+
+            <RadioButton
+                android:background="@drawable/radio_makeroom_onselect"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center"
+                android:text="90"
+                android:textColor="#FFFFFF"
+                android:textSize="24dp" />
+
+            <RadioButton
+                android:background="@drawable/radio_makeroom_onselect"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:fontFamily="@font/hufathers"
+                android:gravity="center"
+                android:text="120"
+                android:textColor="#FFFFFF"
+                android:textSize="24dp" />
+
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/making_confirm_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_clickable_making_room"
+            android:text="확인"
+            android:enabled="false"
+            android:textColor="#1d2d21"
+            android:textSize="24sp"
+            android:fontFamily="@font/hufathers"
+            app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.278"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
+            app:layout_constraintVertical_bias="0.875" />
+
+        <TextView
+            android:id="@+id/cancel_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hufathers"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="0sp"
+            android:onClick="cancel"
+            android:text="취소"
+            android:textColor="@color/btn_text_onpress"
+            android:textColorHighlight="#f5d901"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.679"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
+            app:layout_constraintVertical_bias="0.858" />
+
+        <EditText
+            android:id="@+id/room_name_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="6"
             android:fontFamily="@font/hufathers"
             android:gravity="center"
-            android:text="1"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
+            android:inputType="textPersonName"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toTopOf="@+id/name_underline_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv" />
 
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/radio_makeroom_onselect"
-            android:layout_weight="1"
-            android:button="@null"
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="6"
             android:fontFamily="@font/hufathers"
             android:gravity="center"
-            android:text="3"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
-
-        <RadioButton
-            android:background="@drawable/radio_makeroom_onselect"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
-            android:fontFamily="@font/hufathers"
-            android:gravity="center"
-            android:text="5"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
+            android:inputType="numberPassword"
+            android:lineSpacingExtra="1sp"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/pw_underline_iv"
+            app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="@+id/make_room_background_iv" />
 
 
-    </RadioGroup>
-
-    <RadioGroup
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/making_confirm_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/time_limit_tv"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
-
-        <RadioButton
-            android:background="@drawable/radio_makeroom_onselect"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
-            android:fontFamily="@font/hufathers"
-            android:gravity="center"
-            android:text="60"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
-
-        <RadioButton
-            android:background="@drawable/radio_makeroom_onselect"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
-            android:fontFamily="@font/hufathers"
-            android:gravity="center"
-            android:text="90"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
-
-        <RadioButton
-            android:background="@drawable/radio_makeroom_onselect"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
-            android:fontFamily="@font/hufathers"
-            android:gravity="center"
-            android:text="120"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
-
-
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/making_confirm_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_clickable_making_room"
-        android:text="확인"
-        android:enabled="false"
-        android:textColor="#1d2d21"
-        android:textSize="24sp"
-        android:fontFamily="@font/hufathers"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.278"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.875" />
-
-    <TextView
-        android:id="@+id/cancel_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hufathers"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="0sp"
-        android:onClick="cancel"
-        android:text="취소"
-        android:textColor="@color/btn_text_onpress"
-        android:textColorHighlight="#f5d901"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/make_room_background_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.679"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv"
-        app:layout_constraintTop_toTopOf="@+id/make_room_background_iv"
-        app:layout_constraintVertical_bias="0.858" />
-
-    <EditText
-        android:id="@+id/room_name_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:ems="6"
-        android:fontFamily="@font/hufathers"
-        android:gravity="center"
-        android:inputType="textPersonName"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/name_underline_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:ems="6"
-        android:fontFamily="@font/hufathers"
-        android:gravity="center"
-        android:inputType="numberPassword"
-        android:lineSpacingExtra="1sp"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/pw_underline_iv"
-        app:layout_constraintEnd_toEndOf="@+id/make_room_background_iv"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/make_room_background_iv" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

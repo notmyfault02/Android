@@ -2,7 +2,6 @@ package com.example.sketch_chain.ui.makeroom;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -10,9 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.sketch_chain.R;
+import com.example.sketch_chain.databinding.ActivityMakeRoomBinding;
 import com.example.sketch_chain.ui.gameplay.WaitingRoomActivity;
+import com.example.sketch_chain.util.DataBindingActivity;
 
-public class MakeRoomActivity extends AppCompatActivity {
+public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBinding> {
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_make_room;
+    }
 
     private EditText roomName;
     private Button makingBtn;
