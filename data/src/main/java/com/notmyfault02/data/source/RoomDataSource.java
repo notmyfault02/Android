@@ -1,27 +1,16 @@
 package com.notmyfault02.data.source;
 
 import com.notmyfault02.data.entity.RoomData;
-import com.notmyfault02.data.remote.Api;
 
 import java.util.ArrayList;
 
 import io.reactivex.Flowable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
-public class RoomDataSource {
-    private Api api;
+public interface RoomDataSource {
+    Flowable<Response<Object>> makeRoom(RoomData data);
 
-    public Flowable<Response<Object>> makeRoom(RoomData data) {
-        return api.makeRoom(data).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-    }
+    Flowable<RoomData> getSearchRoom(String query);
 
-    public Flowable<RoomData> getSearchRoom(String query) {
-        return api.searchRoom(query).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public Flowable<ArrayList<RoomData>> getRoomList() {
-        return api.getRoomList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-    }
+    Flowable<ArrayList<RoomData>> getRoomList();
 }
