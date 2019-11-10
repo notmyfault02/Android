@@ -3,6 +3,7 @@ package com.notmyfault02.data.remote;
 import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.entity.UserData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -32,6 +33,6 @@ public interface Api {
     Flowable<Response<String>> buyItem(@Query("type") List<Integer> item);
 
     @GET("/room")
-    Flowable<List<RoomData>> getRoomList();
+    Flowable<ArrayList<RoomData>> getRoomList();
 
 }

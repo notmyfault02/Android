@@ -1,4 +1,4 @@
-package com.notmyfault02.data.source;
+package com.notmyfault02.data.repository;
 
 import com.notmyfault02.data.entity.UserData;
 import com.notmyfault02.data.remote.Api;
@@ -9,7 +9,7 @@ import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class UserDataSource {
+public class UserRepository {
 
     private Api api;
 
@@ -18,6 +18,6 @@ public class UserDataSource {
     }
 
     public Flowable<List<UserData>> getRanking() {
-        return api.getRanking().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return null;
     }
 }
