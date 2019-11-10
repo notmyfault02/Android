@@ -53,4 +53,10 @@ dependencies {
     implementation rootProject.ext.rxjava
     implementation rootProject.ext.rxAndroid
     implementation rootProject.ext.retrofitAdapter
+
+    implementation 'com.google.dagger:dagger:2.16'
+    implementation 'com.google.dagger:dagger-android-support:2.16'
+    annotationProcessor "com.google.dagger:dagger-android-processor:2.16"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.16"
+    implementation 'com.google.dagger:dagger-android:2.16'
 }
