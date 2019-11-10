@@ -13,7 +13,6 @@ import retrofit2.Response;
 
 public class RoomRepository implements RoomDataSource{
 
-    private RoomDataSource dataSource;
     private Api api;
 
     @Override
@@ -30,8 +29,7 @@ public class RoomRepository implements RoomDataSource{
     public Flowable<RoomData> getSearchRoom(String query) {
         return api.searchRoom(query).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
-
-    //    @Override
+//    @Override
 //    public Flowable<ArrayList<RoomEntity>> getRoomList() {
 //
 //        return dataSource.getRoomList().map(roomData -> {

@@ -9,17 +9,18 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.sketch_chain.entity.Room;
 import com.example.sketch_chain.mapper.RoomMapper;
-import com.newgram.domain.entity.RoomEntity;
-import com.newgram.domain.usecase.GetRoomListUseCase;
+import com.notmyfault02.data.entity.RoomData;
+import com.notmyfault02.data.source.RoomDataSource;
 
 import java.util.ArrayList;
 
 public class ShowRoomViewModel extends AndroidViewModel {
-    private GetRoomListUseCase getRoomListUseCase;
 
     MutableLiveData<ArrayList<Room>> items = new MutableLiveData<>();
 
     ArrayList<Room> raw = new ArrayList<>();
+
+    private RoomDataSource dataSource;
 
     public MutableLiveData<ArrayList<Room>> getItems() {
         return items;
@@ -29,13 +30,13 @@ public class ShowRoomViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public void setGetRoomListUseCase(GetRoomListUseCase getRoomListUseCase) {
-        this.getRoomListUseCase = getRoomListUseCase;
+    public void setDataSource(RoomDataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     void getRoomList() {
-        getRoomListUseCase.getRoomList().subscribe( s -> {
-            for(RoomEntity roomEntity: s) {
+        dataSource.getRoomList().subscribe( s -> {
+            for(RoomData roomEntity: s) {
                 raw.add(RoomMapper.mapFrom(roomEntity));
             }
             items.setValue(raw);
