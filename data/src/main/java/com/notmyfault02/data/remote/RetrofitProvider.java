@@ -5,7 +5,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitProvider {
-    private static final String BASE_URL = "http://";
+    private static final String BASE_URL = "https://www.naver.com";
 
     public static Api getApi() {
         return getInstance().create(Api.class);

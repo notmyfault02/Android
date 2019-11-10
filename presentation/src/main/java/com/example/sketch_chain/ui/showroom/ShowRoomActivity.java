@@ -25,7 +25,7 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(ShowRoomViewModel.class);
         binding.setViewModel(viewModel);
-        viewModel.getRoomList();
+        //viewModel.getRoomList();
     }
 
     public void cancel(View view) {
