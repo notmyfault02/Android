@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -27,6 +28,9 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
     private EditText roomName;
     private Button makingBtn;
 
+    private RadioGroup roundRadio;
+    private RadioGroup timeRadio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +39,47 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
 
         roomName = findViewById(R.id.room_name_et);
         makingBtn = findViewById(R.id.making_confirm_btn);
+        roundRadio = findViewById(R.id.makeroom_round_rg);
+        timeRadio = findViewById(R.id.makeroom_time_rg);
 
+        roundRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.round_one_rb:
+                        viewModel.round.setValue(1);
+                        break;
+
+                    case R.id.round_three_rb:
+                        viewModel.round.setValue(3);
+                        break;
+                    case R.id.round_five_rb:
+                        viewModel.round.setValue(5);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        timeRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.time_60_rb:
+                        viewModel.time.setValue(60);
+                        break;
+                    case R.id.time_90_rb:
+                        viewModel.time.setValue(90);
+                        break;
+                    case R.id.time_120_rb:
+                        viewModel.time.setValue(120);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         makingBtn.setOnClickListener(v -> {
             viewModel.makeRoom();
@@ -54,7 +98,10 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
                 }
                 return false;
         });
+
+
     }
+
 
     public void cancel(View view) {
         finish();

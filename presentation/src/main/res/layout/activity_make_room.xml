@@ -183,7 +183,7 @@
             app:layout_constraintVertical_bias="0.713" />
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/makeroom_round_rg"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -197,10 +197,11 @@
             app:layout_constraintTop_toTopOf="@+id/pw_explain2_tv">
 
             <RadioButton
-                android:background="@drawable/radio_makeroom_onselect"
+                android:id="@+id/round_one_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/radio_makeroom_onselect"
                 android:button="@null"
                 android:fontFamily="@font/hufathers"
                 android:gravity="center"
@@ -209,10 +210,11 @@
                 android:textSize="24dp" />
 
             <RadioButton
+                android:id="@+id/round_three_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/radio_makeroom_onselect"
                 android:layout_weight="1"
+                android:background="@drawable/radio_makeroom_onselect"
                 android:button="@null"
                 android:fontFamily="@font/hufathers"
                 android:gravity="center"
@@ -221,10 +223,11 @@
                 android:textSize="24dp" />
 
             <RadioButton
-                android:background="@drawable/radio_makeroom_onselect"
+                android:id="@+id/round_five_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/radio_makeroom_onselect"
                 android:button="@null"
                 android:fontFamily="@font/hufathers"
                 android:gravity="center"
@@ -236,6 +239,7 @@
         </RadioGroup>
 
         <RadioGroup
+            android:id="@+id/makeroom_time_rg"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -246,13 +250,14 @@
             app:layout_constraintBottom_toTopOf="@+id/making_confirm_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/time_limit_tv"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+            app:layout_constraintTop_toBottomOf="@+id/makeroom_round_rg">
 
             <RadioButton
-                android:background="@drawable/radio_makeroom_onselect"
+                android:id="@+id/time_60_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/radio_makeroom_onselect"
                 android:button="@null"
                 android:fontFamily="@font/hufathers"
                 android:gravity="center"
@@ -261,10 +266,11 @@
                 android:textSize="24dp" />
 
             <RadioButton
-                android:background="@drawable/radio_makeroom_onselect"
+                android:id="@+id/time_90_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/radio_makeroom_onselect"
                 android:button="@null"
                 android:fontFamily="@font/hufathers"
                 android:gravity="center"
@@ -273,10 +279,11 @@
                 android:textSize="24dp" />
 
             <RadioButton
-                android:background="@drawable/radio_makeroom_onselect"
+                android:id="@+id/time_120_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/radio_makeroom_onselect"
                 android:button="@null"
                 android:fontFamily="@font/hufathers"
                 android:gravity="center"
@@ -325,7 +332,7 @@
 
         <EditText
             android:id="@+id/room_name_et"
-            android:text="@{vm.roomName}"
+            android:text="@={vm.roomName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -344,7 +351,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:ems="6"
-            android:text="@{vm.password}"
+            android:text="@={vm.password}"
             android:fontFamily="@font/hufathers"
             android:gravity="center"
             android:inputType="numberPassword"

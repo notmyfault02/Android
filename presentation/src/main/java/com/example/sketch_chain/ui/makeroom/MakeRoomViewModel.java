@@ -13,10 +13,26 @@ import com.notmyfault02.data.repository.RoomRepository;
 
 public class MakeRoomViewModel extends AndroidViewModel {
 
-    MutableLiveData<String> roomName = new MutableLiveData<>();
-    MutableLiveData<String> password = new MutableLiveData<>();
+    MutableLiveData<String> roomName = new MutableLiveData<String>();
+    MutableLiveData<String> password = new MutableLiveData<String>();
     MutableLiveData<Integer> round = new MutableLiveData<>();
     MutableLiveData<Integer> time = new MutableLiveData<>();
+
+    public MutableLiveData<String> getRoomName() {
+        return roomName;
+    }
+
+    public MutableLiveData<String> getPassword() {
+        return password;
+    }
+
+    public MutableLiveData<Integer> getRound() {
+        return round;
+    }
+
+    public MutableLiveData<Integer> getTime() {
+        return time;
+    }
 
     private RoomRepository roomRepository = new RoomRepository();
 
