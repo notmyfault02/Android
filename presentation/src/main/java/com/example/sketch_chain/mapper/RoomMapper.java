@@ -14,4 +14,13 @@ public class RoomMapper {
         room.setTime(from.getTime());
         return room;
     }
+
+    public static RoomData mapTo(Room to) {
+        RoomData data = new RoomData();
+        data.setName(to.getName());
+        data.setPassword(to.getPassword());
+        data.setRound(to.getRound());
+        data.setTime(to.getTime());
+        return data;
+    }
 }

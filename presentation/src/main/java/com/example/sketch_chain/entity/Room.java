@@ -5,8 +5,9 @@ import java.util.List;
 public class Room {
     int roomId;
     String name;
-    int password;
+    String password;
     int round;
+    int time;
 
     public int getRound() {
         return round;
@@ -20,11 +21,11 @@ public class Room {
         return time;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -33,21 +34,19 @@ public class Room {
     }
 
     List<User> people;
-    int time;
 
     public Room() {
 
     }
 
-    public Room(int roomId, String name, int round, int time) {
-        this.roomId = roomId;
+    public Room(String name, String password, int round, int time) {
         this.name = name;
+        this.password = password;
         this.round = round;
         this.time = time;
     }
 
-    public Room(int roomId, String name, int password, int round, int time) {
-        this.roomId = roomId;
+    public Room(int roomId, String name, String password, int round, int time) {
         this.name = name;
         this.password = password;
         this.round = round;
