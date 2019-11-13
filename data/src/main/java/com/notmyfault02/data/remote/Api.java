@@ -30,7 +30,7 @@ public interface Api {
     Flowable<RoomData> joinRoom(@Query("roomId") int roomId);
 
     @POST("/user/item")
-    Flowable<Response<String>> buyItem(@Query("type") List<Integer> item);
+    Flowable<Response<String>> buyItem(@Query("type") int item);
 
     @GET("/room")
     Flowable<ArrayList<RoomData>> getRoomList();

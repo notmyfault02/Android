@@ -8,4 +8,10 @@
     <string name="gm_waiting">모든 플레이어가\n준비상태가 되어야 합니다.</string>
     <string name="normal_ready">버튼을 누르면\n준비 상태가 해제 됩니다.</string>
     <string name="normal_waiting">버튼을 누르면\n준비 상태가 됩니다.</string>
+    <string name="item1">초성 찬스</string>
+    <string name="item1_detail">상대방이 낸 문제의 정답의 초성을 알 수 있다.</string>
+    <string name="item2">시간 단축</string>
+    <string name="item2_detail">자신이 문제를낼 때 상대방이 정답을 입력할 수 있는 시간을 단축한다.</string>
+    <string name="item3">턴 넘기기</string>
+    <string name="item3_detail">차례를 다음 사람에게 넘긴다.</string>
 </resources>
