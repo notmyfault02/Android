@@ -88,13 +88,13 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/waiting_chat_layout"
+        android:layout_width="349dp"
+        android:layout_height="239dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/input_chat_et"
+        app:layout_constraintBottom_toTopOf="@+id/wating_input_chat_et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +102,7 @@
 
 
     <EditText
-        android:id="@+id/input_chat_et"
+        android:id="@+id/wating_input_chat_et"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -111,6 +111,7 @@
         android:background="@null"
         android:fontFamily="@font/hufathers"
         android:hint="채팅 혹은 정답을 입력해주세요."
+        android:textColorHint="#FFFFFF"
         android:lineSpacingExtra="1sp"
         android:textColor="#ffffff"
         android:textSize="20sp"
@@ -156,7 +157,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_underline2_tv"
-        tools:layout="@layout/fragment_normal_waiting"/>
+        tools:layout="@layout/fragment_normal_ready"/>
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
@@ -164,9 +165,9 @@
         android:layout_height="0dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView2"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView2">
+        app:layout_constraintBottom_toTopOf="@+id/waiting_chat_layout"
+        app:layout_constraintEnd_toEndOf="@+id/waiting_chat_layout"
+        app:layout_constraintStart_toStartOf="@+id/waiting_chat_layout">
 
         <LinearLayout
             android:id="@+id/player_list_l"

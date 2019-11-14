@@ -7,13 +7,13 @@
     tools:context=".ui.NormalReadyFragment">
 
     <TextView
-        android:id="@+id/gm_ready_tv"
+        android:id="@+id/normal_ready_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/hufathers"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="1sp"
-        android:text="@string/normal_ready"
+        android:text="@string/normal_waiting"
         android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,19 +23,18 @@
         app:layout_constraintVertical_bias="0.30714"/>
 
     <Button
-        android:id="@+id/normal_release_tv"
+        android:id="@+id/normal_release_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@drawable/activation_button_background"
-        android:enabled="false"
+        android:background="@drawable/btn_clickable_making_room"
         android:fontFamily="@font/hufathers"
         android:lineSpacingExtra="0sp"
-        android:text="해제"
+        android:text="준비"
         android:textColor="#1d2d21"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gm_ready_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/normal_ready_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
