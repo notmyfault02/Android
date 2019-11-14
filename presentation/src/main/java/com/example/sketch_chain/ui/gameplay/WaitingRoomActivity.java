@@ -2,6 +2,8 @@ package com.example.sketch_chain.ui.gameplay;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,9 @@ public class WaitingRoomActivity extends AppCompatActivity {
     private boolean allReady = false;
     private ImageView exit;
 
+    private EditText chatEt;
+    private Button sendBtn;
+
     Fragment gmReadyFragment = new GmReadyFragment();
     Fragment normalReadyFragment = new NormalReadyFragment();
 
@@ -29,18 +34,18 @@ public class WaitingRoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wating_room);
         exit = findViewById(R.id.out_room_iv);
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        transaction.replace(R.id.wating_who_frame, gmReadyFragment);
+        transaction.commit();
+
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-        transaction.replace(R.id.wating_who_frame, normalReadyFragment);
-        transaction.commit();
     }
 
 

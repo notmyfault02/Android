@@ -88,7 +88,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+        android:id="@+id/ingame_chat_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -111,6 +111,7 @@
         android:background="@null"
         android:fontFamily="@font/hufathers"
         android:hint="채팅 혹은 정답을 입력해주세요."
+        android:textColorHint="#FFFFFF"
         android:lineSpacingExtra="1sp"
         android:textColor="#ffffff"
         android:textSize="20sp"
@@ -130,7 +131,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/send_button_tv"
+        android:id="@+id/ingame_send_button_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -139,7 +140,6 @@
         android:fontFamily="@font/hufathers"
         android:lineSpacingExtra="1sp"
         android:text="전송"
-
         android:textColor="#f5d901"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -164,9 +164,9 @@
         android:layout_height="0dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView2"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView2">
+        app:layout_constraintBottom_toTopOf="@+id/ingame_chat_layout"
+        app:layout_constraintEnd_toEndOf="@+id/ingame_chat_layout"
+        app:layout_constraintStart_toStartOf="@+id/ingame_chat_layout">
 
         <LinearLayout
             android:id="@+id/player_list_l"
