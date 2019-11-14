@@ -13,9 +13,14 @@
     </style>
     <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
-    </style>a
+    </style>
     <style name="CustomDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+    </style>
+    <style name="textType">
+        <item name="android:fontFamily">@font/hufather120</item>
+        <item name="android:textColor">#ff8989</item>
+        <item name="android:textSize">16dp</item>
     </style>
 </resources>

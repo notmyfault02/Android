@@ -89,8 +89,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ingame_chat_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="353dp"
+        android:layout_height="196dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="12dp"

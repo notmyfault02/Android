@@ -24,6 +24,15 @@ public class InGameChatAdapter extends RecyclerView.Adapter<InGameChatAdapter.In
     @NonNull
     @Override
     public InGameChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        int layout = -1;
+        switch (viewType) {
+            case 1:
+                layout = R.layout.item_chat;
+                break;
+            case 2:
+                layout = R.layout.item_answer;
+                break;
+        }
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat, parent, false);
         return new InGameChatViewHolder(view);
     }

@@ -126,8 +126,7 @@ public class PlayingRoomActivity extends AppCompatActivity {
 
     void sendMessage() {
         String message = messageEt.getText().toString();
-
-        addMessage("", message);
+        addMessage("영래", message);
         messageEt.setText("");
 
     }
