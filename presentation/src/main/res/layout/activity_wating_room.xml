@@ -152,109 +152,24 @@
         android:name="com.example.sketch_chain.ui.GmReadyFragment"
         android:layout_width="409dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintBottom_toTopOf="@+id/waiting_user_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_underline2_tv"
         tools:layout="@layout/fragment_normal_ready"/>
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/waiting_user_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="horizontal"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/waiting_chat_layout"
         app:layout_constraintEnd_toEndOf="@+id/waiting_chat_layout"
         app:layout_constraintStart_toStartOf="@+id/waiting_chat_layout">
-
-        <LinearLayout
-            android:id="@+id/player_list_l"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/nickname_container"
-                android:ellipsize="end"
-                android:fontFamily="@font/hufathers"
-                android:gravity="center_horizontal"
-                android:maxLines="1"
-                android:paddingHorizontal="10dp"
-                android:singleLine="true"
-                android:text="자바쌤신요셉"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/nickname_container"
-                android:ellipsize="end"
-                android:fontFamily="@font/hufathers"
-                android:gravity="center_horizontal"
-                android:maxLength="4"
-                android:paddingHorizontal="10dp"
-                android:singleLine="true"
-                android:text="닉네임"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/nickname_container"
-                android:ellipsize="end"
-                android:fontFamily="@font/hufathers"
-                android:gravity="center_horizontal"
-                android:maxLength="4"
-                android:paddingHorizontal="10dp"
-                android:singleLine="true"
-                android:text="김지혁"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/nickname_container"
-                android:ellipsize="end"
-                android:fontFamily="@font/hufathers"
-                android:gravity="center_horizontal"
-                android:maxLength="4"
-                android:paddingHorizontal="10dp"
-                android:singleLine="true"
-                android:text="황신우"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/nickname_container"
-                android:ellipsize="end"
-                android:fontFamily="@font/hufathers"
-                android:gravity="center_horizontal"
-                android:maxLength="4"
-                android:singleLine="true"
-                android:text="산학쌤최지영"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
-
-
-        </LinearLayout>
-    </HorizontalScrollView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

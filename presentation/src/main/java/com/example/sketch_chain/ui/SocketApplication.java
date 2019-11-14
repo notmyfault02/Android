@@ -1,19 +1,20 @@
 package com.example.sketch_chain.ui;
 
-import android.util.Log;
+import android.app.Application;
 
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 
 import java.net.URISyntaxException;
 
-public class SocketApplication {
+public class SocketApplication extends Application {
+
     private Socket socket;
     {
         try {
             socket = IO.socket("https://");
         }catch (URISyntaxException e) {
-            Log.e("socket uri", e.getLocalizedMessage());
+            //throw new RuntimeException(e);
         }
     }
 
