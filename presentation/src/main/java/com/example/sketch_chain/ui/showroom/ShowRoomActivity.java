@@ -5,15 +5,24 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sketch_chain.R;
+import com.example.sketch_chain.adapter.ShowRoomAdapter;
 import com.example.sketch_chain.databinding.ActivityShowRoomBinding;
+import com.example.sketch_chain.entity.Room;
 import com.example.sketch_chain.ui.SearchRoomActivity;
 import com.example.sketch_chain.util.DataBindingActivity;
+
+import java.util.ArrayList;
 
 public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBinding> {
 
     private ShowRoomViewModel viewModel;
+    private ShowRoomAdapter adapter;
+    private ArrayList<Room> roomList = new ArrayList<>();
+    private RecyclerView roomView;
 
     @Override
     public int getLayoutId() {
@@ -23,8 +32,16 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        adapter = new ShowRoomAdapter(getApplicationContext(), viewModel);
+
         viewModel = ViewModelProviders.of(this).get(ShowRoomViewModel.class);
         binding.setViewModel(viewModel);
+
+        adapter = new ShowRoomAdapter(getApplicationContext(), viewModel);
+        roomView = findViewById(R.id.roomlist_rv);
+        roomView.setAdapter(adapter);
+        roomView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        adapter.setRoomList(roomList);
         //viewModel.getRoomList();
     }
 

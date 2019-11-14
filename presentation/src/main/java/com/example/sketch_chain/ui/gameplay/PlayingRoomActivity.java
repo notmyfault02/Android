@@ -105,18 +105,13 @@ public class PlayingRoomActivity extends AppCompatActivity {
         messageEt = findViewById(R.id.input_chat_et);
         sendBtn = findViewById(R.id.ingame_send_button_tv);
 
-        sendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendMessage();
-            }
+        sendBtn.setOnClickListener(v -> {
+            sendMessage();
         });
 
-        outBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+
+        outBtn.setOnClickListener(v -> {
+            finish();
         });
 
         TextView roomName = findViewById(R.id.room_name_tv);
