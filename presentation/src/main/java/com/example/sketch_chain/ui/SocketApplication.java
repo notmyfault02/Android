@@ -1,4 +1,4 @@
-package com.notmyfault02.data.remote;
+package com.example.sketch_chain.ui;
 
 import android.util.Log;
 
@@ -7,7 +7,7 @@ import com.github.nkzawa.socketio.client.Socket;
 
 import java.net.URISyntaxException;
 
-public class SocketProvider {
+public class SocketApplication {
     private Socket socket;
     {
         try {

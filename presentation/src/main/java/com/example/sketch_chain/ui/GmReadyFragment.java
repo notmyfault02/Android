@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +18,6 @@ import com.example.sketch_chain.R;
 import com.example.sketch_chain.ui.gameplay.PlayingRoomActivity;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
-import com.notmyfault02.data.remote.SocketProvider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +25,8 @@ import org.json.JSONObject;
 public class GmReadyFragment extends Fragment {
 
     private Button startBtn;
+    private TextView content;
+    private boolean isAllReady = true;
     private Socket mSocket;
 
     public GmReadyFragment() {
@@ -32,11 +35,6 @@ public class GmReadyFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mSocket = new SocketProvider().getSocket();
-
-        mSocket.on("user_ready", onReady);
-        mSocket.connect();
     }
 
     @Override
@@ -50,11 +48,28 @@ public class GmReadyFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mSocket = new SocketApplication().getSocket();
+
+        //mSocket.on("user_ready", onReady);
+        //mSocket.connect();
+
         startBtn = getView().findViewById(R.id.gm_start_btn);
+        content = getView().findViewById(R.id.gm_ready_tv);
+
+        if (isAllReady == true) {
+            content.setText(R.string.gm_ready);
+        } else {
+            content.setText(R.string.gm_waiting);
+        }
 
         startBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), PlayingRoomActivity.class);
-            startActivity(intent);
+            //mSocket.emit("start", "start");
+            if (isAllReady == false) {
+                Toast.makeText(getActivity().getApplicationContext(),"모두 준비상태여야 합니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(getContext(), PlayingRoomActivity.class);
+                startActivity(intent);
+            }
         });
 
     }
