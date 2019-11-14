@@ -42,6 +42,9 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
         roundRadio = findViewById(R.id.makeroom_round_rg);
         timeRadio = findViewById(R.id.makeroom_time_rg);
 
+        viewModel.round.setValue(1);
+        viewModel.time.setValue(60);
+
         roundRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
