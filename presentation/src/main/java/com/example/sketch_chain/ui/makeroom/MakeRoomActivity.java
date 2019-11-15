@@ -89,6 +89,7 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
             Intent intent = new Intent(getApplicationContext(), WaitingRoomActivity.class);
             intent.putExtra("roomName", roomName.getText().toString());
             startActivity(intent);
+            finish();
         });
 
         roomName.setOnKeyListener((v, keyCode, event)  -> {

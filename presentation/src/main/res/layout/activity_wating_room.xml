@@ -89,8 +89,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/waiting_chat_layout"
-        android:layout_width="349dp"
-        android:layout_height="239dp"
+        android:layout_width="343dp"
+        android:layout_height="120dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="12dp"

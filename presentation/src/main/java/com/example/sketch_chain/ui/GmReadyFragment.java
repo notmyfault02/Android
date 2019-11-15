@@ -67,8 +67,10 @@ public class GmReadyFragment extends Fragment {
             if (isAllReady == false) {
                 Toast.makeText(getActivity().getApplicationContext(),"모두 준비상태여야 합니다.", Toast.LENGTH_SHORT).show();
             } else {
+                //mSocket.emit("start", "start");
                 Intent intent = new Intent(getContext(), PlayingRoomActivity.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 

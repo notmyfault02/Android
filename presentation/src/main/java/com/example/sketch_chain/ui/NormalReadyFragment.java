@@ -12,12 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.sketch_chain.R;
+import com.github.nkzawa.socketio.client.Socket;
 
 public class NormalReadyFragment extends Fragment {
 
     private Button readyBtn;
     private TextView content;
     private boolean isReady = false;
+    private Socket mSocket;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class NormalReadyFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //SocketApplication app = (SocketApplication) getActivity().getApplication();
+        //mSocket = app.getSocket();
+
         readyBtn = getActivity().findViewById(R.id.normal_release_btn);
         content = getActivity().findViewById(R.id.normal_ready_tv);
 
@@ -42,11 +47,13 @@ public class NormalReadyFragment extends Fragment {
             public void onClick(View v) {
                 if (isReady != true) {
                     isReady = true;
+                    //mSocket.emit("ready", "username");
                     content.setText(R.string.normal_ready);
                     readyBtn.setText("해제");
 
                 } else {
                     isReady = false;
+                    //mSocket.emit("notReady", "username");
                     content.setText(R.string.normal_waiting);
                     readyBtn.setText("준비");
                 }
