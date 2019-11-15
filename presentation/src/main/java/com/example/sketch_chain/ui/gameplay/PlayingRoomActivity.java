@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +32,8 @@ public class PlayingRoomActivity extends AppCompatActivity {
     private InGameChatAdapter adapter;
     private EditText messageEt;
     private RecyclerView chatLayout;
+
+    private Long backPressedTime = 0l;
 
     class Point {
         float x;
@@ -122,6 +125,7 @@ public class PlayingRoomActivity extends AppCompatActivity {
         messages.add(new Message(username, message));
         Log.d("sss", message);
         adapter.notifyItemInserted(messages.size()-1);
+        scrollToBottom();
     }
 
     void sendMessage() {
@@ -129,6 +133,15 @@ public class PlayingRoomActivity extends AppCompatActivity {
         addMessage("영래", message);
         messageEt.setText("");
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "게임 중에는 나갈 수 없습니다.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void scrollToBottom() {
+        chatLayout.scrollToPosition(adapter.getItemCount() - 1);
     }
 
 }

@@ -21,7 +21,6 @@ import com.example.sketch_chain.entity.Message;
 import com.example.sketch_chain.entity.User;
 import com.example.sketch_chain.ui.GmReadyFragment;
 import com.example.sketch_chain.ui.NormalReadyFragment;
-import com.example.sketch_chain.ui.SocketApplication;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 
@@ -33,7 +32,7 @@ import java.util.ArrayList;
 public class WaitingRoomActivity extends AppCompatActivity {
 
     private Socket mSocket;
-    private ArrayList<User> gamers = new ArrayList<>();
+    private ArrayList<User> gamers = new ArrayList<User>();
     private ArrayList<Message> messages = new ArrayList<>();
     private ArrayList<User> readys = new ArrayList<>();
 
@@ -54,14 +53,14 @@ public class WaitingRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SocketApplication app = (SocketApplication) getApplication();
-        mSocket = app.getSocket();
-        mSocket.on("user joined", onGamerJoined);
-        mSocket.on("new message", onNewMessage);
-        mSocket.on("ready user", onReady);
-        mSocket.on("user left", onGamerLefted);
-        mSocket.on("user notready", onNotReady);
-        mSocket.connect();
+//        SocketApplication app = (SocketApplication) getApplication();
+//        mSocket = app.getSocket();
+//        mSocket.on("user joined", onGamerJoined);
+//        mSocket.on("new message", onNewMessage);
+//        mSocket.on("ready user", onReady);
+//        mSocket.on("user left", onGamerLefted);
+//        mSocket.on("user notready", onNotReady);
+//        mSocket.connect();
 
         setContentView(R.layout.activity_wating_room);
         exit = findViewById(R.id.out_room_iv);
@@ -70,13 +69,15 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         gamerListAdapter = new GamerListAdapter(gamers, readys);
         userView = findViewById(R.id.waiting_user_layout);
-        userView.setAdapter(gamerListAdapter);
         userView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        userView.setAdapter(gamerListAdapter);
 
         chatAdapter = new WaitingChatAdapter(messages);
         chatView = findViewById(R.id.waiting_chat_layout);
         chatView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         chatView.setAdapter(chatAdapter);
+
+        gamers.add(new User("dddd"));
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -99,6 +100,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
     private void addMessage(String username, String message) {
         messages.add(new Message(username, message));
         chatAdapter.notifyItemInserted(messages.size()-1);
+        scrollToBottom();
     }
 
     private void sendMessage() {
@@ -227,5 +229,9 @@ public class WaitingRoomActivity extends AppCompatActivity {
             });
         }
     };
+
+    private void scrollToBottom() {
+        chatView.scrollToPosition(chatAdapter.getItemCount() - 1);
+    }
 
 }

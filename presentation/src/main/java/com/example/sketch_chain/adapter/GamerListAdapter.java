@@ -3,6 +3,7 @@ package com.example.sketch_chain.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +32,8 @@ public class GamerListAdapter extends RecyclerView.Adapter<GamerListAdapter.Game
 
     @Override
     public void onBindViewHolder(@NonNull GamerListViewHolder holder, int position) {
+        User gamer = gamers.get(position);
+        holder.bind(gamer.getName());
     }
 
     @Override
@@ -39,15 +42,15 @@ public class GamerListAdapter extends RecyclerView.Adapter<GamerListAdapter.Game
     }
 
     class GamerListViewHolder extends RecyclerView.ViewHolder{
-
+        TextView username;
 
         public GamerListViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            username = itemView.findViewById(R.id.item_username_tv);
         }
 
-        void bind() {
-            itemView.findViewById(R.id.item_word_tv);
+        void bind(String name) {
+            username.setText(name);
         }
     }
 }
