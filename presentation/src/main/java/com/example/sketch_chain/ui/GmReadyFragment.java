@@ -48,7 +48,7 @@ public class GmReadyFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mSocket = new SocketApplication().getSocket();
+        mSocket = new GlobalApplication().getSocket();
 
         //mSocket.on("user_ready", onReady);
         //mSocket.connect();

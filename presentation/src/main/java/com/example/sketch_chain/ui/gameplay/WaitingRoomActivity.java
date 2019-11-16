@@ -85,11 +85,8 @@ public class WaitingRoomActivity extends AppCompatActivity {
         transaction.replace(R.id.wating_who_frame, gmReadyFragment);
         transaction.commit();
 
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        exit.setOnClickListener(v -> {
                 finish();
-            }
         });
 
         sendBtn.setOnClickListener( v -> {

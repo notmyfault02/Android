@@ -1,10 +1,11 @@
 package com.example.sketch_chain.adapter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sketch_chain.databinding.ItemRoomBinding;
 import com.example.sketch_chain.entity.Room;
@@ -16,7 +17,7 @@ public class ShowRoomAdapter extends RecyclerView.Adapter<ShowRoomAdapter.ShowRo
     Context context;
     ShowRoomViewModel viewModel;
 
-    private ArrayList<Room> roomList;
+    ArrayList<Room> roomList;
 
     public void setRoomList(ArrayList<Room> roomList) {
         this.roomList = roomList;

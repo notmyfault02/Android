@@ -1,148 +1,146 @@
 package com.example.sketch_chain.ui.login;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.Button;
 
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.ui.main.MainActivity;
-import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
+import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.Session;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.MeResponseCallback;
+import com.kakao.usermgmt.response.model.UserProfile;
+import com.kakao.util.exception.KakaoException;
+import com.kakao.util.helper.log.Logger;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-
-    private CallbackManager mCallbackManager;
+    //kakao
+    private SessionCallback callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        callback = new SessionCallback();
+        Session.getCurrentSession().addCallback(callback);
+        Session.getCurrentSession().checkAndImplicitOpen();
+        Session.getCurrentSession().getAccessToken();
+        Log.d("token", Session.getCurrentSession().getAccessToken());
 
-        mCallbackManager = CallbackManager.Factory.create();
+        getAppKeyHash();
+    }
 
-        LoginButton loginButton = findViewById(R.id.main_login_btn);
-        Button customButton = findViewById(R.id.main_custom_btn);
-
-        customButton.setOnClickListener((v) -> {
-                loginButton.setReadPermissions("email", "public_profile");
-                checkLoginStatus();
-
-                loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        Log.d("login", "cancel");
-                    }
-
-                    @Override
-                    public void onError(FacebookException error) {
-                        Log.d("login", error.toString());
-                    }
-                });
+    private void getAppKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(), 0));
+                Log.e("Hash key", something);
             }
-        );
-
+        } catch (Exception e) {
+            Log.e("name not found", e.toString());
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data))
+            return;
+
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-    AccessTokenTracker tokenTracker = new AccessTokenTracker() {
-        @Override
-        protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-            if(currentAccessToken==null) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("name", "");
-                intent.putExtra("image_url", "");
-                startActivity(intent);
-                finish();
-            }
-            else {
-                loadUserProfile(currentAccessToken);
-            }
-        }
-    };
 
     @Override
     protected void onStart() {
         super.onStart();
     }
 
+    private class SessionCallback implements ISessionCallback {
+        @Override
+        public void onSessionOpened() {
+            redirectMainActivity();
+        }
 
-    private void loadUserProfile(AccessToken token) {
-        GraphRequest request = GraphRequest.newMeRequest(token, new GraphRequest.GraphJSONObjectCallback() {
-            @Override
-            public void onCompleted(JSONObject object, GraphResponse response) {
-                try {
-                    String first_name = object.getString("first_name");
-                    String last_name = object.getString("last_name");
-                    String id = object.getString("id");
-                    String image_url = "https://graph.facebook.com/"+id+"/picture?type=normal";
-
-                    String name = last_name + first_name;
-
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("name", name);
-                    intent.putExtra("image_url", image_url);
-                    startActivity(intent);
-                    finish();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+        @Override
+        public void onSessionOpenFailed(KakaoException exception) {
+            if(exception != null) {
+                Logger.e(exception);
             }
-        });
-
-        Bundle parameters = new Bundle();
-        parameters.putString("fields", "first_name, last_name, id");
-        request.setParameters(parameters);
-        request.executeAsync();
-    }
-
-    private void loadFriends(AccessToken token) {
-        Log.d("loginfriend", "working");
-        GraphRequest request = new GraphRequest(
-                token, "/{friend-list-id}",
-                null, HttpMethod.GET,
-                new GraphRequest.Callback() {
-            @Override
-            public void onCompleted(GraphResponse response) {
-                Log.d("loginfriend", "okay");
-                response.getJSONObject();
-                Log.d("loginfriend", response.toString());
-            }
-
-            void onFailure() {
-                Log.d("loginfriend", "fail");
-            }
-        });
-    }
-
-    private void checkLoginStatus() {
-        if(AccessToken.getCurrentAccessToken()!=null) {
-            loadUserProfile(AccessToken.getCurrentAccessToken());
-            loadFriends(AccessToken.getCurrentAccessToken());
         }
     }
+    private void redirectMainActivity() {
+        requestMe();
+        final Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void requestMe() {
+        List<String> keys = new ArrayList<>();
+        keys.add("properties.nickname");
+        keys.add("properties.profile_image");
+        keys.add("kakao_account.email");
+
+        UserManagement.requestMe(new MeResponseCallback() {
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {
+
+            }
+
+            @Override
+            public void onNotSignedUp() {
+
+            }
+
+            @Override
+            public void onSuccess(UserProfile result) {
+                Log.d("getId", "" + result.getId());
+                Log.d("getName", "" + result.getNickname());
+            }
+        });
+    }
+
+//    private void requestAccessTokenInfo() {
+//        AuthService.getInstance().requestAccessTokenInfo(new ApiResponseCallback<AccessTokenInfoResponse>() {
+//            @Override
+//            public void onSessionClosed(ErrorResult errorResult) {
+//                redirectLoginActivity(self);
+//            }
+//
+//            @Override
+//            public void onNotSignedUp() {
+//                // not happened
+//            }
+//
+//            @Override
+//            public void onFailure(ErrorResult errorResult) {
+//                Logger.e("failed to get access token info. msg=" + errorResult);
+//            }
+//
+//            @Override
+//            public void onSuccess(AccessTokenInfoResponse accessTokenInfoResponse) {
+//                long userId = accessTokenInfoResponse.getUserId();
+//                Logger.d("this access token is for userId=" + userId);
+//
+//                long expiresInMilis = accessTokenInfoResponse.getExpiresInMillis();
+//                Logger.d("this access token expires after " + expiresInMilis + " milliseconds.");
+//            }
+//        });
+//    }
 }

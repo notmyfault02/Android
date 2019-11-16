@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sketch_chain.R;
@@ -36,12 +35,10 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
 
         viewModel = ViewModelProviders.of(this).get(ShowRoomViewModel.class);
         binding.setViewModel(viewModel);
-
-        adapter = new ShowRoomAdapter(getApplicationContext(), viewModel);
-        roomView = findViewById(R.id.roomlist_rv);
-        roomView.setAdapter(adapter);
-        roomView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        adapter.setRoomList(roomList);
+//        roomView = findViewById(R.id.roomlist_rv);
+//        roomView.setAdapter(adapter);
+//        roomView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//        adapter.setRoomList(roomList);
         //viewModel.getRoomList();
     }
 

@@ -42,21 +42,18 @@ public class NormalReadyFragment extends Fragment {
         readyBtn = getActivity().findViewById(R.id.normal_release_btn);
         content = getActivity().findViewById(R.id.normal_ready_tv);
 
-        readyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isReady != true) {
-                    isReady = true;
-                    //mSocket.emit("ready", "username");
-                    content.setText(R.string.normal_ready);
-                    readyBtn.setText("해제");
+        readyBtn.setOnClickListener(v -> {
+            if (isReady != true) {
+                isReady = true;
+                //mSocket.emit("ready", "username");
+                content.setText(R.string.normal_ready);
+                readyBtn.setText("해제");
 
-                } else {
-                    isReady = false;
-                    //mSocket.emit("notReady", "username");
-                    content.setText(R.string.normal_waiting);
-                    readyBtn.setText("준비");
-                }
+            } else {
+                isReady = false;
+                //mSocket.emit("notReady", "username");
+                content.setText(R.string.normal_waiting);
+                readyBtn.setText("준비");
             }
         });
     }

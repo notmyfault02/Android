@@ -62,4 +62,8 @@ dependencies {
     implementation 'com.google.dagger:dagger-android:2.16'
 
     implementation 'com.github.nkzawa:socket.io-client:0.6.0'
+
+    implementation group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+    implementation group: project.KAKAO_SDK_GROUP, name: 'kakaolink', version: project.KAKAO_SDK_VERSION
+    implementation group: project.KAKAO_SDK_GROUP, name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
 }
