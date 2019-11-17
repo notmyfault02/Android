@@ -12,6 +12,7 @@ import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
+import com.notmyfault02.data.local.PrefHelper;
 
 import java.net.URISyntaxException;
 
@@ -72,6 +73,7 @@ public class GlobalApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        PrefHelper.getInstance().init(getGlobalApplicationContext());
         KakaoSDK.init(new KakaoSDKAdapter());
 
     }

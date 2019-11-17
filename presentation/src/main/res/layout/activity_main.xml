@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="viewModel"
+            name="viewmodel"
             type="com.example.sketch_chain.ui.main.MainViewModel" />
     </data>
 
@@ -39,7 +39,7 @@
                 android:layout_weight="1.5"
                 android:fontFamily="@font/hyeuma"
                 android:gravity="right|center_vertical"
-                android:text="1"
+                android:text="@{String.valueOf(viewmodel.level)}"
                 android:textColor="#FFFFFF"
                 android:textSize="15dp" />
             <TextView
@@ -93,7 +93,7 @@
                 android:layout_weight="1.5"
                 android:fontFamily="@font/hyeuma"
                 android:gravity="right|center_vertical"
-                android:text="1"
+                android:text="@{String.valueOf(viewmodel.coin)}"
                 android:textColor="#FFFFFF" />
 
             <TextView
@@ -132,7 +132,7 @@
                 android:layout_weight="1.5"
                 android:fontFamily="@font/hyeuma"
                 android:gravity="right|center_vertical"
-                android:text="1"
+                android:text="@{String.valueOf(viewmodel.exp)}"
                 android:textColor="#FFFFFF" />
             <TextView
                 android:layout_width="0dp"
@@ -181,7 +181,7 @@
             android:id="@+id/main_profile_iv"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            image="@{viewModel.profile}"
+            image="@{viewmodel.profile}"
             app:layout_constraintBottom_toBottomOf="@+id/main_card_view"
             app:layout_constraintEnd_toEndOf="@+id/main_card_view"
             app:layout_constraintStart_toStartOf="@+id/main_card_view"
@@ -299,7 +299,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:text="@{viewModel.userName}"
+            android:text="@{viewmodel.userName}"
             android:fontFamily="@font/thecircleb"
             android:textColor="#707070"
             app:layout_constraintBottom_toBottomOf="@+id/main_card_view"

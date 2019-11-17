@@ -1,10 +1,11 @@
 package com.example.sketch_chain.ui.main;
 
-import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.databinding.ActivityMainBinding;
@@ -26,10 +27,9 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainVm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainViewModel.class);
-        binding.setViewModel(mainVm);
-        mainVm.profile.setValue(getIntent().getStringExtra("image_url"));
-        mainVm.userName.setValue(getIntent().getStringExtra("name"));
+        mainVm = ViewModelProviders.of(this).get(MainViewModel.class);
+        binding.setViewmodel(mainVm);
+        mainVm.getUser();
     }
 
     public void onJoinClick(View view) {

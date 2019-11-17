@@ -1,59 +1,129 @@
 package com.notmyfault02.data.entity;
 
+import java.util.List;
+
 public class UserData {
-    public UserData() {
+    public int getCode() {
+        return code;
     }
 
-    public String getName() {
-        return name;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Data getData() {
+        return data;
     }
 
-    public String getUrl() {
-        return url;
+    public void setData(Data data) {
+        this.data = data;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public String getMsg() {
+        return msg;
     }
 
-    public int getLevel() {
-        return level;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public boolean isSuccess() {
+        return success;
     }
 
-    public int getExp() {
-        return exp;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
-    public void setExp(int exp) {
-        this.exp = exp;
+    private int code;
+    private Data data;
+    private String msg;
+    private boolean success;
+
+
+    static class Data {
+        int coin;
+        int exp;
+        int idx;
+        int level;
+        String name;
+        String password;
+        List<String> roles;
+        int score;
+        String uid;
+
     }
+
 
     public int getCoin() {
-        return coin;
+        return getData().coin;
     }
 
     public void setCoin(int coin) {
-        this.coin = coin;
+        this.getData().coin = coin;
     }
 
-    String name;
-    String url;
-    int level;
-    int exp;
-    int coin;
-    public UserData(String name, String url, int level, int exp, int coin) {
-        this.name = name;
-        this.url = url;
-        this.level = level;
-        this.exp = exp;
-        this.coin = coin;
+    public int getExp() {
+        return getData().exp;
+    }
+
+    public void setExp(int exp) {
+        this.getData().exp = exp;
+    }
+
+    public int getIdx() {
+        return getData().idx;
+    }
+
+    public void setIdx(int idx) {
+        this.getData().idx = idx;
+    }
+
+    public int getLevel() {
+        return getData().level;
+    }
+
+    public void setLevel(int level) {
+        this.getData().level = level;
+    }
+
+    public String getName() {
+        return getData().name;
+    }
+
+    public void setName(String name) {
+        this.getData().name = name;
+    }
+
+    public String getPassword() {
+        return getData().password;
+    }
+
+    public void setPassword(String password) {
+        this.getData().password = password;
+    }
+
+    public List<String> getRoles() {
+        return getData().roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.getData().roles = roles;
+    }
+
+    public int getScore() {
+        return getData().score;
+    }
+
+    public void setScore(int score) {
+        this.getData().score = score;
+    }
+
+    public String getUid() {
+        return getData().uid;
+    }
+
+    public void setUid(String uid) {
+        this.getData().uid = uid;
     }
 }
