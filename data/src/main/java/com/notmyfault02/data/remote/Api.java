@@ -14,7 +14,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface Api {
-    @GET("/user/info")
+    @GET("/v1/user")
     Flowable<UserData> getUser();
 
     @GET("/user/rank")

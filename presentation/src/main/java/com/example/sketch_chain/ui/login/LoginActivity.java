@@ -1,5 +1,6 @@
 package com.example.sketch_chain.ui.login;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -15,30 +16,32 @@ import com.example.sketch_chain.R;
 import com.example.sketch_chain.ui.main.MainActivity;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
-import com.kakao.network.ErrorResult;
-import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.MeResponseCallback;
-import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
+import com.notmyfault02.data.local.PrefHelper;
+import com.notmyfault02.data.remote.LoginApi;
+import com.notmyfault02.data.remote.RetrofitProvider;
 
 import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class LoginActivity extends AppCompatActivity {
     //kakao
     private SessionCallback callback;
+    private LoginApi loginApi = RetrofitProvider.getLoginApi();
+    private PrefHelper prefHelper = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        prefHelper = PrefHelper.getInstance();
+        prefHelper.init(this);
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
         Session.getCurrentSession().checkAndImplicitOpen();
-        Session.getCurrentSession().getAccessToken();
-        Log.d("token", Session.getCurrentSession().getAccessToken());
 
         getAppKeyHash();
     }
@@ -55,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             Log.e("name not found", e.toString());
+
         }
     }
 
@@ -72,9 +76,27 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private class SessionCallback implements ISessionCallback {
+        @SuppressLint("CheckResult")
         @Override
         public void onSessionOpened() {
-            redirectMainActivity();
+            Log.d("token", Session.getCurrentSession().getAccessToken());
+            loginApi.signUp(Session.getCurrentSession().getAccessToken())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe( body ->{
+                        prefHelper.setToken(body.getData());
+                        redirectMainActivity();
+                    }, throwable -> { Log.d("signup", throwable.getLocalizedMessage());}
+                    );
+            loginApi.signIn(Session.getCurrentSession().getAccessToken())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe( body -> {
+                        prefHelper.setToken(body.getData());
+                        redirectMainActivity();
+                    }, throwable -> {
+                        Log.d("signin", throwable.getLocalizedMessage());
+            });
         }
 
         @Override
@@ -85,62 +107,8 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     private void redirectMainActivity() {
-        requestMe();
         final Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
-
-    private void requestMe() {
-        List<String> keys = new ArrayList<>();
-        keys.add("properties.nickname");
-        keys.add("properties.profile_image");
-        keys.add("kakao_account.email");
-
-        UserManagement.requestMe(new MeResponseCallback() {
-            @Override
-            public void onSessionClosed(ErrorResult errorResult) {
-
-            }
-
-            @Override
-            public void onNotSignedUp() {
-
-            }
-
-            @Override
-            public void onSuccess(UserProfile result) {
-                Log.d("getId", "" + result.getId());
-                Log.d("getName", "" + result.getNickname());
-            }
-        });
-    }
-
-//    private void requestAccessTokenInfo() {
-//        AuthService.getInstance().requestAccessTokenInfo(new ApiResponseCallback<AccessTokenInfoResponse>() {
-//            @Override
-//            public void onSessionClosed(ErrorResult errorResult) {
-//                redirectLoginActivity(self);
-//            }
-//
-//            @Override
-//            public void onNotSignedUp() {
-//                // not happened
-//            }
-//
-//            @Override
-//            public void onFailure(ErrorResult errorResult) {
-//                Logger.e("failed to get access token info. msg=" + errorResult);
-//            }
-//
-//            @Override
-//            public void onSuccess(AccessTokenInfoResponse accessTokenInfoResponse) {
-//                long userId = accessTokenInfoResponse.getUserId();
-//                Logger.d("this access token is for userId=" + userId);
-//
-//                long expiresInMilis = accessTokenInfoResponse.getExpiresInMillis();
-//                Logger.d("this access token expires after " + expiresInMilis + " milliseconds.");
-//            }
-//        });
-//    }
 }
