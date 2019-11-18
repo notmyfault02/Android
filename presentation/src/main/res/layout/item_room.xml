@@ -59,7 +59,7 @@
             android:layout_marginStart="10dp"
             android:fontFamily="@font/hufather120"
             android:lineSpacingExtra="1sp"
-            android:text="6"
+            android:text="@{String.valueOf(room.allPeople)}"
             android:textColor="#FF0000"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"

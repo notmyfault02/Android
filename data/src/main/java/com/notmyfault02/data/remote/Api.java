@@ -1,5 +1,6 @@
 package com.notmyfault02.data.remote;
 
+import com.notmyfault02.data.entity.MakeRoomResponse;
 import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.entity.UserData;
 
@@ -24,17 +25,16 @@ public interface Api {
     @POST("/v1/room")
     Flowable<Response<Object>> makeRoom(
             @Query("title") String title,
-            @Query("round") int round,
-            @Query("limit") int limit
+            @Query("round") Integer round,
+            @Query("limit") Integer limit
     );
 
-    @POST("/v1/room/secret")
-    Flowable<Response<Object>> makeSecretRoom(
+    @POST("/v1/room/secret}")
+    Flowable<MakeRoomResponse> makeSecretRoom(
             @Query("title") String title,
             @Query("password") String password,
             @Query("round") int round,
             @Query("limit") int limit
-
     );
 
     @GET("/room/search")

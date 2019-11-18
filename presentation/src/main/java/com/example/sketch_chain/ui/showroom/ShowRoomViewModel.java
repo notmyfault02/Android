@@ -37,7 +37,8 @@ public class ShowRoomViewModel extends AndroidViewModel {
                 raw.add(RoomMapper.mapFrom(roomEntity));
             }
             items.setValue(raw);
-            Log.d("showRoom", "okay");
+            Log.d("showRoom", "" + s.getCode());
+            Log.d("showRoom", "" + s.getMsg());
 
         }, throwable -> {
             Log.d("showRoom", "getRoomList : " + throwable.getLocalizedMessage());

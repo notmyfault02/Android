@@ -9,7 +9,9 @@ import retrofit2.http.Query;
 
 public interface LoginApi {
     @POST("/v1/signin")
-    Flowable<SigninResponse> signIn(@Query("accessToken") String accessToken);
+    Flowable<SigninResponse> signIn(
+            @Query("accessToken") String accessToken
+    );
 
     @POST("/v1/signup")
     Flowable<SignupResponse> signUp (@Query("accessToken") String accessToken);

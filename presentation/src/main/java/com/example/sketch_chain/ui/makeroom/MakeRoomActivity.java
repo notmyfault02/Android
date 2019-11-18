@@ -44,6 +44,7 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
         roundRadio = findViewById(R.id.makeroom_round_rg);
         timeRadio = findViewById(R.id.makeroom_time_rg);
 
+        viewModel.roomName.setValue("");
         viewModel.round.setValue(1);
         viewModel.time.setValue(60);
 
@@ -87,7 +88,7 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
         });
 
         makingBtn.setOnClickListener(v -> {
-            if (password.getText() == null) {
+            if (password.getText() == null || password.getText().toString().isEmpty()) {
                 viewModel.makeRoom();
             } else {
                 viewModel.makeSecretRoom();
@@ -103,6 +104,7 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
                     if (TextUtils.isEmpty(roomName.getText().toString())) {
                         makingBtn.setEnabled(false);
                     } else {
+                        viewModel.roomName.setValue(roomName.getText().toString());
                         makingBtn.setEnabled(true);
                     }
                 }

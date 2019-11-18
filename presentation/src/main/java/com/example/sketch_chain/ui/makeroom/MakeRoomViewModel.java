@@ -1,5 +1,6 @@
 package com.example.sketch_chain.ui.makeroom;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.util.Log;
 
@@ -38,18 +39,19 @@ public class MakeRoomViewModel extends AndroidViewModel {
         super(application);
     }
 
+    @SuppressLint("CheckResult")
     void makeRoom() {
-
         roomRepository.makeRoom(
                 roomName.getValue(),
-                round.getValue(),
-                time.getValue()
-                ).subscribe(s -> {
-            Log.d("makeRoom", "okay");
-            Log.d("makeRoom", "" + s.code());
-        }, throwable -> {
-            Log.d("makeRoom", throwable.getLocalizedMessage());
-        });
+                getRound().getValue(),
+                getTime().getValue()
+        ).subscribe(
+                body -> {
+                    Log.d("makeroom", "okay: " + "" + body.raw());
+                }, throwable -> {
+                    Log.d("makeroom", "error: " + throwable.getMessage());
+                });
+
     }
 
     void makeSecretRoom() {
@@ -59,7 +61,7 @@ public class MakeRoomViewModel extends AndroidViewModel {
                 round.getValue(),
                 time.getValue()
         ).subscribe( s -> {
-            Log.d("makeSecretRoom", "" + s.code());
+            Log.d("makeSecretRoom",  "" + s.getCode());
         }, throwable -> {
             Log.d("makeSecretRoom", "" + throwable.getLocalizedMessage());
         });

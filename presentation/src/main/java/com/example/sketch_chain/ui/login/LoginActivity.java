@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
             loginApi.signUp(Session.getCurrentSession().getAccessToken())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe( body ->{
+                    .subscribe( body -> {
                         prefHelper.setToken(body.getData());
                         redirectMainActivity();
                     }, throwable -> { Log.d("signup", throwable.getLocalizedMessage());}

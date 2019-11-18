@@ -1,5 +1,6 @@
 package com.notmyfault02.data.repository;
 
+import com.notmyfault02.data.entity.MakeRoomResponse;
 import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.remote.Api;
 import com.notmyfault02.data.remote.RetrofitProvider;
@@ -12,12 +13,11 @@ import retrofit2.Response;
 public class RoomRepository {
 
     private Api api = RetrofitProvider.getApi();
-
     public Flowable<Response<Object>> makeRoom(String title, int round, int limit) {
         return api.makeRoom(title, round, limit).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Flowable<Response<Object>> makeSecretRoom(String title, String password, int round, int limit) {
+    public Flowable<MakeRoomResponse> makeSecretRoom(String title, String password, int round, int limit) {
         return api.makeSecretRoom(title, password, round, limit).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
