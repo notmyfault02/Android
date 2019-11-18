@@ -30,6 +30,7 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
         mainVm = ViewModelProviders.of(this).get(MainViewModel.class);
         binding.setViewmodel(mainVm);
         mainVm.getUser();
+        mainVm.getProfile();
     }
 
     public void onJoinClick(View view) {

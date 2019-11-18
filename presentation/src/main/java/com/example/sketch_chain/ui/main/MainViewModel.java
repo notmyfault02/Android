@@ -45,6 +45,7 @@ public class MainViewModel extends AndroidViewModel {
     void getUser() {
         repository.getUser().subscribe( s -> {
             userName.setValue(s.getName());
+            profile.setValue(s.getProfileImage());
             coin.setValue(s.getCoin());
             exp.setValue(s.getExp());
             level.setValue(s.getLevel());

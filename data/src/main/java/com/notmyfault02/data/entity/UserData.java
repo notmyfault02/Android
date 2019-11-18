@@ -48,6 +48,7 @@ public class UserData {
         int level;
         String name;
         String password;
+        String profileImage;
         List<String> roles;
         int score;
         String uid;
@@ -102,6 +103,10 @@ public class UserData {
     public void setPassword(String password) {
         this.getData().password = password;
     }
+
+    public String getProfileImage() {return getData().profileImage; }
+
+    public void setProfileImage(String profileImage) { this.getData().profileImage = profileImage; }
 
     public List<String> getRoles() {
         return getData().roles;

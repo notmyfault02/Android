@@ -29,7 +29,7 @@ public interface Api {
             @Query("limit") Integer limit
     );
 
-    @POST("/v1/room/secret}")
+    @POST("/v1/room/secret")
     Flowable<MakeRoomResponse> makeSecretRoom(
             @Query("title") String title,
             @Query("password") String password,
