@@ -116,31 +116,6 @@ public class Room {
 
     }
 
-    public Room(String name) {
-        this.name = name;
-    }
-
-    public Room(String name, String password, int round, int time) {
-        this.name = name;
-        this.password = password;
-        this.round = round;
-        this.time = time;
-    }
-
-    public Room(int roomId, String name, String password, int round, int time) {
-        this.name = name;
-        this.password = password;
-        this.round = round;
-        this.time = time;
-    }
-
-    public int getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
-    }
 
     public String getName() {
         return name;

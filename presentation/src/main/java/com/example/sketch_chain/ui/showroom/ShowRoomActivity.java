@@ -3,6 +3,7 @@ package com.example.sketch_chain.ui.showroom;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +24,7 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
     private ShowRoomAdapter adapter;
     private ArrayList<Room.RoomList> roomList = new ArrayList<>();
     private RecyclerView roomView;
+    private ImageView joinBtn;
 
     @Override
     public int getLayoutId() {
@@ -33,6 +35,8 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         adapter = new ShowRoomAdapter(getApplicationContext(), viewModel, roomList);
+        joinBtn = findViewById(R.id.roomlist_join_btn);
+        joinBtn.setEnabled(false);
 
         viewModel = ViewModelProviders.of(this).get(ShowRoomViewModel.class);
         binding.setViewModel(viewModel);
@@ -40,7 +44,14 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
         roomView.setAdapter(adapter);
         roomView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         viewModel.getRoomList();
-        //adapter.setRoomList(viewModel.items.getValue());
+
+        adapter.setItemClick(new ShowRoomAdapter.ItemClick() {
+            @Override
+            public void onClick(View v, int position) {
+                v.findViewById(R.id.showroom_name_tv).setBackground(getDrawable(R.drawable.disactivation_button_background));
+                joinBtn.setEnabled(true);
+            }
+        });
     }
 
     public void cancel(View view) {

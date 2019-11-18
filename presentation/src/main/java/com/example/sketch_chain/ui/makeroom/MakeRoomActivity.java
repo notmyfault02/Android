@@ -111,6 +111,11 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
                 return false;
         });
 
+        password.setOnKeyListener((v, keyCode, event) -> {
+            viewModel.password.setValue(password.getText().toString());
+            return false;
+        });
+
 
     }
 

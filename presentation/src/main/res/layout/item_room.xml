@@ -68,6 +68,7 @@
             app:layout_constraintVertical_bias="0.75" />
 
         <TextView
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/hufather120"
@@ -79,6 +80,19 @@
             app:layout_constraintStart_toEndOf="@+id/showroom_user_tv"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.75" />
+
+        <ImageView
+            android:id="@+id/room_isSecret_iv"
+            isSecretRoom="@{room.isSecret}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/lock" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

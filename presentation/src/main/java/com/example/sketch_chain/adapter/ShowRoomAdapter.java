@@ -2,6 +2,7 @@ package com.example.sketch_chain.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,20 @@ import java.util.ArrayList;
 public class ShowRoomAdapter extends RecyclerView.Adapter<ShowRoomAdapter.ShowRoomViewHolder> {
     Context context;
     ShowRoomViewModel viewModel;
+
+    public interface ItemClick {
+        void onClick(View v,int position);
+    }
+
+    ItemClick itemClick = null;
+
+    public ItemClick getItemClick() {
+        return itemClick;
+    }
+
+    public void setItemClick(ItemClick itemClick) {
+        this.itemClick = itemClick;
+    }
 
     ArrayList<Room.RoomList> roomList;
 
@@ -41,6 +56,12 @@ public class ShowRoomAdapter extends RecyclerView.Adapter<ShowRoomAdapter.ShowRo
     @Override
     public void onBindViewHolder(@NonNull ShowRoomViewHolder showRoomViewHolder, int i) {
         showRoomViewHolder.bind();
+
+        if(itemClick != null) {
+            showRoomViewHolder.itemView.setOnClickListener( v -> {
+                itemClick.onClick(v, i);
+            });
+        }
     }
 
     @Override
