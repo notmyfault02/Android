@@ -1,6 +1,6 @@
 package com.example.sketch_chain.entity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Room {
     int roomId;
@@ -9,31 +9,100 @@ public class Room {
     int round;
     int time;
 
-    public int getRound() {
-        return round;
+    private int code;
+    private ArrayList<RoomList> list;
+
+    public ArrayList<RoomList> getList() {
+        return list;
     }
 
-    public void setRound(int round) {
-        this.round = round;
+    public void setList(ArrayList<RoomList> list) {
+        this.list = list;
     }
 
-    public int getTime() {
-        return time;
+    private String msg;
+    private boolean success;
+
+    public int getCode() {
+        return code;
     }
 
-    public String getPassword() {
-        return password;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    List<User> people;
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public static class RoomList {
+        private int allPeople;
+        private int idx;
+        private boolean isSecret;
+        private String password;
+        private int readyPeople;
+        private String title;
+
+        public int getAllPeople() {
+            return allPeople;
+        }
+
+        public void setAllPeople(int allPeople) {
+            this.allPeople = allPeople;
+        }
+
+        public int getIdx() {
+            return idx;
+        }
+
+        public void setIdx(int idx) {
+            this.idx = idx;
+        }
+
+        public boolean isSecret() {
+            return isSecret;
+        }
+
+        public void setSecret(boolean secret) {
+            isSecret = secret;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public int getReadyPeople() {
+            return readyPeople;
+        }
+
+        public void setReadyPeople(int readyPeople) {
+            this.readyPeople = readyPeople;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+    }
 
     public Room() {
 

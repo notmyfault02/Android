@@ -13,7 +13,7 @@
 
         <variable
             name="room"
-            type="com.example.sketch_chain.entity.Room"/>
+            type="com.example.sketch_chain.entity.Room.RoomList"/>
 
     </data>
 
@@ -29,7 +29,7 @@
             android:layout_marginStart="10dp"
             android:fontFamily="@font/hufather120"
             android:lineSpacingExtra="1sp"
-            android:text="@{room.roomId}"
+            android:text="@{String.valueOf(room.idx)}"
             android:textColor="#707070"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +44,7 @@
             android:layout_marginStart="10dp"
             android:fontFamily="@font/hufather120"
             android:lineSpacingExtra="1sp"
-            android:text="@{room.name}"
+            android:text="@{room.title}"
             android:textColor="#707070"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -14,11 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitProvider {
     private static final String BASE_URL = "http://192.168.137.156:8080";
-    private static final String LOGIN_URL = "http://192.168.137.156:8080";
 
     private static final OkHttpClient.Builder builder = new OkHttpClient.Builder();
-
-    private static final PrefHelper prefHelper = new PrefHelper();
 
     public static Api getApi() {
         return getInstance().create(Api.class);
@@ -37,7 +34,7 @@ public class RetrofitProvider {
 
     public static Retrofit getLoginInstance() {
         return new Retrofit.Builder()
-                .baseUrl(LOGIN_URL)
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

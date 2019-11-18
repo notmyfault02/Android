@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ShowRoomBindingAdapter {
 
     @BindingAdapter("loadRoomList")
-    public static void loadRoomList(RecyclerView recyclerView, LiveData<ArrayList<Room>> datas) {
+    public static void loadRoomList(RecyclerView recyclerView, LiveData<ArrayList<Room.RoomList>> datas) {
         ShowRoomAdapter adapter = (ShowRoomAdapter)recyclerView.getAdapter();
         if (adapter != null) {
             adapter.setRoomList(datas.getValue());

@@ -3,7 +3,6 @@ package com.notmyfault02.data.remote;
 import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.entity.UserData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -20,19 +19,19 @@ public interface Api {
     @GET("/user/rank")
     Flowable<List<UserData>> getRanking();
 
-    @POST("/room")
-    Flowable<Response<Object>> makeRoom(@Body RoomData body);
+    @GET("/v1/rooms")
+    Flowable<RoomData> getRoomList();
+
+    @POST("/v1/room")
+    Flowable<Response<Object>> makeRoom(@Body String title);
+
+    @POST("/v1/room/secret")
+    Flowable<Response<Object>> makeSecretRoom(@Body String title);
 
     @GET("/room/search")
     Flowable<RoomData> searchRoom(@Query("title") String roomName);
 
-    @GET("/room/join")
-    Flowable<RoomData> joinRoom(@Query("roomId") int roomId);
-
     @POST("/user/item")
     Flowable<Response<String>> buyItem(@Query("type") int item);
-
-    @GET("/room")
-    Flowable<ArrayList<RoomData>> getRoomList();
 
 }

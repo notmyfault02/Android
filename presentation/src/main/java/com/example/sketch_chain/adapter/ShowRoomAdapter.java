@@ -17,16 +17,18 @@ public class ShowRoomAdapter extends RecyclerView.Adapter<ShowRoomAdapter.ShowRo
     Context context;
     ShowRoomViewModel viewModel;
 
-    ArrayList<Room> roomList;
+    ArrayList<Room.RoomList> roomList;
 
-    public void setRoomList(ArrayList<Room> roomList) {
+    public void setRoomList(ArrayList<Room.RoomList> roomList) {
+        if (roomList == null) return;
         this.roomList = roomList;
         notifyDataSetChanged();
     }
 
-    public ShowRoomAdapter(Context context, ShowRoomViewModel viewModel) {
+    public ShowRoomAdapter(Context context, ShowRoomViewModel viewModel, ArrayList<Room.RoomList> roomList) {
         this.context = context;
         this.viewModel = viewModel;
+        this.roomList = roomList;
     }
 
     @NonNull

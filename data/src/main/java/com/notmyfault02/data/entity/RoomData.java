@@ -1,84 +1,76 @@
 package com.notmyfault02.data.entity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class RoomData {
-    private int roomId;
-    private String name;
-    private String password;
-    private boolean secret = false;
-    private int round;
+    private int code;
 
-    public void setTime(int time) {
-        this.time = time;
+    public ArrayList<RoomList> getList() {
+        return list;
     }
 
-    private int time;
-
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setList(ArrayList<RoomList> list) {
+        this.list = list;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    private ArrayList<RoomList> list;
+    private String msg;
+    private boolean success;
+
+    public int getCode() {
+        return code;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public void setSecret(boolean secret) {
-        this.secret = secret;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setRound(int round) {
-        this.round = round;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public int getRoomId() {
-        return roomId;
+    public boolean isSuccess() {
+        return success;
     }
 
-    public String getName() {
-        return name;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
-    public String getPassword() {
-        return password;
-    }
+    public static class RoomList {
+        private int allPeople;
+        private int idx;
+        private boolean isSecret;
+        private String password;
+        private int readyPeople;
+        private String title;
 
-    public boolean isSecret() {
-        return secret;
-    }
+        public int getAllPeople() {
+            return allPeople;
+        }
 
-    public int getRound() {
-        return round;
-    }
+        public int getIdx() {
+            return idx;
+        }
 
-    public List<UserData> getPeople() {
-        return people;
-    }
+        public boolean isSecret() {
+            return isSecret;
+        }
 
-    public int getTime() {
-        return time;
-    }
+        public String getPassword() {
+            return password;
+        }
 
-    private List<UserData> people;
+        public int getReadyPeople() {
+            return readyPeople;
+        }
 
-    public RoomData() {
-
-    }
-
-    public RoomData(int roomId, String name) {
-        this.roomId = roomId;
-        this.name = name;
-        this.secret = false;
-    }
-
-    public RoomData(int roomId, String name, String password) {
-        this.roomId = roomId;
-        this.name = name;
-        this.password = password;
-        this.secret = true;
+        public String getTitle() {
+            return title;
+        }
     }
 }

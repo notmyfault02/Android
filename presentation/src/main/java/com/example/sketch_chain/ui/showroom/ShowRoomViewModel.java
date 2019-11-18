@@ -16,13 +16,13 @@ import java.util.ArrayList;
 
 public class ShowRoomViewModel extends AndroidViewModel {
 
-    MutableLiveData<ArrayList<Room>> items = new MutableLiveData<>();
+    MutableLiveData<ArrayList<Room.RoomList>> items = new MutableLiveData<>();
 
-    ArrayList<Room> raw = new ArrayList<>();
+    ArrayList<Room.RoomList> raw = new ArrayList<>();
 
     private RoomRepository roomRepository = new RoomRepository();
 
-    public MutableLiveData<ArrayList<Room>> getItems() {
+    public MutableLiveData<ArrayList<Room.RoomList>> getItems() {
         return items;
     }
 
@@ -33,12 +33,14 @@ public class ShowRoomViewModel extends AndroidViewModel {
 
     void getRoomList() {
         roomRepository.getRoomList().subscribe( s -> {
-            for(RoomData roomEntity: s) {
+            for(RoomData.RoomList roomEntity: s.getList()) {
                 raw.add(RoomMapper.mapFrom(roomEntity));
             }
             items.setValue(raw);
+            Log.d("showRoom", "okay");
+
         }, throwable -> {
-            Log.d("showRoom", "getRoomList : " + throwable);
+            Log.d("showRoom", "getRoomList : " + throwable.getLocalizedMessage());
         });
     }
 }
