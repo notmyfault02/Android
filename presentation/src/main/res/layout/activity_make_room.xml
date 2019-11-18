@@ -339,6 +339,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:ems="6"
+            android:maxLength="8"
             android:fontFamily="@font/hufathers"
             android:gravity="center"
             android:inputType="textPersonName"
@@ -349,15 +350,16 @@
             app:layout_constraintStart_toStartOf="@+id/make_room_background_iv" />
 
         <EditText
+            android:id="@+id/makeroom_password_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
             android:ems="6"
-            android:text="@={vm.password}"
             android:fontFamily="@font/hufathers"
             android:gravity="center"
             android:inputType="numberPassword"
             android:lineSpacingExtra="1sp"
+            android:text="@={vm.password}"
             android:textColor="#ffffff"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/pw_underline_iv"

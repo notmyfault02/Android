@@ -26,7 +26,14 @@ public class RoomMapper {
         return data;
     }
 
-//    public static RoomData.RoomList mapTo(Room.RoomList to) {
-//        RoomData.RoomList room = new RoomData.RoomList();
-//    }
+    public static RoomData.RoomList mapTo(Room.RoomList to) {
+        RoomData.RoomList room = new RoomData.RoomList();
+        room.setIdx(to.getIdx());
+        room.setTitle(to.getTitle());
+        room.setAllPeople(to.getAllPeople());
+        room.setPassword(to.getPassword());
+        room.setReadyPeople(to.getReadyPeople());
+        room.setSecret(to.isSecret());
+        return room;
+    }
 }

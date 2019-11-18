@@ -13,8 +13,12 @@ public class RoomRepository {
 
     private Api api = RetrofitProvider.getApi();
 
-    public Flowable<Response<Object>> makeRoom(String title) {
-        return api.makeRoom(title).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Flowable<Response<Object>> makeRoom(String title, int round, int limit) {
+        return api.makeRoom(title, round, limit).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Flowable<Response<Object>> makeSecretRoom(String title, String password, int round, int limit) {
+        return api.makeSecretRoom(title, password, round, limit).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Flowable<RoomData> getSearchRoom(String query) {

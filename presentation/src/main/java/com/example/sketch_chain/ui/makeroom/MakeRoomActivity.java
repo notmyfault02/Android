@@ -26,6 +26,7 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
     }
 
     private EditText roomName;
+    private EditText password;
     private Button makingBtn;
 
     private RadioGroup roundRadio;
@@ -38,6 +39,7 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
         viewModel = ViewModelProviders.of(this).get(MakeRoomViewModel.class);
 
         roomName = findViewById(R.id.room_name_et);
+        password = findViewById(R.id.makeroom_password_et);
         makingBtn = findViewById(R.id.making_confirm_btn);
         roundRadio = findViewById(R.id.makeroom_round_rg);
         timeRadio = findViewById(R.id.makeroom_time_rg);
@@ -85,7 +87,11 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
         });
 
         makingBtn.setOnClickListener(v -> {
-            viewModel.makeRoom();
+            if (password.getText() == null) {
+                viewModel.makeRoom();
+            } else {
+                viewModel.makeSecretRoom();
+            }
             Intent intent = new Intent(getApplicationContext(), WaitingRoomActivity.class);
             intent.putExtra("roomName", roomName.getText().toString());
             startActivity(intent);

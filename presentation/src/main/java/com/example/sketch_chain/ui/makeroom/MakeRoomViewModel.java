@@ -1,12 +1,12 @@
 package com.example.sketch_chain.ui.makeroom;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.sketch_chain.entity.Room;
 import com.notmyfault02.data.repository.RoomRepository;
 
 public class MakeRoomViewModel extends AndroidViewModel {
@@ -39,17 +39,29 @@ public class MakeRoomViewModel extends AndroidViewModel {
     }
 
     void makeRoom() {
-        Room room = new Room(
-          roomName.getValue(),
-          password.getValue(),
-          round.getValue(),
-          time.getValue()
-        );
 
-//        roomRepository.makeRoom(RoomMapper.mapTo(room)).subscribe(s -> {
-//
-//        }, throwable -> {
-//            Log.d("makeRoom", throwable.getLocalizedMessage());
-//        });
+        roomRepository.makeRoom(
+                roomName.getValue(),
+                round.getValue(),
+                time.getValue()
+                ).subscribe(s -> {
+            Log.d("makeRoom", "okay");
+            Log.d("makeRoom", "" + s.code());
+        }, throwable -> {
+            Log.d("makeRoom", throwable.getLocalizedMessage());
+        });
+    }
+
+    void makeSecretRoom() {
+        roomRepository.makeSecretRoom(
+                roomName.getValue(),
+                password.getValue(),
+                round.getValue(),
+                time.getValue()
+        ).subscribe( s -> {
+            Log.d("makeSecretRoom", "" + s.code());
+        }, throwable -> {
+            Log.d("makeSecretRoom", "" + throwable.getLocalizedMessage());
+        });
     }
 }

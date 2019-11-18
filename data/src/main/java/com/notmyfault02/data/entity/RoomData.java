@@ -49,6 +49,30 @@ public class RoomData {
         private int readyPeople;
         private String title;
 
+        public void setAllPeople(int allPeople) {
+            this.allPeople = allPeople;
+        }
+
+        public void setIdx(int idx) {
+            this.idx = idx;
+        }
+
+        public void setSecret(boolean secret) {
+            isSecret = secret;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public void setReadyPeople(int readyPeople) {
+            this.readyPeople = readyPeople;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
         public int getAllPeople() {
             return allPeople;
         }

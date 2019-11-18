@@ -55,6 +55,14 @@ public class Room {
         private int readyPeople;
         private String title;
 
+        public RoomList() {
+
+        }
+
+        public RoomList(String title) {
+            this.title = title;
+        }
+
         public int getAllPeople() {
             return allPeople;
         }
