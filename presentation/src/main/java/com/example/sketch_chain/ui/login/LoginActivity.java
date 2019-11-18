@@ -79,24 +79,10 @@ public class LoginActivity extends AppCompatActivity {
         @SuppressLint("CheckResult")
         @Override
         public void onSessionOpened() {
-            Log.d("token", Session.getCurrentSession().getAccessToken());
-            loginApi.signUp(Session.getCurrentSession().getAccessToken())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe( body -> {
-                        prefHelper.setToken(body.getData());
-                        redirectMainActivity();
-                    }, throwable -> { Log.d("signup", throwable.getLocalizedMessage());}
-                    );
-            loginApi.signIn(Session.getCurrentSession().getAccessToken())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe( body -> {
-                        prefHelper.setToken(body.getData());
-                        redirectMainActivity();
-                    }, throwable -> {
-                        Log.d("signin", throwable.getLocalizedMessage());
-            });
+            if (prefHelper.getToken().isEmpty())
+                signup();
+            else login();
+
         }
 
         @Override
@@ -110,5 +96,29 @@ public class LoginActivity extends AppCompatActivity {
         final Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void signup() {
+        Log.d("token", Session.getCurrentSession().getAccessToken());
+        loginApi.signUp(Session.getCurrentSession().getAccessToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe( body -> {
+                            prefHelper.setToken(body.getData());
+                            login();
+                        }, throwable -> { Log.d("signup", throwable.getLocalizedMessage());}
+                );
+    }
+
+    public void login() {
+        loginApi.signIn(Session.getCurrentSession().getAccessToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe( body -> {
+                    prefHelper.setToken(body.getData());
+                    redirectMainActivity();
+                }, throwable -> {
+                    Log.d("signin", throwable.getLocalizedMessage());
+                });
     }
 }
