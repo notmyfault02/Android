@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
-import com.github.nkzawa.socketio.client.IO;
-import com.github.nkzawa.socketio.client.Socket;
 import com.kakao.auth.ApprovalType;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.IApplicationConfig;
@@ -13,8 +11,6 @@ import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
 import com.notmyfault02.data.local.PrefHelper;
-
-import java.net.URISyntaxException;
 
 public class GlobalApplication extends Application {
 
@@ -76,19 +72,6 @@ public class GlobalApplication extends Application {
         PrefHelper.getInstance().init(getGlobalApplicationContext());
         KakaoSDK.init(new KakaoSDKAdapter());
 
-    }
-
-    private Socket socket;
-    {
-        try {
-            socket = IO.socket("https://");
-        }catch (URISyntaxException e) {
-            //throw new RuntimeException(e);
-        }
-    }
-
-    public Socket getSocket() {
-        return socket;
     }
 
 }

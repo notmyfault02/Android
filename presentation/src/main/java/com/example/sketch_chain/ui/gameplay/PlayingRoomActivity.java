@@ -21,6 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.adapter.InGameChatAdapter;
 import com.example.sketch_chain.entity.Message;
+import com.koushikdutta.async.ByteBufferList;
+import com.koushikdutta.async.DataEmitter;
+import com.koushikdutta.async.callback.DataCallback;
+import com.koushikdutta.async.http.AsyncHttpClient;
+import com.koushikdutta.async.http.WebSocket;
 
 import java.util.ArrayList;
 
@@ -92,6 +97,29 @@ public class PlayingRoomActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing_room);
+
+        AsyncHttpClient.getDefaultInstance().websocket("", "my-protocol", new AsyncHttpClient.WebSocketConnectCallback() {
+            @Override
+            public void onCompleted(Exception ex, WebSocket webSocket) {
+                if (ex != null) {
+                    ex.printStackTrace();
+                    return;
+                }
+                webSocket.send("a string");
+                webSocket.send(new byte[10]);
+                webSocket.setStringCallback(new WebSocket.StringCallback() {
+                    public void onStringAvailable(String s) {
+                        System.out.println("I got a string: " + s);
+                    }
+                });
+                webSocket.setDataCallback(new DataCallback() {
+                    public void onDataAvailable(DataEmitter emitter, ByteBufferList byteBufferList) {
+                        System.out.println("I got some bytes!");
+                        byteBufferList.recycle();
+                    }
+                });
+            }
+        });
 
         final MyView m = new MyView(getApplicationContext());
         frameLayout = findViewById(R.id.playing_draw_layout);

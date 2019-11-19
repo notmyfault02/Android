@@ -14,6 +14,7 @@ import com.example.sketch_chain.adapter.ShowRoomAdapter;
 import com.example.sketch_chain.databinding.ActivityShowRoomBinding;
 import com.example.sketch_chain.entity.Room;
 import com.example.sketch_chain.ui.SearchRoomActivity;
+import com.example.sketch_chain.ui.gameplay.WaitingRoomActivity;
 import com.example.sketch_chain.util.DataBindingActivity;
 
 import java.util.ArrayList;
@@ -51,6 +52,10 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
                 v.findViewById(R.id.showroom_name_tv).setBackground(getDrawable(R.drawable.disactivation_button_background));
                 joinBtn.setEnabled(true);
             }
+        });
+
+        joinBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, WaitingRoomActivity.class));
         });
     }
 

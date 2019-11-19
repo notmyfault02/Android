@@ -12,14 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.sketch_chain.R;
-import com.github.nkzawa.socketio.client.Socket;
 
 public class NormalReadyFragment extends Fragment {
 
     private Button readyBtn;
     private TextView content;
     private boolean isReady = false;
-    private Socket mSocket;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,9 +33,6 @@ public class NormalReadyFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //SocketApplication app = (SocketApplication) getActivity().getApplication();
-        //mSocket = app.getSocket();
 
         readyBtn = getActivity().findViewById(R.id.normal_release_btn);
         content = getActivity().findViewById(R.id.normal_ready_tv);
