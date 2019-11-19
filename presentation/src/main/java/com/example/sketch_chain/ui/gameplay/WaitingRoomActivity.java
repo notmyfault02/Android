@@ -1,8 +1,6 @@
 package com.example.sketch_chain.ui.gameplay;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,17 +19,16 @@ import com.example.sketch_chain.entity.Message;
 import com.example.sketch_chain.entity.User;
 import com.example.sketch_chain.ui.GmReadyFragment;
 import com.example.sketch_chain.ui.NormalReadyFragment;
-import com.github.nkzawa.emitter.Emitter;
-import com.github.nkzawa.socketio.client.Socket;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.koushikdutta.async.ByteBufferList;
+import com.koushikdutta.async.DataEmitter;
+import com.koushikdutta.async.callback.DataCallback;
+import com.koushikdutta.async.http.AsyncHttpClient;
+import com.koushikdutta.async.http.WebSocket;
 
 import java.util.ArrayList;
 
 public class WaitingRoomActivity extends AppCompatActivity {
 
-    private Socket mSocket;
     private ArrayList<User> gamers = new ArrayList<User>();
     private ArrayList<Message> messages = new ArrayList<>();
     private ArrayList<User> readys = new ArrayList<>();
@@ -52,17 +49,32 @@ public class WaitingRoomActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        SocketApplication app = (SocketApplication) getApplication();
-//        mSocket = app.getSocket();
-//        mSocket.on("user joined", onGamerJoined);
-//        mSocket.on("new message", onNewMessage);
-//        mSocket.on("ready user", onReady);
-//        mSocket.on("user left", onGamerLefted);
-//        mSocket.on("user notready", onNotReady);
-//        mSocket.connect();
-
         setContentView(R.layout.activity_wating_room);
+
+        AsyncHttpClient.getDefaultInstance().websocket("", "my-protocol", new AsyncHttpClient.WebSocketConnectCallback() {
+            @Override
+            public void onCompleted(Exception ex, WebSocket webSocket) {
+                if (ex != null) {
+                    ex.printStackTrace();
+                    return;
+                }
+                webSocket.send("a string");
+                webSocket.send(new byte[10]);
+                webSocket.setStringCallback(new WebSocket.StringCallback() {
+                    public void onStringAvailable(String s) {
+                        System.out.println("I got a string: " + s);
+                    }
+                });
+                webSocket.setDataCallback(new DataCallback() {
+                    public void onDataAvailable(DataEmitter emitter, ByteBufferList byteBufferList) {
+                        System.out.println("I got some bytes!");
+                        // note that this data has been read
+                        byteBufferList.recycle();
+                    }
+                });
+                }
+            });
+
         exit = findViewById(R.id.out_room_iv);
         chatEt = findViewById(R.id.wating_input_chat_et);
         sendBtn = findViewById(R.id.send_button_tv);
@@ -132,100 +144,6 @@ public class WaitingRoomActivity extends AppCompatActivity {
         readys.add(new User(username));
         gamerListAdapter.notifyDataSetChanged();
     }
-
-    private Emitter.Listener onReady = new Emitter.Listener() {
-        @Override
-        public void call(Object... args) {
-            runOnUiThread(() -> {
-                JSONObject data = (JSONObject) args[0];
-                String username = "";
-                try {
-                    username = data.getString("username");
-                } catch (JSONException e) {
-                    Log.e("waitingroom", e.getLocalizedMessage());
-                }
-                if (username == "" || username.isEmpty()) {
-
-                } else {
-                    addReadyUser(username);
-                }
-            });
-        }
-    };
-
-    private Emitter.Listener onNotReady = new Emitter.Listener() {
-        @Override
-        public void call(Object... args) {
-            runOnUiThread(() -> {
-                JSONObject data = (JSONObject) args[0];
-                String username = "";
-                try {
-                    username = data.getString("username");
-                } catch (JSONException e) {
-                    Log.e("error", e.getLocalizedMessage());
-                }
-                removeReadyUser(username);
-            });
-        }
-    };
-
-    private Emitter.Listener onGamerJoined = new Emitter.Listener() {
-        @Override
-        public void call(Object... args) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    JSONObject data = (JSONObject) args[0];
-                    String username;
-                    try {
-                        username = data.getString("username");
-                    } catch (JSONException e) {
-                        Log.e("waitingroom", e.getMessage());
-                        return;
-                    }
-                    addUser(username);
-
-                }
-            });
-        }
-    };
-
-    private Emitter.Listener onGamerLefted = new Emitter.Listener() {
-        @Override
-        public void call(Object... args) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    JSONObject data = (JSONObject) args[0];
-                    String username = "";
-                    try {
-                        username = data.getString("username");
-                    } catch (JSONException e) {
-                        Log.e("error", e.getLocalizedMessage());
-                    }
-                    removeUser(username);
-                }
-            });
-        }
-    };
-
-    private Emitter.Listener onNewMessage = new Emitter.Listener() {
-        @Override
-        public void call(Object... args) {
-            runOnUiThread(() -> {
-                JSONObject data = (JSONObject) args[0];
-                String username = "";
-                String message = null;
-                try {
-                    username = data.getString("username");
-                    message = data.getString("message");
-                }catch (JSONException e) {
-                    Log.e("waitingroom", e.getMessage());
-                }
-                addMessage(username, message);
-            });
-        }
-    };
 
     private void scrollToBottom() {
         chatView.scrollToPosition(chatAdapter.getItemCount() - 1);
