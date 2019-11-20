@@ -10,10 +10,11 @@ import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.ui.main.MainActivity;
+import com.example.sketch_chain.util.DataBindingActivity;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.util.exception.KakaoException;
@@ -27,7 +28,14 @@ import java.security.MessageDigest;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends DataBindingActivity {
+    private LoginViewModel loginViewModel;
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_login;
+    }
+
     //kakao
     private SessionCallback callback;
     private LoginApi loginApi = RetrofitProvider.getLoginApi();
@@ -36,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         prefHelper = PrefHelper.getInstance();
         prefHelper.init(this);
         callback = new SessionCallback();
