@@ -10,11 +10,10 @@ import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.ui.main.MainActivity;
-import com.example.sketch_chain.util.DataBindingActivity;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.util.exception.KakaoException;
@@ -28,13 +27,8 @@ import java.security.MessageDigest;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class LoginActivity extends DataBindingActivity {
+public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_login;
-    }
 
     //kakao
     private SessionCallback callback;
@@ -44,7 +38,7 @@ public class LoginActivity extends DataBindingActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        setContentView(R.layout.activity_login);
         prefHelper = PrefHelper.getInstance();
         prefHelper.init(this);
         callback = new SessionCallback();
@@ -111,10 +105,13 @@ public class LoginActivity extends DataBindingActivity {
         loginApi.signUp(Session.getCurrentSession().getAccessToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe( body -> {
+                .subscribe(body -> {
                             prefHelper.setToken(body.getData());
                             login();
-                        }, throwable -> { Log.d("signup", throwable.getLocalizedMessage());}
+                        }, throwable -> {
+                            Log.d("signup", throwable.getLocalizedMessage());
+                            login();
+                        }
                 );
     }
 

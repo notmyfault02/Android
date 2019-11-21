@@ -1,6 +1,7 @@
 package com.example.sketch_chain.ui.gameplay;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,12 +20,14 @@ import com.example.sketch_chain.entity.Message;
 import com.example.sketch_chain.entity.User;
 import com.example.sketch_chain.ui.GmReadyFragment;
 import com.example.sketch_chain.ui.NormalReadyFragment;
-import com.koushikdutta.async.ByteBufferList;
-import com.koushikdutta.async.DataEmitter;
-import com.koushikdutta.async.callback.DataCallback;
-import com.koushikdutta.async.http.AsyncHttpClient;
-import com.koushikdutta.async.http.WebSocket;
 
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.handshake.ServerHandshake;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class WaitingRoomActivity extends AppCompatActivity {
@@ -32,6 +35,8 @@ public class WaitingRoomActivity extends AppCompatActivity {
     private ArrayList<User> gamers = new ArrayList<User>();
     private ArrayList<Message> messages = new ArrayList<>();
     private ArrayList<User> readys = new ArrayList<>();
+
+    private WebSocketClient mWebSocketClient;
 
     private ImageView exit;
 
@@ -51,30 +56,6 @@ public class WaitingRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wating_room);
 
-        AsyncHttpClient.getDefaultInstance().websocket("", "my-protocol", new AsyncHttpClient.WebSocketConnectCallback() {
-            @Override
-            public void onCompleted(Exception ex, WebSocket webSocket) {
-                if (ex != null) {
-                    ex.printStackTrace();
-                    return;
-                }
-                webSocket.send("a string");
-                webSocket.send(new byte[10]);
-                webSocket.setStringCallback(new WebSocket.StringCallback() {
-                    public void onStringAvailable(String s) {
-                        System.out.println("I got a string: " + s);
-                    }
-                });
-                webSocket.setDataCallback(new DataCallback() {
-                    public void onDataAvailable(DataEmitter emitter, ByteBufferList byteBufferList) {
-                        System.out.println("I got some bytes!");
-                        // note that this data has been read
-                        byteBufferList.recycle();
-                    }
-                });
-                }
-            });
-
         exit = findViewById(R.id.out_room_iv);
         chatEt = findViewById(R.id.wating_input_chat_et);
         sendBtn = findViewById(R.id.send_button_tv);
@@ -91,10 +72,16 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         gamers.add(new User("dddd"));
 
+        connectSocket();
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        transaction.replace(R.id.wating_who_frame, gmReadyFragment);
+        if (getIntent().getStringExtra("user") == "user") {
+            transaction.replace(R.id.wating_who_frame, normalReadyFragment);
+        } else {
+            transaction.replace(R.id.wating_who_frame, gmReadyFragment);
+        }
         transaction.commit();
 
         exit.setOnClickListener(v -> {
@@ -106,17 +93,20 @@ public class WaitingRoomActivity extends AppCompatActivity {
         });
     }
 
-    private void addMessage(String username, String message) {
+    private void addMessage(String username, String message){
         messages.add(new Message(username, message));
+//        JSONObject userMessage = new JSONObject();
+//        userMessage.put("name", username);
+//        userMessage.put("message", message);
+//        mWebSocketClient.send(userMessage.toString());
         chatAdapter.notifyItemInserted(messages.size()-1);
         scrollToBottom();
     }
 
     private void sendMessage() {
         String message = chatEt.getText().toString();
-            addMessage("영래", message);
+        addMessage("영래", message);
         chatEt.setText("");
-
     }
 
     private void removeUser(String username) {
@@ -147,6 +137,60 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
     private void scrollToBottom() {
         chatView.scrollToPosition(chatAdapter.getItemCount() - 1);
+    }
+
+    private void connectSocket() {
+        URI uri;
+        try {
+            uri = new URI("ws://192.168.137.156:9000/ws/chat");
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+            return;
+        }
+        mWebSocketClient = new WebSocketClient(uri) {
+            @Override
+            public void onOpen(ServerHandshake serverHandshake) {
+                Log.i("Websocket", "Opened");
+                JSONObject userJoin = new JSONObject();
+                try {
+                    userJoin.put("username", "username");
+                    mWebSocketClient.send(userJoin.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onMessage(String s) {
+                final String message = s;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        EditText chatEt = findViewById(R.id.wating_input_chat_et);
+                        JSONObject json = new JSONObject();
+                        chatEt.setText(chatEt.getText() + "\n" + message);
+                    }
+                });
+            }
+
+
+            @Override
+            public void onClose(int i, String s, boolean b) {
+                Log.i("Websocket", "Closed " + s);
+            }
+            @Override
+            public void onError(Exception e) {
+                Log.i("Websocket", "Error " + e.getMessage());
+            }
+
+        };
+
+        mWebSocketClient.connect();
+    }
+
+    private void sendJoin() throws JSONException {
+        JSONObject user = new JSONObject();
+        user.put("name", "name");
+        mWebSocketClient.send(user.toString());
     }
 
 }
