@@ -1,4 +1,4 @@
-package com.example.sketch_chain.ui;
+package com.example.sketch_chain.ui.gameplay;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

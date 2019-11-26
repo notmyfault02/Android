@@ -166,6 +166,7 @@
         android:orientation="horizontal"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="4dp"
+        tools:listitem="@layout/item_gamer"
         app:layout_constraintBottom_toTopOf="@+id/waiting_chat_layout"
         app:layout_constraintEnd_toEndOf="@+id/waiting_chat_layout"
         app:layout_constraintStart_toStartOf="@+id/waiting_chat_layout">

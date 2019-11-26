@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.GmReadyFragment">
+    tools:context=".ui.gameplay.GmReadyFragment">
 
     <TextView
         android:id="@+id/gm_ready_tv"

@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.databinding.ActivityMakeRoomBinding;
-import com.example.sketch_chain.ui.gameplay.WaitingRoomActivity;
+import com.example.sketch_chain.ui.gameplay.InGameActivity;
 import com.example.sketch_chain.util.DataBindingActivity;
 
 public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBinding> {
@@ -89,11 +89,13 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
 
         makingBtn.setOnClickListener(v -> {
             if (password.getText() == null || password.getText().toString().isEmpty()) {
+                viewModel.roomName.setValue(roomName.getText().toString());
                 viewModel.makeRoom();
             } else {
+                viewModel.roomName.setValue(roomName.getText().toString());
                 viewModel.makeSecretRoom();
             }
-            Intent intent = new Intent(getApplicationContext(), WaitingRoomActivity.class);
+            Intent intent = new Intent(getApplicationContext(), InGameActivity.class);
             intent.putExtra("roomName", roomName.getText().toString());
             startActivity(intent);
             finish();
@@ -104,7 +106,6 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
                     if (TextUtils.isEmpty(roomName.getText().toString())) {
                         makingBtn.setEnabled(false);
                     } else {
-                        viewModel.roomName.setValue(roomName.getText().toString());
                         makingBtn.setEnabled(true);
                     }
                 }

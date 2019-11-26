@@ -1,7 +1,8 @@
-package com.example.sketch_chain.ui;
+package com.example.sketch_chain.ui.gameplay;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +15,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.sketch_chain.R;
-import com.example.sketch_chain.ui.gameplay.PlayingRoomActivity;
 
 public class GmReadyFragment extends Fragment {
 
     private Button startBtn;
     private TextView content;
     private boolean isAllReady = true;
+    private Activity activity;
 
     public GmReadyFragment() {
     }
@@ -51,17 +52,20 @@ public class GmReadyFragment extends Fragment {
         }
 
         startBtn.setOnClickListener(v -> {
-            //mSocket.emit("start", "start");
             if (isAllReady == false) {
                 Toast.makeText(getActivity().getApplicationContext(),"모두 준비상태여야 합니다.", Toast.LENGTH_SHORT).show();
             } else {
-                //mSocket.emit("start", "start");
-                Intent intent = new Intent(getContext(), PlayingRoomActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+                TextView tv = getActivity().findViewById(R.id.room_name_tv);
+                //Intent intent = new Intent(getContext(), PlayingRoomActivity.class);
+                Log.d("roomName", tv.getText().toString());
+                //intent.putExtra("roomName", tv.getText().toString());
+                //startActivity(intent);
+                //getActivity().finish();
+                ((InGameActivity)getActivity()).replaceFragment(new PlayFragment());
             }
         });
 
     }
+
 
 }

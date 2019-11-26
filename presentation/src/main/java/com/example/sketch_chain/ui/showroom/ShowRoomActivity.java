@@ -14,7 +14,7 @@ import com.example.sketch_chain.adapter.ShowRoomAdapter;
 import com.example.sketch_chain.databinding.ActivityShowRoomBinding;
 import com.example.sketch_chain.entity.Room;
 import com.example.sketch_chain.ui.SearchRoomActivity;
-import com.example.sketch_chain.ui.gameplay.WaitingRoomActivity;
+import com.example.sketch_chain.ui.gameplay.InGameActivity;
 import com.example.sketch_chain.util.DataBindingActivity;
 
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
         });
 
         joinBtn.setOnClickListener(v -> {
-            startActivity(new Intent(this, WaitingRoomActivity.class));
+            startActivity(new Intent(this, InGameActivity.class));
         });
     }
 
