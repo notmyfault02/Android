@@ -8,6 +8,7 @@ public class PrefHelper {
 
     private static String PREF_NAME = "com.example.sketch_chain";
     private static String TOKEN = "ACCESS_TOKEN";
+    private static String NAME = "NAME";
     private SharedPreferences sharePreference;
 
     private static PrefHelper prefHelper;
@@ -36,4 +37,20 @@ public class PrefHelper {
         SharedPreferences.Editor editor = sharePreference.edit();
         editor.remove(TOKEN).commit();
     }
+
+    public String getName() {
+        return sharePreference.getString(NAME, "");
+    }
+
+    public void setName(String name) {
+        SharedPreferences.Editor editor = sharePreference.edit();
+        editor.putString(NAME, name).commit();
+    }
+
+    public void deleteName() {
+        sharePreference.edit().remove(NAME).apply();
+        SharedPreferences.Editor editor = sharePreference.edit();
+        editor.remove(NAME).commit();
+    }
+
 }

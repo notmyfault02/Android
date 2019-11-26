@@ -10,7 +10,7 @@
         android:fontFamily="@font/hufathers"
         android:gravity="center_horizontal"
         android:singleLine="true"
-        android:text="ddd"
+        android:text=""
         android:textColor="#ffffff"
         android:textSize="16sp" />
 </LinearLayout>

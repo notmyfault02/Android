@@ -24,19 +24,34 @@ public class WaitingChatAdapter extends RecyclerView.Adapter<WaitingChatAdapter.
     @NonNull
     @Override
     public WaitingChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat, parent, false);
+        int layout = -1;
+        switch (viewType) {
+            case Message.TYPE_MESSAGE:
+                layout = R.layout.item_chat;
+                break;
+            case Message.TYPE_SYSTEM:
+                layout = R.layout.item_system;
+                break;
+        }
+        View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         return new WaitingChatViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull WaitingChatViewHolder holder, int position) {
         Message message = messages.get(position);
-        holder.bind(message.getUsername(), message.getMessage());
+        holder.setUserName(message.getUsername());
+        holder.setMessage(message.getMessage());
     }
 
     @Override
     public int getItemCount() {
         return messages.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return messages.get(position).getmType();
     }
 
     class WaitingChatViewHolder extends RecyclerView.ViewHolder {
@@ -45,12 +60,20 @@ public class WaitingChatAdapter extends RecyclerView.Adapter<WaitingChatAdapter.
 
         public WaitingChatViewHolder(@NonNull View itemView) {
             super(itemView);
+
             usernameView = itemView.findViewById(R.id.user_name_tv);
             messageView = itemView.findViewById(R.id.chat_content_tv);
         }
 
-        void bind(String username, String message) {
+        void setUserName(String username) {
+            if (null == usernameView) {
+                return;
+            }
             usernameView.setText(username);
+        }
+
+        void setMessage(String message) {
+            if (null == messageView) return;
             messageView.setText(message);
         }
     }
