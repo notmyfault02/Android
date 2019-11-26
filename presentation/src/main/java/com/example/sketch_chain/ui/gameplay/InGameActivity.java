@@ -3,7 +3,6 @@ package com.example.sketch_chain.ui.gameplay;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,7 +36,7 @@ public class InGameActivity extends AppCompatActivity {
     private ArrayList<Message> messages = new ArrayList<>();
     private ArrayList<User> readys = new ArrayList<>();
 
-    private WebSocketClient mWebSocketClient;
+    public WebSocketClient mWebSocketClient;
 
     private ImageView exit;
     private EditText chatEt;
@@ -46,13 +45,12 @@ public class InGameActivity extends AppCompatActivity {
 
     private RecyclerView chatView;
     private RecyclerView userView;
-    private FrameLayout frameLayout;
     private WaitingChatAdapter chatAdapter;
     private GamerListAdapter gamerListAdapter;
 
     private JsonChanger jsonChanger = new JsonChanger();
 
-    private PrefHelper prefHelper = null;
+    public PrefHelper prefHelper = null;
 
     Fragment gmReadyFragment = new GmReadyFragment();
     Fragment normalReadyFragment = new NormalReadyFragment();
@@ -62,9 +60,8 @@ public class InGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_game);
 
-        //final MyView m = new DrawPad.MyView(getApplicationContext());
-        //frameLayout = findViewById(R.id.play_draw_frame);
-        //frameLayout.addView(m);
+        connectSocket();
+
         prefHelper = PrefHelper.getInstance();
         prefHelper.init(this);
 
@@ -82,8 +79,6 @@ public class InGameActivity extends AppCompatActivity {
         chatView = findViewById(R.id.waiting_chat_layout);
         chatView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         chatView.setAdapter(chatAdapter);
-
-        connectSocket();
 
         if (getIntent().getStringExtra("user") == "user") {
             replaceFragment(normalReadyFragment);
@@ -119,22 +114,23 @@ public class InGameActivity extends AppCompatActivity {
                     userJoin.put("chatRoomId", getIntent().getStringExtra("roomName"));
                     userJoin.put("type", "JOIN");
                     userJoin.put("writer", prefHelper.getName());
-                    mWebSocketClient.send(userJoin.toString());
-                    messages.add(new Message(Message.TYPE_SYSTEM, prefHelper.getName(), prefHelper.getName() + "님이 입장했습니다."));
-                    chatAdapter.notifyItemInserted(messages.size() -1);
-                    addUser(prefHelper.getName());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                mWebSocketClient.send(userJoin.toString());
+                messages.add(new Message(Message.TYPE_SYSTEM, prefHelper.getName(), prefHelper.getName() + "님이 입장했습니다."));
+                chatAdapter.notifyItemInserted(messages.size() -1);
+                addUser(prefHelper.getName());
             }
             @Override
             public void onMessage(String s) {
+                Log.d("onMessage", s);
                 Message message = jsonChanger.messageToString(s);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        messages.add(message);
-//                        chatAdapter.notifyItemInserted(messages.size()-1);
+                        messages.add(message);
+                        chatAdapter.notifyItemInserted(messages.size()-1);
                     }
                 });
             }
@@ -153,7 +149,7 @@ public class InGameActivity extends AppCompatActivity {
     }
 
     private void addMessage(String username, String message){
-        messages.add(new Message(Message.TYPE_MESSAGE,username, message));
+        //messages.add(new Message(Message.TYPE_MESSAGE,username, message));
         JSONObject userMessage = new JSONObject();
         try {
             userMessage.put("chatRoomId", getIntent().getStringExtra("roomName"));
@@ -164,7 +160,7 @@ public class InGameActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         mWebSocketClient.send(userMessage.toString());
-        chatAdapter.notifyItemInserted(messages.size()-1);
+        //chatAdapter.notifyItemInserted(messages.size()-1);
         scrollToBottom();
     }
 
@@ -176,7 +172,7 @@ public class InGameActivity extends AppCompatActivity {
 
     private void addUser(String username) {
         gamers.add(new User(username));
-        gamerListAdapter.notifyDataSetChanged();
+        gamerListAdapter.notifyItemInserted(gamers.size() - 1);
     }
 
     private void addReadyUser(String username) {

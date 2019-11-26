@@ -17,6 +17,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.sketch_chain.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class PlayFragment extends Fragment {
@@ -93,5 +96,20 @@ public class PlayFragment extends Fragment {
         MyView m = new MyView(getContext());
         frameLayout = (FrameLayout) getView().findViewById(R.id.play_draw_frame);
         frameLayout.addView(m);
+        start();
+
+
+    }
+
+    private void start() {
+        JSONObject userMessage = new JSONObject();
+        try {
+            userMessage.put("chatRoomId", ((InGameActivity) getActivity()).getIntent().getStringExtra("roomName"));
+            userMessage.put("type", "START");
+            userMessage.put("writer", ((InGameActivity) getActivity()).prefHelper.getName());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ((InGameActivity) getActivity()).mWebSocketClient.send(userMessage.toString());
     }
 }
