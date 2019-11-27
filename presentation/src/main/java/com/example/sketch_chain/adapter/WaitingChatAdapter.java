@@ -40,7 +40,7 @@ public class WaitingChatAdapter extends RecyclerView.Adapter<WaitingChatAdapter.
     @Override
     public void onBindViewHolder(@NonNull WaitingChatViewHolder holder, int position) {
         Message message = messages.get(position);
-        holder.setUserName(message.getUsername());
+        holder.setUserName(message.getWriter());
         holder.setMessage(message.getMessage());
     }
 
@@ -66,9 +66,7 @@ public class WaitingChatAdapter extends RecyclerView.Adapter<WaitingChatAdapter.
         }
 
         void setUserName(String username) {
-            if (null == usernameView) {
-                return;
-            }
+            if (null == usernameView) return;
             usernameView.setText(username);
         }
 

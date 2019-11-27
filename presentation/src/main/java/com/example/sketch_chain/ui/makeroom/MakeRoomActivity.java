@@ -15,6 +15,7 @@ import com.example.sketch_chain.R;
 import com.example.sketch_chain.databinding.ActivityMakeRoomBinding;
 import com.example.sketch_chain.ui.gameplay.InGameActivity;
 import com.example.sketch_chain.util.DataBindingActivity;
+import com.notmyfault02.data.local.PrefHelper;
 
 public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBinding> {
 
@@ -32,11 +33,15 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
     private RadioGroup roundRadio;
     private RadioGroup timeRadio;
 
+    private PrefHelper prefHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_room);
         viewModel = ViewModelProviders.of(this).get(MakeRoomViewModel.class);
+
+        prefHelper = PrefHelper.getInstance();
 
         roomName = findViewById(R.id.room_name_et);
         password = findViewById(R.id.makeroom_password_et);
@@ -97,6 +102,7 @@ public class MakeRoomActivity extends DataBindingActivity<ActivityMakeRoomBindin
             }
             Intent intent = new Intent(getApplicationContext(), InGameActivity.class);
             intent.putExtra("roomName", roomName.getText().toString());
+            intent.putExtra("writer", prefHelper.getName());
             startActivity(intent);
             finish();
         });

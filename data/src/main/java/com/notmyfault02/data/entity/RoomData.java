@@ -9,11 +9,16 @@ public class RoomData {
         return list;
     }
 
+    public RoomList getData() {
+        return data;
+    }
+
     public void setList(ArrayList<RoomList> list) {
         this.list = list;
     }
 
     private ArrayList<RoomList> list;
+    private RoomList data;
     private String msg;
     private boolean success;
 
@@ -45,6 +50,16 @@ public class RoomData {
         private int allPeople;
         private int idx;
         private boolean isSecret;
+
+        public String getLeaderName() {
+            return leaderName;
+        }
+
+        public void setLeaderName(String leaderName) {
+            this.leaderName = leaderName;
+        }
+
+        private String leaderName;
         private String password;
         private int readyPeople;
         private String title;

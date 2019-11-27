@@ -2,6 +2,7 @@ package com.example.sketch_chain.ui.showroom;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.example.sketch_chain.entity.Room;
 import com.example.sketch_chain.ui.SearchRoomActivity;
 import com.example.sketch_chain.ui.gameplay.InGameActivity;
 import com.example.sketch_chain.util.DataBindingActivity;
+import com.notmyfault02.data.local.PrefHelper;
 
 import java.util.ArrayList;
 
@@ -30,6 +32,8 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
     private String roomName;
     private TextView focusView;
 
+    private PrefHelper prefHelper = null;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_show_room;
@@ -41,6 +45,10 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
         adapter = new ShowRoomAdapter(getApplicationContext(), viewModel, roomList);
         joinBtn = findViewById(R.id.roomlist_join_btn);
         joinBtn.setEnabled(false);
+
+        prefHelper = PrefHelper.getInstance();
+
+        Log.d("getToken", prefHelper.getToken());
 
         viewModel = ViewModelProviders.of(this).get(ShowRoomViewModel.class);
         binding.setViewModel(viewModel);
@@ -63,6 +71,7 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
         joinBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, InGameActivity.class);
             intent.putExtra("roomName", roomName);
+            intent.putExtra("writer", prefHelper.getName());
             startActivity(intent);
         });
     }

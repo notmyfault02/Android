@@ -2,6 +2,7 @@ package com.notmyfault02.data;
 
 import android.util.Log;
 
+import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.remote.Api;
 import com.notmyfault02.data.remote.RetrofitProvider;
 
@@ -11,6 +12,7 @@ import org.junit.Test;
 
 public class MakeRoomTest {
     private Api api;
+
     @Before
     public void initialize() {
         System.out.println("start");
@@ -19,14 +21,17 @@ public class MakeRoomTest {
     }
 
     @Test
-    public void makeRoom() {
-        api.makeRoom("sss", 1, 60)
-                .subscribe(
+    public void getRoom() {
+        final RoomData.RoomList[] data = new RoomData.RoomList[1];
+        api.getRoom("ㄹㄹㄹ").subscribe(
                 body -> {
-                    Log.d("makeroom", "okay: " + "" + body.getCode());
-                }, throwable -> {
-                    Log.d("makeroom", "error" + throwable.getLocalizedMessage());
-                });
+                    data[0] = body.getData();
+                    Log.d("result", String.valueOf(data[0]));
+                },
+                throwable -> {
+                    Log.d("ingame", throwable.getLocalizedMessage());
+                }
+        );
     }
 
     @After

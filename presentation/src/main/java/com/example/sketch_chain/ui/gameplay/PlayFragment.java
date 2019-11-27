@@ -64,16 +64,6 @@ public class PlayFragment extends Fragment {
                 sendDraw(points.get(i).x, points.get(i).y);
 
             }
-
-//            for (int i = 0; i < myshape.size(); i++) {
-//                MyShape shape = myshape.get(i);
-//                p.setColor(shape.color);
-//
-//                switch (shape.shapeType) {
-//                    case LINE:
-//
-//                }
-//            }
         }
 
         @Override

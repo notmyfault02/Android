@@ -51,6 +51,7 @@ public class Room {
         private int allPeople;
         private int idx;
         private boolean isSecret;
+        private String leaderName;
         private String password;
         private int readyPeople;
         private String title;
@@ -61,6 +62,14 @@ public class Room {
 
         public RoomList(String title) {
             this.title = title;
+        }
+
+        public String getLeaderName() {
+            return leaderName;
+        }
+
+        public void setLeaderName(String leaderName) {
+            this.leaderName = leaderName;
         }
 
         public int getAllPeople() {

@@ -22,6 +22,11 @@ public interface Api {
     @GET("/v1/rooms")
     Flowable<RoomData> getRoomList();
 
+    @GET("/v1/room")
+    Flowable<RoomData> getRoom(
+            @Query("title") String title
+    );
+
     @POST("/v1/room")
     Flowable<Response<Object>> makeRoom(
             @Query("title") String title,

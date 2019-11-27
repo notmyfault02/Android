@@ -28,4 +28,8 @@ public class RoomRepository {
     public Flowable<RoomData> getRoomList() {
         return api.getRoomList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
+    public Flowable<RoomData> getRoom(String s) {
+        return api.getRoom(s).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
 }

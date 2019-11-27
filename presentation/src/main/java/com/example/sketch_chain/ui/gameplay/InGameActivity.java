@@ -19,7 +19,9 @@ import com.example.sketch_chain.adapter.WaitingChatAdapter;
 import com.example.sketch_chain.entity.Message;
 import com.example.sketch_chain.entity.User;
 import com.example.sketch_chain.util.JsonChanger;
+import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.local.PrefHelper;
+import com.notmyfault02.data.repository.RoomRepository;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
@@ -50,10 +52,15 @@ public class InGameActivity extends AppCompatActivity {
 
     private JsonChanger jsonChanger = new JsonChanger();
 
+    public String maker = "dkssud";
+    RoomData.RoomList roomInfo;
+
     public PrefHelper prefHelper = null;
 
     Fragment gmReadyFragment = new GmReadyFragment();
     Fragment normalReadyFragment = new NormalReadyFragment();
+
+    private RoomRepository roomRepository = new RoomRepository();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,11 +87,19 @@ public class InGameActivity extends AppCompatActivity {
         chatView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         chatView.setAdapter(chatAdapter);
 
-        if (getIntent().getStringExtra("user") == "user") {
-            replaceFragment(normalReadyFragment);
-        } else {
-            replaceFragment(gmReadyFragment);
-        }
+        roomRepository.getRoom(getIntent().getStringExtra("roomName")).subscribe(s -> {
+            roomInfo = s.getData();
+            maker = roomInfo.getLeaderName();
+            Log.e("jk", prefHelper.getName() + " 이름");
+            Log.d("jk", roomInfo.getLeaderName() + "");
+            if (prefHelper.getName().equals(roomInfo.getLeaderName())) {
+                replaceFragment(gmReadyFragment);
+            } else {
+                replaceFragment(normalReadyFragment);
+            }
+        }, throwable -> {
+            Log.e("ingame", throwable.getLocalizedMessage());
+        });
 
         roomTv.setText(getIntent().getStringExtra("roomName"));
 
@@ -124,15 +139,24 @@ public class InGameActivity extends AppCompatActivity {
             }
             @Override
             public void onMessage(String s) {
-                Log.d("onMessage", s);
+                Log.d("messageType", s);
                 Message message = jsonChanger.messageToString(s);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        messages.add(message);
-                        chatAdapter.notifyItemInserted(messages.size()-1);
-                    }
-                });
+                switch (message.getType()) {
+                    case "CHAT":
+                    case "JOIN":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                messages.add(message);
+                                chatAdapter.notifyItemInserted(messages.size()-1);
+                            }
+                        });
+                        break;
+
+                    case "DRAW":
+                        break;
+                }
+
             }
 
             @Override
@@ -203,7 +227,7 @@ public class InGameActivity extends AppCompatActivity {
     }
 
     private void scrollToBottom() {
-        chatView.scrollToPosition(chatAdapter.getItemCount() - 1);
+        chatView.scrollToPosition(chatAdapter.getItemCount());
     }
 
     @Override
