@@ -26,6 +26,10 @@ public class PlayFragment extends Fragment {
 
     private FrameLayout frameLayout;
 
+    ArrayList<MyShape> myshape = new ArrayList<MyShape>();
+    final static int LINE = 1, CIRCLE = 2, RECTANGLE = 3;
+    static int curShape = LINE;
+
     ArrayList<Point> points = new ArrayList<>();
     int color = Color.WHITE;
 
@@ -57,7 +61,19 @@ public class PlayFragment extends Fragment {
                 if(!points.get(i).check)
                     continue;
                 canvas.drawLine(points.get(i-1).x, points.get(i-1).y, points.get(i).x, points.get(i).y, p);
+                sendDraw(points.get(i).x, points.get(i).y);
+
             }
+
+//            for (int i = 0; i < myshape.size(); i++) {
+//                MyShape shape = myshape.get(i);
+//                p.setColor(shape.color);
+//
+//                switch (shape.shapeType) {
+//                    case LINE:
+//
+//                }
+//            }
         }
 
         @Override
@@ -75,6 +91,9 @@ public class PlayFragment extends Fragment {
             }
             invalidate();
             return true;
+        }
+
+        void hello () {
         }
     }
 
@@ -111,5 +130,24 @@ public class PlayFragment extends Fragment {
             e.printStackTrace();
         }
         ((InGameActivity) getActivity()).mWebSocketClient.send(userMessage.toString());
+    }
+
+    private void sendDraw(Float x, Float y) {
+        JSONObject drawPath = new JSONObject();
+        try {
+            drawPath.put("chatRoomId", ((InGameActivity) getActivity()).getIntent().getStringExtra("roomName"));
+            drawPath.put("type", "DRAW");
+            drawPath.put("message", x.toString() + ", " + y.toString());
+            drawPath.put("writer", ((InGameActivity) getActivity()).prefHelper.getName());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ((InGameActivity) getActivity()).mWebSocketClient.send(drawPath.toString());
+    }
+
+    private static class MyShape {
+        int shapeType;
+        int startX, startY, stopX, stopY;
+        int color;
     }
 }
