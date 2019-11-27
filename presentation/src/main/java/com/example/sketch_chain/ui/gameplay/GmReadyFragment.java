@@ -16,6 +16,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.sketch_chain.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class GmReadyFragment extends Fragment {
 
     private Button startBtn;
@@ -42,6 +45,8 @@ public class GmReadyFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        sendJoin();
+
         startBtn = getView().findViewById(R.id.gm_start_btn);
         content = getView().findViewById(R.id.gm_ready_tv);
 
@@ -67,5 +72,16 @@ public class GmReadyFragment extends Fragment {
 
     }
 
+    private void sendJoin() {
+        JSONObject join = new JSONObject();
+        try {
+            join.put("chatRoomId", ((InGameActivity) getActivity()).getIntent().getStringExtra("roomName"));
+            join.put("type", "READY");
+            join.put("writer", ((InGameActivity) getActivity()).prefHelper.getName());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ((InGameActivity) getActivity()).mWebSocketClient.send(join.toString());
+    }
 
 }
