@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +27,8 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
     private ArrayList<Room.RoomList> roomList = new ArrayList<>();
     private RecyclerView roomView;
     private ImageView joinBtn;
+    private String roomName;
+    private TextView focusView;
 
     @Override
     public int getLayoutId() {
@@ -50,12 +53,17 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
             @Override
             public void onClick(View v, int position) {
                 v.findViewById(R.id.showroom_name_tv).setBackground(getDrawable(R.drawable.disactivation_button_background));
+
+                focusView = v.findViewById(R.id.showroom_name_tv);
+                roomName = focusView.getText().toString();
                 joinBtn.setEnabled(true);
             }
         });
 
         joinBtn.setOnClickListener(v -> {
-            startActivity(new Intent(this, InGameActivity.class));
+            Intent intent = new Intent(this, InGameActivity.class);
+            intent.putExtra("roomName", roomName);
+            startActivity(intent);
         });
     }
 
