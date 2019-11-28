@@ -1,14 +1,8 @@
 package com.example.sketch_chain.ui.gameplay;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -56,134 +50,6 @@ public class PlayFragment extends Fragment {
         }
     }
 
-    class MyAnotherView extends View {
-        Path drawPath = new Path();
-        Paint drawPaint = new Paint();
-        Paint canvasPaint = new Paint();
-        Canvas drawCanvas = new Canvas();
-        Bitmap canvasBitmap;
-
-        public MyAnotherView(Context context) {
-            super(context);
-            setupDrawing();
-        }
-
-        void setupDrawing() {
-            drawPaint.setColor(color);
-            drawPaint.setAntiAlias(true);
-            drawPaint.setStrokeWidth(5f);
-            drawPaint.setStyle(Paint.Style.STROKE);
-            drawPaint.setStrokeJoin(Paint.Join.ROUND);
-            drawPaint.setStrokeCap(Paint.Cap.ROUND);
-            canvasPaint = new Paint(Paint.DITHER_FLAG);
-
-        }
-
-        @Override
-        protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-            super.onSizeChanged(w, h, oldw, oldh);
-            canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-            drawCanvas = new Canvas(canvasBitmap);
-        }
-
-        @Override
-        protected void onDraw(Canvas canvas) {
-            drawPaint.setStrokeWidth(5);
-//            for(int i=1;i<points.size();i++) {
-//                drawPaint.setColor(points.get(i).color);
-//                if(!points.get(i).check)
-//                    continue;
-//                canvas.drawLine(points.get(i-1).x, points.get(i-1).y, points.get(i).x, points.get(i).y, p);
-//                sendDraw(points.get(i).x, points.get(i).y);
-//
-//            }
-            canvas.drawBitmap(canvasBitmap, 0f, 0f, canvasPaint);
-            canvas.drawPath(drawPath, drawPaint);
-        }
-
-        @Override
-        public boolean onTouchEvent(MotionEvent event) {
-            float x = event.getX();
-            float y = event.getY();
-
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    //sendDraw(x, y, "ACTION_DOWN");
-                    drawPath.moveTo(x, y);
-                    //points.add(new Point(x, y, false, color));
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    //sendDraw(x, y, "ACTION_MOVE");
-                    drawPath.lineTo(x, y);
-                    //points.add(new Point(x, y, true, color));
-                    break;
-                case MotionEvent.ACTION_UP :
-                    //sendDraw(x, y, "ACTION_UP");
-                    drawPath.lineTo(x, y);
-                    drawCanvas.drawPath(drawPath, drawPaint);
-                    drawPath.reset();
-                    break;
-            }
-            invalidate();
-            return true;
-        }
-    }
-
-    class MyView extends View {
-        Path drawPath = new Path();
-        Paint drawPaint = new Paint();
-        Paint canvasPaint = new Paint();
-        Canvas drawCanvas = new Canvas();
-        Bitmap canvasBitmap;
-
-        public MyView(Context context) {
-            super(context);
-            setupDrawing();
-        }
-
-        void setupDrawing() {
-            drawPaint.setColor(color);
-            drawPaint.setAntiAlias(true);
-            drawPaint.setStrokeWidth(5f);
-            drawPaint.setStyle(Paint.Style.STROKE);
-            drawPaint.setStrokeJoin(Paint.Join.ROUND);
-            drawPaint.setStrokeCap(Paint.Cap.ROUND);
-            canvasPaint = new Paint(Paint.DITHER_FLAG);
-
-        }
-
-        @Override
-        protected void onDraw(Canvas canvas) {
-            canvas.drawBitmap(canvasBitmap, 0f, 0f, canvasPaint);
-            canvas.drawPath(drawPath, drawPaint);
-        }
-
-        @Override
-        protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-            super.onSizeChanged(w, h, oldw, oldh);
-            canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-            drawCanvas = new Canvas(canvasBitmap);
-        }
-
-        boolean event(Float x, Float y, String eventName) {
-            switch (eventName) {
-                case "ACTION_DOWN":
-                    drawPath.moveTo(x, y);
-                    break;
-                case "ACTION_MOVE":
-                    drawPath.lineTo(x, y);
-                case "ACTION_UP":
-                    drawPath.lineTo(x, y);
-                    drawCanvas.drawPath(drawPath, drawPaint);
-                    drawPath.reset();
-            }
-            invalidate();
-            return true;
-        }
-
-
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,17 +65,12 @@ public class PlayFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        MyView myView = new MyView(getContext());
-        MyAnotherView anotherView = new MyAnotherView(getContext());
+        DrawView drawView = new DrawView(getContext());
+        AutoDrawView autoDrawViewView = new AutoDrawView(getContext());
         frameLayout = (FrameLayout) getView().findViewById(R.id.play_draw_frame);
-        frameLayout.addView(myView);
-        frameLayout.addView(anotherView);
+        frameLayout.addView(drawView);
+        frameLayout.addView(autoDrawViewView);
         start();
-
-        if (!!((InGameActivity) getActivity()).prefHelper.getName().equals("turn"))
-            frameLayout.setClickable(false);
-        else
-            frameLayout.setClickable(true);
 
     }
 
