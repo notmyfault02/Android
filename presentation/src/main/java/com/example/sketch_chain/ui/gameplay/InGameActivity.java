@@ -44,6 +44,7 @@ public class InGameActivity extends AppCompatActivity {
     private EditText chatEt;
     private TextView sendBtn;
     private TextView roomTv;
+    private TextView peopleTv;
 
     private RecyclerView chatView;
     private RecyclerView userView;
@@ -59,6 +60,8 @@ public class InGameActivity extends AppCompatActivity {
 
     Fragment gmReadyFragment = new GmReadyFragment();
     Fragment normalReadyFragment = new NormalReadyFragment();
+    Fragment playFragment = new PlayFragment();
+    Fragment autoDrawFragment = new AutoDrawFragment();
 
     private RoomRepository roomRepository = new RoomRepository();
 
@@ -76,6 +79,7 @@ public class InGameActivity extends AppCompatActivity {
         exit = findViewById(R.id.out_room_iv);
         chatEt = findViewById(R.id.wating_input_chat_et);
         sendBtn = findViewById(R.id.send_button_tv);
+        peopleTv = findViewById(R.id.real_peeple_tv);
 
         gamerListAdapter = new GamerListAdapter(gamers, readys);
         userView = findViewById(R.id.waiting_user_layout);
@@ -90,14 +94,15 @@ public class InGameActivity extends AppCompatActivity {
         roomRepository.getRoom(getIntent().getStringExtra("roomName")).subscribe(s -> {
             roomInfo = s.getData();
             maker = roomInfo.getLeaderName();
-            Log.e("jk", prefHelper.getName() + " 이름");
-            Log.d("jk", roomInfo.getLeaderName() + "");
+            peopleTv.setText(roomInfo.getAllPeople());
+
             if (prefHelper.getName().equals(roomInfo.getLeaderName())) {
                 replaceFragment(gmReadyFragment);
             } else {
                 replaceFragment(normalReadyFragment);
             }
         }, throwable -> {
+            replaceFragment(gmReadyFragment);
             Log.e("ingame", throwable.getLocalizedMessage());
         });
 
@@ -105,6 +110,7 @@ public class InGameActivity extends AppCompatActivity {
 
         exit.setOnClickListener(v -> {
                 finish();
+                mWebSocketClient.close();
         });
 
         sendBtn.setOnClickListener( v -> {
@@ -137,24 +143,62 @@ public class InGameActivity extends AppCompatActivity {
                 chatAdapter.notifyItemInserted(messages.size() -1);
                 addUser(prefHelper.getName());
             }
+
             @Override
             public void onMessage(String s) {
                 Log.d("messageType", s);
                 Message message = jsonChanger.messageToString(s);
                 switch (message.getType()) {
-                    case "CHAT":
                     case "JOIN":
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                messages.add(message);
-                                chatAdapter.notifyItemInserted(messages.size()-1);
-                            }
+                        runOnUiThread(() -> {
+                            addUser(message.getUsername());
+                            messages.add(message);
+                            chatAdapter.notifyItemInserted(messages.size() - 1);
                         });
                         break;
 
-                    case "DRAW":
+                    case "CHAT":
+                        runOnUiThread(() -> {
+                            messages.add(message);
+                            chatAdapter.notifyItemInserted(messages.size() - 1);
+                        });
                         break;
+
+                    case "START":
+                        replaceFragment(playFragment);
+                        break;
+
+                    case "DRAW":
+                        runOnUiThread(() -> {
+                            Log.d("nowPoint", message.getMessage());
+                            String fff = message.getMessage();
+                            String xs = fff.split(", ")[0];
+                            String ys = fff.split(", ")[1];
+                            Float x = Float.parseFloat(xs);
+                            Float y = Float.parseFloat(ys);
+                        });
+                        break;
+
+                    case "ACTION_DOWN":
+                        runOnUiThread(() -> {
+                            Float x = Float.parseFloat(message.getMessage().split(", ")[0]);
+                            Float y = Float.parseFloat(message.getMessage().split(", ")[1]);
+                            //event(x, y, message.getType());
+                        });
+                        break;
+                    case "ACTION_MOVE":
+                        runOnUiThread(() -> {
+                            Float x = Float.parseFloat(message.getMessage().split(", ")[0]);
+                            Float y = Float.parseFloat(message.getMessage().split(", ")[1]);
+                            //event(x, y, message.getType());
+
+                        });
+                    case "ACTION_UP":
+                        runOnUiThread(() -> {
+                            Float x = Float.parseFloat(message.getMessage().split(", ")[0]);
+                            Float y = Float.parseFloat(message.getMessage().split(", ")[1]);
+                            //event(x, y, message.getType());
+                        });
                 }
 
             }

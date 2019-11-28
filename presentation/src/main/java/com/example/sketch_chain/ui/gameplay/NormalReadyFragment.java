@@ -48,7 +48,6 @@ public class NormalReadyFragment extends Fragment {
 
             } else {
                 isReady = false;
-                //mSocket.emit("notReady", "username");
                 content.setText(R.string.normal_waiting);
                 readyBtn.setText("준비");
             }
