@@ -2,6 +2,7 @@ package com.example.sketch_chain.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
 
         prefHelper = PrefHelper.getInstance();
         prefHelper.init(this);
+        Log.d("getToken", prefHelper.getToken());
 
         binding.setViewmodel(mainVm);
         mainVm.getUser();

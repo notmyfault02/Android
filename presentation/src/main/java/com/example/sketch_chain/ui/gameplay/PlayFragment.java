@@ -68,8 +68,12 @@ public class PlayFragment extends Fragment {
         DrawView drawView = new DrawView(getContext());
         AutoDrawView autoDrawViewView = new AutoDrawView(getContext());
         frameLayout = (FrameLayout) getView().findViewById(R.id.play_draw_frame);
-        frameLayout.addView(drawView);
-        frameLayout.addView(autoDrawViewView);
+        if (((InGameActivity) getActivity()).prefHelper.getName().equals(((InGameActivity) getActivity()).roomInfo.getLeaderName()))
+            frameLayout.addView(drawView);
+        else
+        {
+            frameLayout.addView(autoDrawViewView);
+        }
         start();
 
     }
@@ -86,17 +90,6 @@ public class PlayFragment extends Fragment {
         ((InGameActivity) getActivity()).mWebSocketClient.send(userMessage.toString());
     }
 
-    private void sendDraw(Float x, Float y, String eventName) {
-        JSONObject drawPath = new JSONObject();
-        try {
-            drawPath.put("chatRoomId", ((InGameActivity) getActivity()).getIntent().getStringExtra("roomName"));
-            drawPath.put("type", "DRAW");
-            //drawPath.put("type", eventName);
-            drawPath.put("message", x.toString() + ", " + y.toString());
-            drawPath.put("writer", ((InGameActivity) getActivity()).prefHelper.getName());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        ((InGameActivity) getActivity()).mWebSocketClient.send(drawPath.toString());
-    }
+
+
 }

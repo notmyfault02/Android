@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.view.MotionEvent;
 import android.view.View;
 
 public class AutoDrawView extends View {
@@ -41,37 +40,19 @@ public class AutoDrawView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        drawPaint.setStrokeWidth(5);
-//            for(int i=1;i<points.size();i++) {
-//                drawPaint.setColor(points.get(i).color);
-//                if(!points.get(i).check)
-//                    continue;
-//                canvas.drawLine(points.get(i-1).x, points.get(i-1).y, points.get(i).x, points.get(i).y, p);
-//                sendDraw(points.get(i).x, points.get(i).y);
-//
-//            }
         canvas.drawBitmap(canvasBitmap, 0f, 0f, canvasPaint);
         canvas.drawPath(drawPath, drawPaint);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
-
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                //sendDraw(x, y, "ACTION_DOWN");
+    public boolean event(Float x, Float y, String eventName) {
+        switch (eventName) {
+            case "ACTION_DOWN":
                 drawPath.moveTo(x, y);
-                //points.add(new Point(x, y, false, color));
                 break;
-            case MotionEvent.ACTION_MOVE:
-                //sendDraw(x, y, "ACTION_MOVE");
+            case "ACTION_MOVE":
                 drawPath.lineTo(x, y);
-                //points.add(new Point(x, y, true, color));
                 break;
-            case MotionEvent.ACTION_UP :
-                //sendDraw(x, y, "ACTION_UP");
+            case "ACTION_UP":
                 drawPath.lineTo(x, y);
                 drawCanvas.drawPath(drawPath, drawPaint);
                 drawPath.reset();

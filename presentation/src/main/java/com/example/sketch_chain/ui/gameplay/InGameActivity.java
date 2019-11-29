@@ -53,6 +53,8 @@ public class InGameActivity extends AppCompatActivity {
 
     private JsonChanger jsonChanger = new JsonChanger();
 
+    AutoDrawView view;
+
     public String maker = "dkssud";
     RoomData.RoomList roomInfo;
 
@@ -61,7 +63,6 @@ public class InGameActivity extends AppCompatActivity {
     Fragment gmReadyFragment = new GmReadyFragment();
     Fragment normalReadyFragment = new NormalReadyFragment();
     Fragment playFragment = new PlayFragment();
-    Fragment autoDrawFragment = new AutoDrawFragment();
 
     private RoomRepository roomRepository = new RoomRepository();
 
@@ -71,6 +72,8 @@ public class InGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_in_game);
 
         connectSocket();
+
+        view = new AutoDrawView(getApplicationContext());
 
         prefHelper = PrefHelper.getInstance();
         prefHelper.init(this);
@@ -91,29 +94,32 @@ public class InGameActivity extends AppCompatActivity {
         chatView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         chatView.setAdapter(chatAdapter);
 
-        roomRepository.getRoom(getIntent().getStringExtra("roomName")).subscribe(s -> {
-            roomInfo = s.getData();
-            maker = roomInfo.getLeaderName();
-            peopleTv.setText(roomInfo.getAllPeople());
+        roomRepository.getRoom(getIntent().getStringExtra("roomName")).subscribe(
+                s -> {
+                    roomInfo = s.getData();
+                    maker = roomInfo.getLeaderName();
+                    //peopleTv.setText(roomInfo.getAllPeople());
 
-            if (prefHelper.getName().equals(roomInfo.getLeaderName())) {
-                replaceFragment(gmReadyFragment);
-            } else {
-                replaceFragment(normalReadyFragment);
-            }
-        }, throwable -> {
-            replaceFragment(gmReadyFragment);
-            Log.e("ingame", throwable.getLocalizedMessage());
-        });
+                    Log.d("user", "user: " + prefHelper.getName());
+                    Log.d("leader", "leader: " + roomInfo.getLeaderName());
+                    if (prefHelper.getName().equals(roomInfo.getLeaderName())) {
+                        replaceFragment(gmReadyFragment);
+                    } else {
+                        replaceFragment(normalReadyFragment);
+                    }
+                }, throwable -> {
+                    replaceFragment(gmReadyFragment);
+                    Log.e("ingame", throwable.getLocalizedMessage());
+                });
 
         roomTv.setText(getIntent().getStringExtra("roomName"));
 
         exit.setOnClickListener(v -> {
-                finish();
-                mWebSocketClient.close();
+            finish();
+            mWebSocketClient.close();
         });
 
-        sendBtn.setOnClickListener( v -> {
+        sendBtn.setOnClickListener(v -> {
             sendMessage();
         });
     }
@@ -140,7 +146,7 @@ public class InGameActivity extends AppCompatActivity {
                 }
                 mWebSocketClient.send(userJoin.toString());
                 messages.add(new Message(Message.TYPE_SYSTEM, prefHelper.getName(), prefHelper.getName() + "님이 입장했습니다."));
-                chatAdapter.notifyItemInserted(messages.size() -1);
+                chatAdapter.notifyItemInserted(messages.size() - 1);
                 addUser(prefHelper.getName());
             }
 
@@ -168,37 +174,21 @@ public class InGameActivity extends AppCompatActivity {
                         replaceFragment(playFragment);
                         break;
 
-                    case "DRAW":
-                        runOnUiThread(() -> {
-                            Log.d("nowPoint", message.getMessage());
-                            String fff = message.getMessage();
-                            String xs = fff.split(", ")[0];
-                            String ys = fff.split(", ")[1];
-                            Float x = Float.parseFloat(xs);
-                            Float y = Float.parseFloat(ys);
-                        });
-                        break;
-
                     case "ACTION_DOWN":
-                        runOnUiThread(() -> {
-                            Float x = Float.parseFloat(message.getMessage().split(", ")[0]);
-                            Float y = Float.parseFloat(message.getMessage().split(", ")[1]);
-                            //event(x, y, message.getType());
-                        });
+                        Float xDown = Float.parseFloat(message.getMessage().split(", ")[0]);
+                        Float yDown = Float.parseFloat(message.getMessage().split(", ")[1]);
+                        view.event(xDown, yDown, message.getType());
                         break;
                     case "ACTION_MOVE":
-                        runOnUiThread(() -> {
-                            Float x = Float.parseFloat(message.getMessage().split(", ")[0]);
-                            Float y = Float.parseFloat(message.getMessage().split(", ")[1]);
-                            //event(x, y, message.getType());
-
-                        });
+                        Float xMove = Float.parseFloat(message.getMessage().split(", ")[0]);
+                        Float yMove = Float.parseFloat(message.getMessage().split(", ")[1]);
+                        view.event(xMove, yMove, message.getType());
+                        break;
                     case "ACTION_UP":
-                        runOnUiThread(() -> {
-                            Float x = Float.parseFloat(message.getMessage().split(", ")[0]);
-                            Float y = Float.parseFloat(message.getMessage().split(", ")[1]);
-                            //event(x, y, message.getType());
-                        });
+                        Float xUp = Float.parseFloat(message.getMessage().split(", ")[0]);
+                        Float yUp = Float.parseFloat(message.getMessage().split(", ")[1]);
+                        view.event(xUp, yUp, message.getType());
+                        break;
                 }
 
             }
@@ -207,6 +197,7 @@ public class InGameActivity extends AppCompatActivity {
             public void onClose(int i, String s, boolean b) {
                 Log.i("Websocket", "Closed " + s);
             }
+
             @Override
             public void onError(Exception e) {
                 Log.i("Websocket", "Error " + e.getMessage());
@@ -216,7 +207,7 @@ public class InGameActivity extends AppCompatActivity {
         mWebSocketClient.connect();
     }
 
-    private void addMessage(String username, String message){
+    private void addMessage(String username, String message) {
         //messages.add(new Message(Message.TYPE_MESSAGE,username, message));
         JSONObject userMessage = new JSONObject();
         try {
@@ -249,7 +240,7 @@ public class InGameActivity extends AppCompatActivity {
     }
 
     private void removeUser(String username) {
-        for (int i = gamers.size() - 1; i>=0;i--) {
+        for (int i = gamers.size() - 1; i >= 0; i--) {
             User user = gamers.get(i);
             gamers.remove(i);
             gamerListAdapter.notifyItemRemoved(i);
@@ -257,7 +248,7 @@ public class InGameActivity extends AppCompatActivity {
     }
 
     private void removeReadyUser(String username) {
-        for (int i = readys.size() - 1; i>=0;i--) {
+        for (int i = readys.size() - 1; i >= 0; i--) {
             User user = readys.get(i);
             readys.remove(i);
             gamerListAdapter.notifyItemRemoved(i);
