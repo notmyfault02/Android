@@ -71,7 +71,6 @@ public class ShowRoomActivity extends DataBindingActivity<ActivityShowRoomBindin
         joinBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, InGameActivity.class);
             intent.putExtra("roomName", roomName);
-            Log.d("join", prefHelper.getName() + "");
             intent.putExtra("writer", prefHelper.getName());
             startActivity(intent);
         });

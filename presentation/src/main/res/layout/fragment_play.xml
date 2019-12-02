@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hufathers"
             android:gravity="center"
-            android:text="단어적으셈"
+            android:text="1"
             android:textColor="#ffffff"
             android:textSize="24sp" />
     </LinearLayout>
@@ -45,37 +45,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         android:orientation="horizontal">
-        <TextView
-            android:id="@+id/play_explain_quote1_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/hufathers"
-            android:layout_gravity="center_horizontal"
-            android:lineSpacingExtra="1sp"
-            android:text="'"
-            android:textSize="20sp"
-            android:textColor="#ffffff"/>
 
-        <TextView
-            android:id="@+id/play_explain_point_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/hufathers"
-            android:layout_gravity="center_horizontal"
-            android:lineSpacingExtra="1sp"
-            android:text="point"
-            android:textColor="#f5d901"
-            android:textSize="20sp"/>
-        <TextView
-            android:id="@+id/play_explain_quote2_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/hufathers"
-            android:layout_gravity="center_horizontal"
-            android:lineSpacingExtra="1sp"
-            android:text="'"
-            android:textSize="20sp"
-            android:textColor="#ffffff"/>
+
 
         <TextView
             android:id="@+id/play_explain_normal_tv"
@@ -84,7 +55,7 @@
             android:fontFamily="@font/hufathers"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="1sp"
-            android:text="채팅창에 정답을 입력해주세요"
+            android:text="@string/turn_write_word"
             android:textColor="#ffffff"
             android:textSize="20sp"/>
     </LinearLayout>

@@ -73,6 +73,13 @@ public class PlayFragment extends Fragment {
         start();
         frameLayout = (FrameLayout) getView().findViewById(R.id.play_draw_frame);
 
+        if (((InGameActivity) getActivity()).prefHelper.getName().equals(((InGameActivity) getActivity()).roomInfo.getLeaderName()))
+            frameLayout.addView(drawView);
+        else
+        {
+            frameLayout.addView(autoDrawView);
+        }
+
     }
 
     private void start() {

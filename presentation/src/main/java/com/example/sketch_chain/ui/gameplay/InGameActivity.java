@@ -55,7 +55,6 @@ public class InGameActivity extends AppCompatActivity {
 
     AutoDrawView view;
 
-
     public String maker = "dkssud";
     RoomData.RoomList roomInfo;
 
@@ -63,7 +62,7 @@ public class InGameActivity extends AppCompatActivity {
 
     Fragment gmReadyFragment = new GmReadyFragment();
     Fragment normalReadyFragment = new NormalReadyFragment();
-    PlayFragment playFragment;
+    Fragment playFragment = new PlayFragment();
 
     private RoomRepository roomRepository = new RoomRepository();
 
@@ -193,11 +192,6 @@ public class InGameActivity extends AppCompatActivity {
                         });
                         break;
                     case "TURN":
-                        runOnUiThread(() -> {
-                            Log.d("userIngame", prefHelper.getName());
-                            Log.d("turnIngame", message.getWriter());
-                            playFragment.selectTurn(message.getWriter());
-                        });
                         break;
                 }
 

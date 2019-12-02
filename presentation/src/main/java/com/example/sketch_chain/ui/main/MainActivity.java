@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,11 +46,6 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
         binding.setViewmodel(mainVm);
         mainVm.getUser();
         mainVm.getProfile();
-
-        Button logoutBtn = findViewById(R.id.main_logout_btn);
-        logoutBtn.setOnClickListener( v -> {
-            logout();
-        });
 
     }
 
