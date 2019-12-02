@@ -18,6 +18,20 @@ public class AutoDrawView extends View {
     public AutoDrawView(Context context) {
         super(context);
         setupDrawing();
+
+//        Runnable r = new Runnable() {
+//            @Override
+//            public void run() {
+//                while(true) {
+//                    drawPaint.setColor(Color.WHITE);
+//                    drawPaint.setStrokeWidth(5F);
+//                    event(0f, 0f, "");
+//                }
+//            }
+//        };
+//        Thread t = new Thread(r);
+//        t.start();
+
     }
 
     void setupDrawing() {
@@ -45,6 +59,7 @@ public class AutoDrawView extends View {
     }
 
     public boolean event(Float x, Float y, String eventName) {
+
         switch (eventName) {
             case "ACTION_DOWN":
                 drawPath.moveTo(x, y);
@@ -57,6 +72,9 @@ public class AutoDrawView extends View {
                 drawCanvas.drawPath(drawPath, drawPaint);
                 drawPath.reset();
                 break;
+
+            default:
+                return false;
         }
         invalidate();
         return true;

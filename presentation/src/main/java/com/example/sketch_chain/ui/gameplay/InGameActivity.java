@@ -175,19 +175,26 @@ public class InGameActivity extends AppCompatActivity {
                         break;
 
                     case "ACTION_DOWN":
-                        Float xDown = Float.parseFloat(message.getMessage().split(", ")[0]);
-                        Float yDown = Float.parseFloat(message.getMessage().split(", ")[1]);
-                        view.event(xDown, yDown, message.getType());
+                        runOnUiThread(() -> {
+                            Float xDown = Float.parseFloat(message.getMessage().split(", ")[0]);
+                            Float yDown = Float.parseFloat(message.getMessage().split(", ")[1]);
+                            view.event(xDown, yDown, message.getType());
+                        });
                         break;
                     case "ACTION_MOVE":
-                        Float xMove = Float.parseFloat(message.getMessage().split(", ")[0]);
-                        Float yMove = Float.parseFloat(message.getMessage().split(", ")[1]);
-                        view.event(xMove, yMove, message.getType());
+                        runOnUiThread(() -> {
+                            Float xMove = Float.parseFloat(message.getMessage().split(", ")[0]);
+                            Float yMove = Float.parseFloat(message.getMessage().split(", ")[1]);
+                            view.event(xMove, yMove, message.getType());
+                        });
                         break;
                     case "ACTION_UP":
-                        Float xUp = Float.parseFloat(message.getMessage().split(", ")[0]);
-                        Float yUp = Float.parseFloat(message.getMessage().split(", ")[1]);
-                        view.event(xUp, yUp, message.getType());
+                        runOnUiThread(() -> {
+                            Float xUp = Float.parseFloat(message.getMessage().split(", ")[0]);
+                            Float yUp = Float.parseFloat(message.getMessage().split(", ")[1]);
+                            view.event(xUp, yUp, message.getType());
+                        });
+
                         break;
                 }
 
@@ -219,7 +226,6 @@ public class InGameActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         mWebSocketClient.send(userMessage.toString());
-        //chatAdapter.notifyItemInserted(messages.size()-1);
         scrollToBottom();
     }
 

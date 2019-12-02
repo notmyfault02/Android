@@ -66,7 +66,8 @@ public class PlayFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         DrawView drawView = new DrawView(getContext());
-        AutoDrawView autoDrawViewView = new AutoDrawView(getContext());
+        AutoDrawView autoDrawViewView = ((InGameActivity)getActivity()).view;
+        start();
         frameLayout = (FrameLayout) getView().findViewById(R.id.play_draw_frame);
         if (((InGameActivity) getActivity()).prefHelper.getName().equals(((InGameActivity) getActivity()).roomInfo.getLeaderName()))
             frameLayout.addView(drawView);
@@ -74,7 +75,6 @@ public class PlayFragment extends Fragment {
         {
             frameLayout.addView(autoDrawViewView);
         }
-        start();
 
     }
 
