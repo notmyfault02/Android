@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".ui.gameplay.WordDialogFragment">
+
+    <ImageView
+        android:id="@+id/background_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/word_background_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pw_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/word_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="1sp"
+        android:text="단어 입력하기"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/word_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/word_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/word_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/word_background_iv"
+        app:layout_constraintVertical_bias="0.143" />
+
+    <ImageView
+        android:id="@+id/title_underline_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/underline3"
+        app:layout_constraintEnd_toEndOf="@+id/word_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/word_background_iv"
+        app:layout_constraintTop_toBottomOf="@+id/word_title_tv" />
+
+    <TextView
+        android:id="@+id/word_explain_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="0sp"
+        android:text="단어를 입력해주세요"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/word_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/word_background_iv"
+        app:layout_constraintTop_toBottomOf="@+id/title_underline_iv" />
+
+
+    <EditText
+        android:id="@+id/word_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:ems="6"
+        android:fontFamily="@font/hufathers"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/word_underline_iv"
+        app:layout_constraintEnd_toEndOf="@+id/word_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/word_background_iv" />
+
+    <ImageView
+        android:id="@+id/word_underline_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/underlinelong"
+        app:layout_constraintBottom_toBottomOf="@+id/word_background_iv"
+        app:layout_constraintEnd_toEndOf="@+id/word_background_iv"
+        app:layout_constraintStart_toStartOf="@+id/word_background_iv"
+        app:layout_constraintTop_toTopOf="@+id/word_background_iv"
+        app:layout_constraintVertical_bias="0.60465" />
+
+    <Button
+        android:id="@+id/word_confirm_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btn_clickable_making_room"
+        android:enabled="true"
+        android:fontFamily="@font/hufathers"
+        android:text="확인"
+        android:textColor="#1d2d21"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/word_background_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/word_background_iv"
+        app:layout_constraintVertical_bias="0.839" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

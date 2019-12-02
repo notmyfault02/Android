@@ -45,6 +45,7 @@ public class InGameActivity extends AppCompatActivity {
     private TextView sendBtn;
     private TextView roomTv;
     private TextView peopleTv;
+    private String answer;
 
     private RecyclerView chatView;
     private RecyclerView userView;
@@ -141,9 +142,6 @@ public class InGameActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 mWebSocketClient.send(userJoin.toString());
-                messages.add(new Message(Message.TYPE_SYSTEM, prefHelper.getName(), prefHelper.getName() + "님이 입장했습니다."));
-                chatAdapter.notifyItemInserted(messages.size() - 1);
-                addUser(prefHelper.getName());
             }
 
             @Override
@@ -153,8 +151,8 @@ public class InGameActivity extends AppCompatActivity {
                 switch (message.getType()) {
                     case "JOIN":
                         runOnUiThread(() -> {
-                            addUser(message.getUsername());
-                            messages.add(new Message(Message.TYPE_SYSTEM, message.getUsername(), message.getWriter() + "님이 입장했습니다."));
+                            addUser(message.getWriter());
+                            messages.add(new Message(Message.TYPE_SYSTEM, message.getWriter(), message.getWriter() + "님이 입장했습니다."));
                             chatAdapter.notifyItemInserted(messages.size() - 1);
                         });
                         break;
@@ -191,7 +189,10 @@ public class InGameActivity extends AppCompatActivity {
                             view.event(xUp, yUp, message.getType());
                         });
                         break;
-                    case "TURN":
+                    case "WORD":
+                        runOnUiThread(() -> {
+                            answer = message.getMessage();
+                        });
                         break;
                 }
 
@@ -282,6 +283,10 @@ public class InGameActivity extends AppCompatActivity {
         chatView = findViewById(R.id.waiting_chat_layout);
         chatView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         chatView.setAdapter(chatAdapter);
+    }
+
+    private void currectAnswer(String s) {
+        if ()
     }
 
     @Override

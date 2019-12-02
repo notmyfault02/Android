@@ -14,5 +14,6 @@
     <string name="item2_detail">자신이 문제를낼 때 상대방이 정답을 입력할 수 있는 시간을 단축한다.</string>
     <string name="item3">턴 넘기기</string>
     <string name="item3_detail">차례를 다음 사람에게 넘긴다.</string>
-    <string name="turn_write_word">단어를 입력해주세요.</string>
+    <string name="play_explain">단어를 입력해주세요.</string>
+    <string name="answer_explain">정답을 맞춰주세요.</string>
 </resources>

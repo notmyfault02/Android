@@ -1,12 +1,12 @@
 package com.example.sketch_chain.ui.gameplay;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,10 +24,9 @@ public class PlayFragment extends Fragment {
     private FrameLayout frameLayout;
     private DrawView drawView;
     private AutoDrawView autoDrawView;
+    private TextView explainTv;
 
     ArrayList<Point> points = new ArrayList<>();
-
-    int color = Color.WHITE;
 
     class Point {
         float x;
@@ -40,16 +39,6 @@ public class PlayFragment extends Fragment {
             this.y = y;
             this.check = check;
             this.color = color;
-        }
-    }
-
-    public static class DrawPoint {
-        float x;
-        float y;
-
-        public DrawPoint(float x, float y) {
-            this.x = x;
-            this.y = y;
         }
     }
 
@@ -68,16 +57,24 @@ public class PlayFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        explainTv = getActivity().findViewById(R.id.play_explain_tv);
+
         drawView = new DrawView(getContext());
         autoDrawView = ((InGameActivity)getActivity()).view;
         start();
         frameLayout = (FrameLayout) getView().findViewById(R.id.play_draw_frame);
 
-        if (((InGameActivity) getActivity()).prefHelper.getName().equals(((InGameActivity) getActivity()).roomInfo.getLeaderName()))
+        if (((InGameActivity) getActivity()).prefHelper.getName().equals(((InGameActivity) getActivity()).roomInfo.getLeaderName())) {
+            TextView roomName;
+            roomName = ((InGameActivity) getActivity()).findViewById(R.id.room_name_tv);
             frameLayout.addView(drawView);
-        else
-        {
+            explainTv.setText(getString(R.string.play_explain));
+            WordDialogFragment wordDialogFragment = WordDialogFragment.getInstance();
+            wordDialogFragment.show(getFragmentManager(), WordDialogFragment.TAG_EVENT_DIALOG);
+        }
+        else {
             frameLayout.addView(autoDrawView);
+            explainTv.setText(getString(R.string.answer_explain));
         }
 
     }
