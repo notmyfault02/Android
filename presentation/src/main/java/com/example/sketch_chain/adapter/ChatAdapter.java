@@ -13,11 +13,11 @@ import com.example.sketch_chain.entity.Message;
 
 import java.util.ArrayList;
 
-public class WaitingChatAdapter extends RecyclerView.Adapter<WaitingChatAdapter.WaitingChatViewHolder> {
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.WaitingChatViewHolder> {
 
     ArrayList<Message> messages;
 
-    public WaitingChatAdapter(ArrayList<Message> messages) {
+    public ChatAdapter(ArrayList<Message> messages) {
         this.messages = messages;
     }
 

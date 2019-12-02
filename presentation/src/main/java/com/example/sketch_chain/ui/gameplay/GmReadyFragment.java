@@ -57,7 +57,7 @@ public class GmReadyFragment extends Fragment {
             } else {
                 TextView tv = getActivity().findViewById(R.id.room_name_tv);
                 Log.d("roomName", tv.getText().toString());
-                ((InGameActivity)getActivity()).replaceFragment(new PlayFragment());
+                ((InGameActivity)getActivity()).replaceFragment(((InGameActivity) getActivity()).playFragment);
             }
         });
 

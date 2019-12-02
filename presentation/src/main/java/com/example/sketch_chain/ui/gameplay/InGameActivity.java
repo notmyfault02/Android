@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sketch_chain.R;
 import com.example.sketch_chain.adapter.GamerListAdapter;
-import com.example.sketch_chain.adapter.WaitingChatAdapter;
+import com.example.sketch_chain.adapter.ChatAdapter;
 import com.example.sketch_chain.entity.Message;
 import com.example.sketch_chain.entity.User;
 import com.example.sketch_chain.util.JsonChanger;
@@ -48,12 +48,13 @@ public class InGameActivity extends AppCompatActivity {
 
     private RecyclerView chatView;
     private RecyclerView userView;
-    private WaitingChatAdapter chatAdapter;
+    private ChatAdapter chatAdapter;
     private GamerListAdapter gamerListAdapter;
 
     private JsonChanger jsonChanger = new JsonChanger();
 
     AutoDrawView view;
+
 
     public String maker = "dkssud";
     RoomData.RoomList roomInfo;
@@ -62,7 +63,7 @@ public class InGameActivity extends AppCompatActivity {
 
     Fragment gmReadyFragment = new GmReadyFragment();
     Fragment normalReadyFragment = new NormalReadyFragment();
-    Fragment playFragment = new PlayFragment();
+    PlayFragment playFragment;
 
     private RoomRepository roomRepository = new RoomRepository();
 
@@ -74,6 +75,7 @@ public class InGameActivity extends AppCompatActivity {
         connectSocket();
 
         view = new AutoDrawView(getApplicationContext());
+        playFragment = new PlayFragment();
 
         prefHelper = PrefHelper.getInstance();
         prefHelper.init(this);
@@ -84,35 +86,30 @@ public class InGameActivity extends AppCompatActivity {
         sendBtn = findViewById(R.id.send_button_tv);
         peopleTv = findViewById(R.id.real_peeple_tv);
 
-        gamerListAdapter = new GamerListAdapter(gamers, readys);
-        userView = findViewById(R.id.waiting_user_layout);
-        userView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        userView.setAdapter(gamerListAdapter);
-
-        chatAdapter = new WaitingChatAdapter(messages);
-        chatView = findViewById(R.id.waiting_chat_layout);
-        chatView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        chatView.setAdapter(chatAdapter);
-
         roomRepository.getRoom(getIntent().getStringExtra("roomName")).subscribe(
                 s -> {
+
+                    initChatAdapter();
+                    initGamerAdapter();
+                    roomTv.setText(getIntent().getStringExtra("roomName"));
                     roomInfo = s.getData();
                     maker = roomInfo.getLeaderName();
                     //peopleTv.setText(roomInfo.getAllPeople());
 
-                    Log.d("user", "user: " + prefHelper.getName());
-                    Log.d("leader", "leader: " + roomInfo.getLeaderName());
                     if (prefHelper.getName().equals(roomInfo.getLeaderName())) {
-                        replaceFragment(gmReadyFragment);
+                        runOnUiThread(() -> {
+                            replaceFragment(gmReadyFragment);
+                        });
                     } else {
-                        replaceFragment(normalReadyFragment);
+                        runOnUiThread(() -> {
+                            replaceFragment(normalReadyFragment);
+                        });
                     }
+
                 }, throwable -> {
                     replaceFragment(gmReadyFragment);
                     Log.e("ingame", throwable.getLocalizedMessage());
                 });
-
-        roomTv.setText(getIntent().getStringExtra("roomName"));
 
         exit.setOnClickListener(v -> {
             finish();
@@ -158,7 +155,7 @@ public class InGameActivity extends AppCompatActivity {
                     case "JOIN":
                         runOnUiThread(() -> {
                             addUser(message.getUsername());
-                            messages.add(message);
+                            messages.add(new Message(Message.TYPE_SYSTEM, message.getUsername(), message.getWriter() + "님이 입장했습니다."));
                             chatAdapter.notifyItemInserted(messages.size() - 1);
                         });
                         break;
@@ -194,7 +191,13 @@ public class InGameActivity extends AppCompatActivity {
                             Float yUp = Float.parseFloat(message.getMessage().split(", ")[1]);
                             view.event(xUp, yUp, message.getType());
                         });
-
+                        break;
+                    case "TURN":
+                        runOnUiThread(() -> {
+                            Log.d("userIngame", prefHelper.getName());
+                            Log.d("turnIngame", message.getWriter());
+                            playFragment.selectTurn(message.getWriter());
+                        });
                         break;
                 }
 
@@ -268,7 +271,23 @@ public class InGameActivity extends AppCompatActivity {
     }
 
     private void scrollToBottom() {
-        chatView.scrollToPosition(chatAdapter.getItemCount());
+        runOnUiThread(() -> {
+            chatView.scrollToPosition(chatAdapter.getItemCount()-1);
+        });
+    }
+
+    private void initGamerAdapter() {
+        gamerListAdapter = new GamerListAdapter(gamers, readys);
+        userView = findViewById(R.id.waiting_user_layout);
+        userView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        userView.setAdapter(gamerListAdapter);
+    }
+
+    private void initChatAdapter() {
+        chatAdapter = new ChatAdapter(messages);
+        chatView = findViewById(R.id.waiting_chat_layout);
+        chatView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        chatView.setAdapter(chatAdapter);
     }
 
     @Override

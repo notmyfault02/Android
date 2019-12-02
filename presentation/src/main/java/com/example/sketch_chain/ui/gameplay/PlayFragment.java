@@ -2,6 +2,7 @@ package com.example.sketch_chain.ui.gameplay;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 public class PlayFragment extends Fragment {
 
     private FrameLayout frameLayout;
+    private DrawView drawView;
+    private AutoDrawView autoDrawView;
 
     ArrayList<Point> points = new ArrayList<>();
 
@@ -65,16 +68,10 @@ public class PlayFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        DrawView drawView = new DrawView(getContext());
-        AutoDrawView autoDrawViewView = ((InGameActivity)getActivity()).view;
+        drawView = new DrawView(getContext());
+        autoDrawView = ((InGameActivity)getActivity()).view;
         start();
         frameLayout = (FrameLayout) getView().findViewById(R.id.play_draw_frame);
-        if (((InGameActivity) getActivity()).prefHelper.getName().equals(((InGameActivity) getActivity()).roomInfo.getLeaderName()))
-            frameLayout.addView(drawView);
-        else
-        {
-            frameLayout.addView(autoDrawViewView);
-        }
 
     }
 
@@ -90,6 +87,15 @@ public class PlayFragment extends Fragment {
         ((InGameActivity) getActivity()).mWebSocketClient.send(userMessage.toString());
     }
 
-
+    public void selectTurn(String turn) {
+        Log.d("username",((InGameActivity) getActivity()).prefHelper.getName() + "");
+        Log.d("turnname", turn + "");
+        if (((InGameActivity) getActivity()).prefHelper.getName().equals(turn))
+            frameLayout.addView(drawView);
+        else
+        {
+            frameLayout.addView(autoDrawView);
+        }
+    }
 
 }
