@@ -25,10 +25,6 @@ public class WordDialogFragment extends DialogFragment implements View.OnClickLi
 
     public static final String TAG_EVENT_DIALOG = "dialog_event";
 
-    public WordDialogFragment() {
-        super();
-    }
-
     public static WordDialogFragment getInstance() {
         WordDialogFragment instance = new WordDialogFragment();
         return instance;
@@ -41,20 +37,7 @@ public class WordDialogFragment extends DialogFragment implements View.OnClickLi
         View v = inflater.inflate(R.layout.activity_word, container);
         Button btn = (Button) v.findViewById(R.id.word_confirm_btn);
         wordEt = (EditText) v.findViewById(R.id.word_et);
-
         prefHelper = PrefHelper.getInstance();
-
-
-//        wordEt.setOnKeyListener((view, keyCode, event)  -> {
-//            if ((event.getAction() == KeyEvent.ACTION_DOWN) || (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BACK)) {
-//                if (TextUtils.isEmpty(wordEt.getText().toString())) {
-//                    wordBtn.setEnabled(false);
-//                } else {
-//                    wordBtn.setEnabled(true);
-//                }
-//            }
-//            return false;
-//        });
         btn.setOnClickListener(this);
         return v;
     }

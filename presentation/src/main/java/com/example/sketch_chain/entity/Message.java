@@ -4,6 +4,7 @@ public class Message {
 
     public static final int TYPE_MESSAGE = 0;
     public static final int TYPE_SYSTEM = 1;
+    public static final int TYPE_ANSWER = 2;
 
     public int getmType() {
         return mType;

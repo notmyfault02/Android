@@ -1,10 +1,9 @@
 package com.notmyfault02.data.remote;
 
 import com.notmyfault02.data.entity.MakeRoomResponse;
+import com.notmyfault02.data.entity.RankResponse;
 import com.notmyfault02.data.entity.RoomData;
 import com.notmyfault02.data.entity.UserData;
-
-import java.util.List;
 
 import io.reactivex.Flowable;
 import retrofit2.Response;
@@ -16,8 +15,8 @@ public interface Api {
     @GET("/v1/user")
     Flowable<UserData> getUser();
 
-    @GET("/user/rank")
-    Flowable<List<UserData>> getRanking();
+    @GET("/v1/users")
+    Flowable<RankResponse> getRanking();
 
     @GET("/v1/rooms")
     Flowable<RoomData> getRoomList();

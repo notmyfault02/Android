@@ -1,10 +1,9 @@
 package com.notmyfault02.data.repository;
 
+import com.notmyfault02.data.entity.RankResponse;
 import com.notmyfault02.data.entity.UserData;
 import com.notmyfault02.data.remote.Api;
 import com.notmyfault02.data.remote.RetrofitProvider;
-
-import java.util.List;
 
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -18,7 +17,8 @@ public class UserRepository {
         return retrofitProvider.getUser().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Flowable<List<UserData>> getRanking() {
-        return null;
+    public Flowable<RankResponse> getRanking() {
+
+        return retrofitProvider.getRanking().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }

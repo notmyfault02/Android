@@ -46,6 +46,7 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
         binding.setViewmodel(mainVm);
         mainVm.getUser();
         mainVm.getProfile();
+        mainVm.getRanking();
 
     }
 

@@ -7,7 +7,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.notmyfault02.data.entity.RankResponse;
 import com.notmyfault02.data.repository.UserRepository;
+
+import java.util.ArrayList;
 
 public class MainViewModel extends AndroidViewModel {
     MutableLiveData<String> userName = new MutableLiveData<>();
@@ -15,6 +18,12 @@ public class MainViewModel extends AndroidViewModel {
     MutableLiveData<Integer> coin = new MutableLiveData<>();
     MutableLiveData<Integer> exp = new MutableLiveData<>();
     MutableLiveData<Integer> level = new MutableLiveData<>();
+
+    public MutableLiveData<ArrayList<RankResponse.RankUser>> getUsers() {
+        return users;
+    }
+
+    public MutableLiveData<ArrayList<RankResponse.RankUser>> users = new MutableLiveData<>();
 
     private UserRepository repository = new UserRepository();
 
@@ -51,6 +60,14 @@ public class MainViewModel extends AndroidViewModel {
             level.setValue(s.getLevel());
         }, throwable -> {
             Log.d("getUser",throwable.getLocalizedMessage());
+        });
+    }
+
+    void getRanking() {
+        repository.getRanking().subscribe( s -> {
+            s.getRankUsers();
+        }, throwable -> {
+            Log.d("getRank", throwable.getLocalizedMessage());
         });
     }
 

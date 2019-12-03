@@ -13,7 +13,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitProvider {
-    private static final String BASE_URL = "http://192.168.137.156:9000";
+    private static final String BASE_URL = "http://192.168.43.39:9000";
 
     private static final OkHttpClient.Builder builder = new OkHttpClient.Builder();
 

@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class GamerListAdapter extends RecyclerView.Adapter<GamerListAdapter.GamerListViewHolder>{
 
-    ArrayList<User> gamers;
-    ArrayList<User> readys;
+    ArrayList<User> gamers = new ArrayList<>();
+    ArrayList<User> readys = new ArrayList<>();
 
     public GamerListAdapter(ArrayList<User> gamers, ArrayList<User> readys) {
         this.gamers = gamers;

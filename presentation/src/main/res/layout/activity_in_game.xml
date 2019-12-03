@@ -53,38 +53,22 @@
         app:layout_constraintStart_toStartOf="@+id/room_name_tv"
         app:layout_constraintTop_toBottomOf="@+id/room_name_tv" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/timer_tv"
+        android:layout_gravity="center"
         android:layout_width="44dp"
         android:layout_height="32dp"
+        android:fontFamily="@font/hufathers"
+        android:text="8"
+        android:textColor="#f5d901"
+        android:textSize="32sp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0432"
-        app:layout_constraintHorizontal_bias="0.899">
-
-        <TextView
-            android:id="@+id/real_peeple_tv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:fontFamily="@font/hufathers"
-            android:text="8"
-            android:textColor="#f5d901"
-            android:textSize="32sp" />
-
-        <TextView
-            android:id="@+id/max_people_tv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:fontFamily="@font/hufathers"
-            android:text="/8"
-            android:textColor="#ffffff"
-            android:textSize="32sp" />
-    </LinearLayout>
+        app:layout_constraintHorizontal_bias="0.899"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

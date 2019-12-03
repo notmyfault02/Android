@@ -42,6 +42,7 @@
         </activity>
         <activity
             android:name=".ui.gameplay.WordDialogFragment"
+            android:launchMode="singleTask"
             android:theme="@style/CustomDialog"></activity>
     </application>
 

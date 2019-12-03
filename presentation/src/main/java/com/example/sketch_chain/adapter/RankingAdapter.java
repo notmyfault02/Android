@@ -1,11 +1,12 @@
 package com.example.sketch_chain.adapter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sketch_chain.R;
 
@@ -38,5 +39,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
             super(view);
         }
 
+        void bind() {
+        }
     }
 }

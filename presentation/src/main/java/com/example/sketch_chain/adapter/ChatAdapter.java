@@ -32,6 +32,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.WaitingChatVie
             case Message.TYPE_SYSTEM:
                 layout = R.layout.item_system;
                 break;
+            case Message.TYPE_ANSWER:
+                layout = R.layout.item_answer;
         }
         View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         return new WaitingChatViewHolder(view);
